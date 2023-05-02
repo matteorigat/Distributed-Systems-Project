@@ -35,12 +35,13 @@ public class Robots {
     }
 
 
-    public synchronized void add(Robot robot){
+    public synchronized boolean add(Robot robot){
         for(Robot r : robotslist)
             if(r.getId() == robot.getId())
-                return;
+                return false;
         robotslist.add(robot);
         System.out.println("Robot successfully added");
+        return true;
     }
 
     public Robot getById(int id){

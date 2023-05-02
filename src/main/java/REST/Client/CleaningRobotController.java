@@ -2,6 +2,7 @@ package REST.Client;
 
 import REST.Beans.Robot;
 import REST.Beans.Robots;
+import REST.services.ResponseData;
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
@@ -20,15 +21,29 @@ public class CleaningRobotController {
         Robot robot = new Robot(1234,8888);
         clientResponse = postRequest(client,serverAddress+postPath,robot);
         System.out.println(clientResponse.toString());
+        if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
+            ResponseData resp = clientResponse.getEntity(ResponseData.class);
+            System.out.println("position: " + resp.getPosition().x + "," + resp.getPosition().y);
+            System.out.println("Robots List");
+            for (Robot r : resp.getRobots().getRobotslist()){
+                System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
+            }
+        } else {
+            System.out.println("POST request failed.");
+        }
 
         //GET REQUEST #1
         String getPath = "/robots";
         clientResponse = getRequest(client,serverAddress+getPath);
         System.out.println(clientResponse.toString());
-        Robots robots = clientResponse.getEntity(Robots.class);
-        System.out.println("Robots List");
-        for (Robot r : robots.getRobotslist()){
-            System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
+        if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
+            Robots robots = clientResponse.getEntity(Robots.class);
+            System.out.println("Robots List");
+            for (Robot r : robots.getRobotslist()){
+                System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
+            }
+        } else {
+            System.out.println("GET request failed.");
         }
 
 
