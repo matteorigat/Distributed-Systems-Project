@@ -20,6 +20,9 @@ public class RobotsService {
     @GET
     @Produces({"application/json", "application/xml"})
     public Response getRobotsList(){
+        for (Robot r : Robots.getInstance().getRobotslist()){
+            System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
+        }
         return Response.ok(Robots.getInstance()).build();
 
     }

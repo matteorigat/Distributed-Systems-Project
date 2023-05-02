@@ -18,13 +18,14 @@ public class CleaningRobotController {
 
         // POST EXAMPLE
         String postPath = "/robots/add";
-        Robot robot = new Robot(1234,8888);
+        Robot robot = new Robot(1224,8888);
         clientResponse = postRequest(client,serverAddress+postPath,robot);
         System.out.println(clientResponse.toString());
         if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
             ResponseData resp = clientResponse.getEntity(ResponseData.class);
-            System.out.println("position: " + resp.getPosition().x + "," + resp.getPosition().y);
-            System.out.println("Robots List");
+            robot.setPosition(resp.getPosition().x, resp.getPosition().y);
+            System.out.println("position: " + robot.getPosition().x + "," + robot.getPosition().y);
+            System.out.println("Robots List: num of elem... " + resp.getRobots().getRobotslist().size());
             for (Robot r : resp.getRobots().getRobotslist()){
                 System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
             }

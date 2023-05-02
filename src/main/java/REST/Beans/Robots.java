@@ -27,11 +27,8 @@ public class Robots {
             instance = new Robots();
         return instance;
     }
-
     public synchronized List<Robot> getRobotslist() {
-
         return new ArrayList<>(robotslist);
-
     }
 
 

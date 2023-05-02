@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/REST/services/ResponseData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="Post 2 arguments">
+      <change afterPath="$PROJECT_DIR$/src/main/java/REST/Beans/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/REST/Beans/Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/REST/Client/ClientExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/REST/services/UsersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/REST/Beans/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/REST/Beans/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/REST/Beans/Robots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/REST/Beans/Robots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/REST/Client/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/REST/Client/CleaningRobotController.java" afterDir="false" />
@@ -79,7 +80,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/REST/Beans&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -89,7 +90,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/REST/Beans" />
       <recent name="$PROJECT_DIR$/src/main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="REST.Client" />
+      <recent name="REST.services" />
     </key>
   </component>
   <component name="RunManager" selected="Application.CleaningRobotController">
@@ -119,12 +125,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="actor.Client" />
+    <configuration name="ClientExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="REST.Client.ClientExample" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="actor.*" />
+          <option name="PATTERN" value="REST.Client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientExample" />
         <item itemvalue="Application.CleaningRobotController" />
         <item itemvalue="Application.AdministratorServer" />
         <item itemvalue="Application.SubExample" />
         <item itemvalue="Application.PubExample" />
-        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -177,8 +183,17 @@
       <option name="presentableId" value="Default" />
       <updated>1683044577453</updated>
       <workItem from="1683044579652" duration="7684000" />
-      <workItem from="1683053523506" duration="3392000" />
+      <workItem from="1683053523506" duration="5642000" />
+      <workItem from="1683059189617" duration="835000" />
     </task>
+    <task id="LOCAL-00001" summary="Post 2 arguments">
+      <created>1683056952309</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683056952309</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,5 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Post 2 arguments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Post 2 arguments" />
   </component>
 </project>

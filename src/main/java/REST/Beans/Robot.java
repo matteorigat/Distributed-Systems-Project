@@ -24,13 +24,13 @@ public class Robot {
         return port;
     }
 
+    public Coordinates getPosition() {
+        return position;
+    }
+
     public void setPosition(int x, int y){
         position.x = x;
         position.y = y;
-    }
-
-    public Coordinates getPosition() {
-        return position;
     }
 
     public static class Coordinates{
