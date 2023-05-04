@@ -1,4 +1,4 @@
-package REST.Beans;
+package Greenfield.Beans;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -20,8 +20,16 @@ public class Robot {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getPort() {
         return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public Coordinates getPosition() {
@@ -36,7 +44,10 @@ public class Robot {
     public static class Coordinates{
         public int x,y;
 
-        public Coordinates(){}
+        public Coordinates(){
+            x=-1;
+            y=-1;
+        }
     }
 
 

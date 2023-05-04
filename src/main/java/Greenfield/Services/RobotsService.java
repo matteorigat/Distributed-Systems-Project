@@ -1,11 +1,10 @@
-package REST.services;
+package Greenfield.Services;
 
 
-import REST.Beans.Robot;
-import REST.Beans.Robots;
+import Greenfield.Beans.Robot;
+import Greenfield.Beans.Robots;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
@@ -20,11 +19,7 @@ public class RobotsService {
     @GET
     @Produces({"application/json", "application/xml"})
     public Response getRobotsList(){
-        for (Robot r : Robots.getInstance().getRobotslist()){
-            System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
-        }
         return Response.ok(Robots.getInstance()).build();
-
     }
 
     //permette di inserire un nuovo robot
@@ -69,7 +64,7 @@ public class RobotsService {
             default: return null;
         }
 
-        x = (int)(Math.floor(Math.random() *(max - min + 1) + min));
+        x = (int)(min + (Math.random()*(max - min + 1)));
 
         switch (district){
             case 0: case 1:

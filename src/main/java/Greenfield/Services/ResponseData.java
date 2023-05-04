@@ -1,7 +1,7 @@
-package REST.services;
+package Greenfield.Services;
 
-import REST.Beans.Robot;
-import REST.Beans.Robots;
+import Greenfield.Beans.Robot;
+import Greenfield.Beans.Robots;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

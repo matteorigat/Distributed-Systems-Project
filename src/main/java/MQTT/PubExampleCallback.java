@@ -7,7 +7,7 @@ public class PubExampleCallback {
         MqttClient client;
         String broker = "tcp://localhost:1883";
         String clientId = MqttClient.generateClientId();
-        String topic = "home/sensors/temp";
+        String topic = "greenfield/pollution/district2";
         int qos = 2;
 
         try {

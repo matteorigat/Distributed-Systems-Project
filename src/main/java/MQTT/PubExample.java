@@ -7,7 +7,7 @@ public class PubExample {
         MqttClient client;
         String broker = "tcp://localhost:1883";
         String clientId = MqttClient.generateClientId();
-        String topic = "home/sensors/light";
+        String topic = "greenfield/pollution/district1";
         int qos = 2;
 
         //brew services start mosquitto

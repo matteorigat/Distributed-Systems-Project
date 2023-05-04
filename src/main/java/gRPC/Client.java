@@ -1,4 +1,4 @@
-package actor;
+package gRPC;
 
 import it.ewlab.actor.ActorOuterClass.Actor;
 

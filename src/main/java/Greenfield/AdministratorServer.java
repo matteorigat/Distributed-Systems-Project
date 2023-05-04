@@ -1,4 +1,4 @@
-package REST;
+package Greenfield;
 
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;

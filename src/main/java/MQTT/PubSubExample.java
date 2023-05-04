@@ -12,8 +12,8 @@ public class PubSubExample {
         MqttClient client;
         String broker = "tcp://localhost:1883";
         String clientId = MqttClient.generateClientId();
-        String pubTopic = "home/sensors/master";
-        String subTopicArray  [] = new String[] {"home/sensors/light", "home/sensors/temp"};
+        String pubTopic = "greenfield/pollution/district3";
+        String subTopicArray  [] = new String[] {"greenfield/pollution/district3", "greenfield/pollution/district4"};
         int subQosArray [] = new int[] {1,2};
         int pubQos = 2;
 

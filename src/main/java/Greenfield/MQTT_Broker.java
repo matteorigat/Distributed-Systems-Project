@@ -1,16 +1,16 @@
-package MQTT;
+package Greenfield;
 
 import org.eclipse.paho.client.mqttv3.*;
 
 import java.sql.Timestamp;
 import java.util.Scanner;
 
-public class SubExample {
+public class MQTT_Broker {
     public static void main(String[] args) {
         MqttClient client;
         String broker = "tcp://localhost:1883";
         String clientId = MqttClient.generateClientId();
-        String topic = "home/sensors/#";
+        String topic = "greenfield/pollution/#";
         int qos = 2;
 
         try {

@@ -1,4 +1,4 @@
-package REST.Beans;
+package Greenfield.Beans;
 
 import java.util.ArrayList;
 import java.util.List;
