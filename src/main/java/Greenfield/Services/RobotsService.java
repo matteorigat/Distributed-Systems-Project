@@ -84,21 +84,4 @@ public class RobotsService {
         return r.getPosition();
     }
 
-
-
-
-/*
-
-    //permette di prelevare un utente con un determinato nome
-    @Path("get/{name}")
-    @GET
-    @Produces({"application/json", "application/xml"})
-    public Response getByName(@PathParam("name") int id){
-        Robot r = Robots.getInstance().getById(id);
-        if(r!=null)
-            return Response.ok(r).build();
-        else
-            return Response.status(Response.Status.NOT_FOUND).build();
-    }
-*/
 }

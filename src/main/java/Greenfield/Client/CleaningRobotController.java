@@ -3,15 +3,24 @@ package Greenfield.Client;
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
 import Greenfield.Services.ResponseData;
+import Greenfield.Simulator.Measurement;
+import Greenfield.Simulator.PM10Simulator;
+import Greenfield.Simulator.SimulatorInterface;
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import it.ewlab.actor.ActorOuterClass;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.List;
 
 public class CleaningRobotController {
 
@@ -19,24 +28,30 @@ public class CleaningRobotController {
         Client client = Client.create();
         String serverAddress = "http://localhost:1337";
         ClientResponse clientResponse = null;
+        Robot robot = new Robot(1134,8888);
+        Robots robotsList = null;
 
-        // POST add request to the city
+
+        //######################################################################################
+
+        //############################## REST ##################################################
+
+        //######################################################################################
+
+        // POST request to be added to the city
         String postPath = "/robots/add";
-        Robot robot = new Robot(1234,8888);
         clientResponse = postRequest(client,serverAddress+postPath,robot);
         System.out.println(clientResponse.toString());
         if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
             ResponseData resp = clientResponse.getEntity(ResponseData.class);
             robot.setPosition(resp.getPosition().x, resp.getPosition().y);
-            System.out.println("position: " + robot.getPosition().x + "," + robot.getPosition().y);
-            System.out.println("Robots List: num of elem... " + resp.getRobots().getRobotslist().size());
-            for (Robot r : resp.getRobots().getRobotslist()){
-                System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
-            }
+            robotsList = resp.getRobots();
         } else {
             System.out.println("POST request failed.");
+            return;
         }
 
+        /*
         //GET the list of all the robots in the city
         String getPath = "/robots";
         clientResponse = getRequest(client,serverAddress+getPath);
@@ -50,60 +65,44 @@ public class CleaningRobotController {
         } else {
             System.out.println("GET request failed.");
         }
+         */
 
 
+        //######################################################################################
 
+        //############################## Start Simulator #######################################
 
-        MqttClient MQTTclient;
-        String broker = "tcp://localhost:1883";
-        String clientId = MqttClient.generateClientId();
-        String topic = "greenfield/pollution/district1";
-        int qos = 2;
+        //######################################################################################
 
-        //brew services start mosquitto
+        SimulatorInterface sim = new SimulatorInterface();
+        PM10Simulator pm10 = new PM10Simulator(sim);
+        pm10.start();
 
-        try {
-            MQTTclient = new MqttClient(broker, clientId);
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true);
-            //connOpts.setUserName(username); // optional
-            //connOpts.setPassword(password.toCharArray()); // optional
-            //connOpts.setWill("this/is/a/topic","will message".getBytes(),1,false);  // optional
-            //connOpts.setKeepAliveInterval(60);  // optional
+        List<Measurement> mlist = sim.readAllAndClean();
 
-            // Connect the client
-            System.out.println(clientId + " Connecting Broker " + broker);
-            MQTTclient.connect(connOpts);
-            System.out.println(clientId + " Connected");
-
-            String payload = String.valueOf(0 + (Math.random() * 10)); // create a random number between 0 and 10
-            MqttMessage message = new MqttMessage(payload.getBytes());
-
-            // Set the QoS on the Message
-            message.setQos(qos);
-            System.out.println(clientId + " Publishing message: " + payload + " ...");
-            MQTTclient.publish(topic, message);
-            System.out.println(clientId + " Message published");
-
-            if (MQTTclient.isConnected())
-                MQTTclient.disconnect();
-            System.out.println("Publisher " + clientId + " disconnected");
-
-
-
-        } catch (MqttException me ) {
-            System.out.println("reason " + me.getReasonCode());
-            System.out.println("msg " + me.getMessage());
-            System.out.println("loc " + me.getLocalizedMessage());
-            System.out.println("cause " + me.getCause());
-            System.out.println("excep " + me);
-            me.printStackTrace();
+        for(Measurement m : mlist){
+            System.out.println("measure: " + m.toString());
         }
 
 
 
+        //######################################################################################
+
+        //############################## MQQT ##################################################
+
+        //######################################################################################
 
 
+        MQTT_Client mqtt = new MQTT_Client(sim, robot.getId());
+        mqtt.start();
+
+
+
+        //######################################################################################
+
+        //############################## gRPC ##################################################
+
+        //######################################################################################
 
     }
 

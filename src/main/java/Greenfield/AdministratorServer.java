@@ -1,5 +1,8 @@
 package Greenfield;
 
+import Greenfield.Beans.Measure;
+import Greenfield.Beans.Measures;
+import Greenfield.Beans.Robots;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import org.eclipse.paho.client.mqttv3.*;
@@ -44,11 +47,13 @@ public class AdministratorServer {
                 public void messageArrived(String topic, MqttMessage message) {
                     // Called when a message arrives from the server that matches any subscription made by the client
                     String time = new Timestamp(System.currentTimeMillis()).toString();
-                    String receivedMessage = new String(message.getPayload());
+                    String[] receivedMessage = new String(message.getPayload()).split(" ");
+                    Measure measure = new Measure(Integer.parseInt(receivedMessage[0]), Double.parseDouble(receivedMessage[1]), Long.parseLong(receivedMessage[2]));
+                    Measures.getInstance().add(measure);
                     System.out.println(clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
                             "\n\tTime:    " + time +
                             "\n\tTopic:   " + topic +
-                            "\n\tMessage: " + receivedMessage +
+                            "\n\tMessage: " + receivedMessage[0] + " " + receivedMessage[1] + " " + receivedMessage[2] +
                             "\n\tQoS:     " + message.getQos() + "\n");
 
                     System.out.println("\n ***  Press a random key to exit *** \n");
@@ -84,9 +89,10 @@ public class AdministratorServer {
         }
 
 
-
+        /*
         System.out.println("Hit return to stop...");
         System.in.read();
+        */
         System.out.println("Stopping server");
         server.stop(0);
         System.out.println("Server stopped");

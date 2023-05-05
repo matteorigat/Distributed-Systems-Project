@@ -4,19 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="MQTT test">
-      <change afterPath="$PROJECT_DIR$/paho1169959863333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/AdministratorClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/Buffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/Measurement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/PM10Simulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/Simulator.java" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="Simulator import">
+      <change afterPath="$PROJECT_DIR$/paho12161279385750-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12166596813583-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12219955085958-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12226746946708-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12290116061958-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12295744070708-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12332819129125-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12338644313333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12550350937583-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12556059241541-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12625479991208-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12631037764458-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12657135444916-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho13439833982291-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho13566388629041-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho13672619738916-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho13677783345500-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14050198611375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14065157645875-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho1896879552291-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho7983071984416-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho8683610773750-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho8852082146625-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho8907568722041-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho8947695947208-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/MQTT_Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/measuresService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/SimulatorInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/MQTT_Broker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MQTT/PubExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MQTT/PubExampleCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MQTT/PubSubExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +88,20 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/Simulator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/Simulator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/Simulator" />
@@ -87,6 +109,8 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Greenfield.Services" />
+      <recent name="Greenfield.Beans" />
       <recent name="Greenfield.Client" />
       <recent name="REST.Client" />
       <recent name="REST.services" />
@@ -106,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CleaningRobotController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CleaningRobotController" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.Client.CleaningRobotController" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
@@ -191,7 +215,8 @@
       <workItem from="1683229205762" duration="81000" />
       <workItem from="1683229290791" duration="286000" />
       <workItem from="1683229677513" duration="1418000" />
-      <workItem from="1683270584890" duration="1466000" />
+      <workItem from="1683270584890" duration="1862000" />
+      <workItem from="1683291024929" duration="9615000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -214,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683230205123</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Simulator import">
+      <created>1683272551142</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683272551142</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +268,7 @@
     <MESSAGE value="Post 2 arguments" />
     <MESSAGE value="POST 2 arguments" />
     <MESSAGE value="MQTT test" />
-    <option name="LAST_COMMIT_MESSAGE" value="MQTT test" />
+    <MESSAGE value="Simulator import" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simulator import" />
   </component>
 </project>
