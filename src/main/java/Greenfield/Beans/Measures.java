@@ -39,6 +39,7 @@ public class Measures {
     public synchronized List<Measure> getLastMeasuresById(int id, int n){
         List<Measure> measuresCopy = new ArrayList<>();
         int c=0;
+
         for (int i = measures.size() - 1; i >= 0; i--) {
             Measure m = measures.get(i);
             if(m.getId() == id){
@@ -48,6 +49,17 @@ public class Measures {
                     return measuresCopy;
             }
         }
+
+        return measuresCopy;
+    }
+
+
+    public synchronized List<Measure> getMeasurest1t2(long t1, long t2){
+        List<Measure> measuresCopy = new ArrayList<>();
+
+        for (Measure m : measures)
+            if(m.getTimestamp() >= t1  && m.getTimestamp() <= t2)
+                measuresCopy.add(m);
 
         return measuresCopy;
     }

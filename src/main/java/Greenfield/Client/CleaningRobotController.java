@@ -70,13 +70,6 @@ public class CleaningRobotController {
         PM10Simulator pm10 = new PM10Simulator(sim);
         pm10.start();
 
-        List<Measurement> mlist = sim.readAllAndClean();
-
-        for(Measurement m : mlist){
-            System.out.println("measure: " + m.toString());
-        }
-
-
 
         //######################################################################################
 

@@ -13,16 +13,15 @@ import java.util.List;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ClientResponseData {
-    private List<Measure> mea;
+    private List<Measure> measurements;
 
     public ClientResponseData(){}
 
     public ClientResponseData(List<Measure> measurements) {
-        this.mea = measurements;
+        this.measurements = measurements;
     }
 
-    @XmlElement
     public List<Measure> getMeasurements() {
-        return mea;
+        return measurements;
     }
 }

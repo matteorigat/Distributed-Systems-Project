@@ -33,9 +33,11 @@ public class Robots {
 
 
     public synchronized boolean add(Robot robot){
+
         for(Robot r : robotslist)
             if(r.getId() == robot.getId())
                 return false;
+
         robotslist.add(robot);
         System.out.println("Robot successfully added");
         return true;
@@ -43,9 +45,11 @@ public class Robots {
 
     public Robot getById(int id){
         List<Robot> robotsCopy = getRobotslist();
+
         for(Robot r: robotsCopy)
             if(r.getId() == id)
                 return r;
+
         return null;
     }
 
