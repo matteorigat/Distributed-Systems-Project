@@ -31,7 +31,7 @@ public class AdministratorClient {
 
                 //GET: The list of the cleaning robots currently located in Greenfield
                 case "1":
-                    String getPath = "/measures";
+                    String getPath = "/robots";
                     clientResponse = getRequest(client,serverAddress+getPath);
                     System.out.println(clientResponse.toString());
                     if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
@@ -123,7 +123,7 @@ public class AdministratorClient {
         }
     }
 
-    public static boolean isNotNumeric(String str) {
+    private static boolean isNotNumeric(String str) {
         try {
             Integer.parseInt(str);
             return false;

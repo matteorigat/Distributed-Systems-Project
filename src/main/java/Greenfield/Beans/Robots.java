@@ -43,14 +43,8 @@ public class Robots {
         return true;
     }
 
-    public Robot getById(int id){
-        List<Robot> robotsCopy = getRobotslist();
-
-        for(Robot r: robotsCopy)
-            if(r.getId() == id)
-                return r;
-
-        return null;
+    public synchronized Boolean removeById(int id){
+        return robotslist.removeIf(r -> r.getId() == id);
     }
 
 }

@@ -13,6 +13,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class CleaningRobotController {
 
@@ -20,8 +21,23 @@ public class CleaningRobotController {
         Client client = Client.create();
         String serverAddress = "http://localhost:1337";
         ClientResponse clientResponse = null;
-        Robot robot = new Robot(1134,8888);
         Robots robotsList = null;
+
+        Scanner in = new Scanner(System.in);
+        String input;
+
+        do{
+            System.out.print("\nInsert the robot id\n > ");
+            input = in.nextLine();
+        } while(isNotNumeric(input));
+        int robotId = Integer.parseInt(input);
+        do{
+            System.out.print("\nInsert the robot port\n > ");
+            input = in.nextLine();
+        } while(isNotNumeric(input));
+        int robotPort = Integer.parseInt(input);
+
+        Robot robot = new Robot(robotId,robotPort);
 
 
         //######################################################################################
@@ -43,22 +59,6 @@ public class CleaningRobotController {
             return;
         }
 
-        /*
-        //GET the list of all the robots in the city
-        String getPath = "/robots";
-        clientResponse = getRequest(client,serverAddress+getPath);
-        System.out.println(clientResponse.toString());
-        if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-            Robots robots = clientResponse.getEntity(Robots.class);
-            System.out.println("Robots List");
-            for (Robot r : robots.getRobotslist()){
-                System.out.println("Id: " + r.getId() + " Port: " + r.getPort());
-            }
-        } else {
-            System.out.println("GET request failed.");
-        }
-         */
-
 
         //######################################################################################
 
@@ -69,6 +69,15 @@ public class CleaningRobotController {
         SimulatorInterface sim = new SimulatorInterface();
         PM10Simulator pm10 = new PM10Simulator(sim);
         pm10.start();
+
+        //######################################################################################
+
+        //############################## gRPC ##################################################
+
+        //######################################################################################
+
+
+        // code here
 
 
         //######################################################################################
@@ -81,13 +90,6 @@ public class CleaningRobotController {
         MQTT_Client mqtt = new MQTT_Client(sim, robot.getId());
         mqtt.start();
 
-
-
-        //######################################################################################
-
-        //############################## gRPC ##################################################
-
-        //######################################################################################
 
     }
 
@@ -109,6 +111,16 @@ public class CleaningRobotController {
         } catch (ClientHandlerException e) {
             System.out.println("Server non disponibile");
             return null;
+        }
+    }
+
+
+    private static boolean isNotNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return false;
+        } catch(NumberFormatException e){
+            return true;
         }
     }
 

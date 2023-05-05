@@ -15,14 +15,6 @@ public class MeasuresService {
 
 
 
-    // The list of the cleaning robots currently located in Greenfield
-    @GET
-    @Produces({"application/json", "application/xml"})
-    public Response getRobotsList(){
-        return Response.ok(Robots.getInstance()).build();
-    }
-
-
     // The average of the last n air pollution levels sent to the server by a given robot
     @Path("get/{id}/{n}")
     @GET
