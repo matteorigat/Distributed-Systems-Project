@@ -35,9 +35,9 @@ public class MQTT_Client extends Thread{
             connOpts.setCleanSession(true);
 
             // Connect the client
-            System.out.println(clientId + " Connecting Broker " + broker);
+            //System.out.println("\n" + clientId + " Connecting Broker " + broker);
             MQTTclient.connect(connOpts);
-            System.out.println(clientId + " Connected");
+            //System.out.println(clientId + " Connected\n");
 
             String payload = null;
             MqttMessage message = null;
@@ -49,15 +49,15 @@ public class MQTT_Client extends Thread{
 
                 // Set the QoS on the Message
                 message.setQos(qos);
-                System.out.println(clientId + " Publishing message: " + payload + " ...");
+                //System.out.println(clientId + " Publishing message: " + payload + " ...");
                 MQTTclient.publish(topic, message);
-                System.out.println(clientId + " Message published");
+                //System.out.println(clientId + " Message published");
 
                 sleep(15000);
             }
 
             MQTTclient.disconnect();
-            System.out.println("Publisher " + clientId + " disconnected");
+            System.out.println("\nPublisher " + clientId + " disconnected");
 
         }
         catch (MqttException me ) {

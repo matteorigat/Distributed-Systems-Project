@@ -3,7 +3,6 @@ package Greenfield.Client;
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
 import Greenfield.Services.RobotResponseData;
-import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.PM10Simulator;
 import Greenfield.Simulator.SimulatorInterface;
 import com.google.gson.Gson;
@@ -12,8 +11,8 @@ import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import java.util.List;
 import java.util.Scanner;
+import static java.lang.Thread.sleep;
 
 public class CleaningRobotController {
 
@@ -91,6 +90,30 @@ public class CleaningRobotController {
         mqtt.start();
 
 
+
+        System.out.print("\nWelcome to the RobotClient!");
+        while (!input.equals("quit")){
+            System.out.println("\n\nPress:");
+            System.out.println("'fix': To go to the mechanic now.");
+            System.out.print("'quit': To quit :)\n > ");
+            input = in.nextLine();
+        }
+
+        try {
+            mqtt.join();
+            pm10.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private synchronized void delay() throws InterruptedException {
+        wait(10000);
+    }
+
+    private boolean probMechanic(){
+        return Math.random() < 0.1;
     }
 
     public static ClientResponse postRequest(Client client, String url, Robot r){
