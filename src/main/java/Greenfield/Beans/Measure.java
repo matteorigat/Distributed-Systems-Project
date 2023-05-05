@@ -1,10 +1,15 @@
 package Greenfield.Beans;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Measure {
 
     private int id;
     private double value;
     private long timestamp;
+
+    public Measure(){}
 
     public Measure(int id, double value, long timestamp) {
         this.id = id;

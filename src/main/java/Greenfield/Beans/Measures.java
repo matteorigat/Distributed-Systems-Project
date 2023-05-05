@@ -31,20 +31,25 @@ public class Measures {
     }
 
 
-    public synchronized boolean add(Measure measure){
-        for(Measure m : measures)
-            if(m.getId() == measure.getId())
-                return false;
+
+    public synchronized void add(Measure measure){
         measures.add(measure);
-        return true;
     }
 
-    public Measure getById(int id){
-        List<Measure> measuresCopy = getMeasureslist();
-        for(Measure m: measuresCopy)
-            if(m.getId() == id)
-                return m;
-        return null;
+    public synchronized List<Measure> getLastMeasuresById(int id, int n){
+        List<Measure> measuresCopy = new ArrayList<>();
+        int c=0;
+        for (int i = measures.size() - 1; i >= 0; i--) {
+            Measure m = measures.get(i);
+            if(m.getId() == id){
+                c++;
+                measuresCopy.add(m);
+                if (c == n)
+                    return measuresCopy;
+            }
+        }
+
+        return measuresCopy;
     }
 
 }

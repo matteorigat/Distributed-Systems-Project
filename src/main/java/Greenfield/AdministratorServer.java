@@ -28,7 +28,7 @@ public class AdministratorServer {
         MqttClient client;
         String broker = "tcp://localhost:1883";
         String clientId = MqttClient.generateClientId();
-        String topic = "greenfield/pollution/#";
+        String topic = "greenfield/pollution/+";
         int qos = 2;
 
         try {

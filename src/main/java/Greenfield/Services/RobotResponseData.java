@@ -10,13 +10,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ResponseData {
+public class RobotResponseData {
     private Robot.Coordinates pos;
     private Robots robo;
 
-    public ResponseData(){}
+    public RobotResponseData(){}
 
-    public ResponseData(Robot.Coordinates position, Robots robots) {
+    public RobotResponseData(Robot.Coordinates position, Robots robots) {
         this.pos = position;
         this.robo = robots;
     }

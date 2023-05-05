@@ -2,7 +2,7 @@ package Greenfield.Client;
 
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
-import Greenfield.Services.ResponseData;
+import Greenfield.Services.RobotResponseData;
 import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.PM10Simulator;
 import Greenfield.Simulator.SimulatorInterface;
@@ -11,15 +11,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import it.ewlab.actor.ActorOuterClass;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.List;
 
 public class CleaningRobotController {
@@ -43,7 +35,7 @@ public class CleaningRobotController {
         clientResponse = postRequest(client,serverAddress+postPath,robot);
         System.out.println(clientResponse.toString());
         if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-            ResponseData resp = clientResponse.getEntity(ResponseData.class);
+            RobotResponseData resp = clientResponse.getEntity(RobotResponseData.class);
             robot.setPosition(resp.getPosition().x, resp.getPosition().y);
             robotsList = resp.getRobots();
         } else {

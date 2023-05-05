@@ -1,12 +1,15 @@
 package Greenfield.Client;
 
+import Greenfield.Beans.Measure;
+import Greenfield.Beans.Measures;
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
+import Greenfield.Services.ClientResponseData;
 import com.google.gson.Gson;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientHandlerException;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdministratorClient {
 
@@ -15,14 +18,10 @@ public class AdministratorClient {
         String serverAddress = "http://localhost:1337";
         ClientResponse clientResponse = null;
 
-        // POST EXAMPLE
-        String postPath = "/users/add";
-        Robot user = new Robot(1234,7777);
-        clientResponse = postRequest(client,serverAddress+postPath,user);
-        System.out.println(clientResponse.toString());
+
 
         //The list of the cleaning robots currently located in Greenfield
-        String getPath = "/robots";
+        String getPath = "/measures";
         clientResponse = getRequest(client,serverAddress+getPath);
         System.out.println(clientResponse.toString());
         Robots users = clientResponse.getEntity(Robots.class);
@@ -32,26 +31,17 @@ public class AdministratorClient {
         }
 
         //The average of the last n air pollution levels sent to the server by a given robot
-        int robotPort = 7777;
+        int robotId = 1134;
         int n = 5; //last n measurements
-        String getUserPath = "/robots/get/" + robotPort;
+        String getUserPath = "/measures/get/" + robotId + "/" + n;
         clientResponse = getRequest(client,serverAddress+getUserPath);
         System.out.println(clientResponse.toString());
-        Robot userResponse = clientResponse.getEntity(Robot.class);
-        System.out.println("Name: " + userResponse.getId() + " Surname: " + userResponse.getPort());
+        ClientResponseData clientResponseData = clientResponse.getEntity(ClientResponseData.class);
+        for(Measure m: clientResponseData.getMeasurements())
+            System.out.println("id: " + m.getId() + " value: " + m.getValue() + " timestamp: " + m.getTimestamp());
 
     }
 
-    public static ClientResponse postRequest(Client client, String url, Robot u){
-        WebResource webResource = client.resource(url);
-        String input = new Gson().toJson(u);
-        try {
-            return webResource.type("application/json").post(ClientResponse.class, input);
-        } catch (ClientHandlerException e) {
-            System.out.println("Server non disponibile");
-            return null;
-        }
-    }
 
     public static ClientResponse getRequest(Client client, String url){
         WebResource webResource = client.resource(url);
