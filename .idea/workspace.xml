@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="Robot gRPC">
-      <change afterPath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/ActorOuterClass.java" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="gRPC proto">
+      <change afterPath="$PROJECT_DIR$/paho68348499713542-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho68425694047250-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho68516449231459-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho68545849222834-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/SocketClientConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/RobotOuterClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/gRPC_Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/ClientResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/ClientResponseData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/MQTT_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/gRPC_Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/SimulatorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/SimulatorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/Actor.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/Actor.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/Actor.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/Robot.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/ActorOuterClass.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,24 +84,24 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/Simulator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/Simulator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/Simulator" />
@@ -106,14 +115,27 @@
       <recent name="Greenfield" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Greenfield.RobotCLI" />
       <recent name="Greenfield.Client" />
       <recent name="Greenfield.Services" />
       <recent name="Greenfield.Beans" />
       <recent name="REST.Client" />
-      <recent name="REST.services" />
     </key>
   </component>
   <component name="RunManager" selected="Application.CleaningRobotController">
+    <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
+      <module name="Distributed-Systems-Project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Greenfield.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
       <module name="Distributed-Systems-Project.main" />
@@ -127,18 +149,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CleaningRobotController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.Client.CleaningRobotController" />
+    <configuration name="CleaningRobotController" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.CleaningRobotController" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Greenfield.Client.*" />
+          <option name="PATTERN" value="Greenfield.RobotCLI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Distributed-Systems-Project [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
     </configuration>
     <configuration name="Distributed-Systems-Project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -152,28 +196,6 @@
         <option name="taskNames">
           <list>
             <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="Distributed-Systems-Project [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="classes" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -207,19 +229,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.AdministratorServer" />
       <item itemvalue="Application.CleaningRobotController" />
+      <item itemvalue="Application.AdministratorServer" />
+      <item itemvalue="Application.AdministratorClient" />
+      <item itemvalue="Gradle.Distributed-Systems-Project [buildDependents]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
-      <item itemvalue="Gradle.Distributed-Systems-Project [classes]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CleaningRobotController" />
-        <item itemvalue="Application.AdministratorServer" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
+        <item itemvalue="Application.AdministratorServer" />
+        <item itemvalue="Application.AdministratorClient" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
-        <item itemvalue="Gradle.Distributed-Systems-Project [classes]" />
+        <item itemvalue="Gradle.Distributed-Systems-Project [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +265,13 @@
       <workItem from="1683270584890" duration="1862000" />
       <workItem from="1683291024929" duration="27775000" />
       <workItem from="1683326844043" duration="248000" />
-      <workItem from="1683364312591" duration="5639000" />
+      <workItem from="1683364312591" duration="8616000" />
+      <workItem from="1683381085809" duration="956000" />
+      <workItem from="1683382049371" duration="4266000" />
+      <workItem from="1683386537814" duration="3754000" />
+      <workItem from="1683390311241" duration="2043000" />
+      <workItem from="1683392400030" duration="13131000" />
+      <workItem from="1683410859386" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -314,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683366385449</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="gRPC proto">
+      <created>1683369983941</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683369983941</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,6 +378,7 @@
     <MESSAGE value="DELETE robot" />
     <MESSAGE value="Robot CLI" />
     <MESSAGE value="Robot gRPC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Robot gRPC" />
+    <MESSAGE value="gRPC proto" />
+    <option name="LAST_COMMIT_MESSAGE" value="gRPC proto" />
   </component>
 </project>

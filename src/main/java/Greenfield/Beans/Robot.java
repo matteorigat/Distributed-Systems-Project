@@ -51,4 +51,11 @@ public class Robot {
     }
 
 
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "id=" + id +
+                ", port=" + port +
+                '}';
+    }
 }

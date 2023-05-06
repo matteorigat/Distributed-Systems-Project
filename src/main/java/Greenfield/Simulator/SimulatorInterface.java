@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SimulatorInterface implements Buffer{
 
-    List<Measurement> measurementList = new ArrayList<>();
+    private List<Measurement> measurementList = new ArrayList<>();
 
 
     @Override

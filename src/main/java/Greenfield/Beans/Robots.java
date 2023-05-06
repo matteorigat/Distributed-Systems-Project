@@ -37,14 +37,35 @@ public class Robots {
         for(Robot r : robotslist)
             if(r.getId() == robot.getId())
                 return false;
-
         robotslist.add(robot);
-        System.out.println("Robot successfully added");
+        System.out.println("Robot successfully added" + robot.getPort());
         return true;
     }
 
     public synchronized Boolean removeById(int id){
         return robotslist.removeIf(r -> r.getId() == id);
+    }
+
+    public int getDistrictById(int id){
+        for(Robot r : robotslist)
+            if(r.getId() == id)
+                return calculateDistrict(r.getPosition().x, r.getPosition().y);
+
+        return -1;
+
+    }
+
+    private int calculateDistrict(int x, int y){
+        if(x <= 4 && y <= 4)
+            return 0;
+        else if (x >= 5 && y <= 4)
+            return 1;
+        else if (x >= 5 && y >= 5)
+            return 2;
+        else if (x <= 4 && y >= 5)
+            return 3;
+
+        return -1;
     }
 
 }

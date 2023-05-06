@@ -1,27 +1,32 @@
-package Greenfield.Client;
+package Greenfield.RobotCLI;
 
+import Greenfield.Beans.Robot;
 import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.SimulatorInterface;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.*;
 
 public class MQTT_Client extends Thread{
 
-    MqttClient MQTTclient;
-    String broker = "tcp://localhost:1883";
-    String clientId = MqttClient.generateClientId();
-    String topic = "greenfield/pollution/district1";
-    int qos = 2;
+    private MqttClient MQTTclient;
+    private String broker = "tcp://localhost:1883";
+    private String clientId = MqttClient.generateClientId();
+    private String topic = "greenfield/pollution/district";
+    private int qos = 2;
 
-    int id;
+    private volatile boolean stopCondition = false;
 
-    SimulatorInterface sim;
+    private int id;
 
-    public MQTT_Client(SimulatorInterface sim, int id) {
+    private SimulatorInterface sim;
+
+    public MQTT_Client(SimulatorInterface sim, Robot robot) {
         this.sim = sim;
-        this.id = id;
+        this.id = robot.getId();
+        this.topic += calculateDistrict(robot.getPosition().x, robot.getPosition().y);
+    }
+
+    public void stopMeGently() {
+        stopCondition = true;
     }
 
 
@@ -34,15 +39,18 @@ public class MQTT_Client extends Thread{
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setCleanSession(true);
 
+
+
             // Connect the client
             //System.out.println("\n" + clientId + " Connecting Broker " + broker);
             MQTTclient.connect(connOpts);
             //System.out.println(clientId + " Connected\n");
 
+
             String payload = null;
             MqttMessage message = null;
 
-            while(MQTTclient.isConnected()) {
+            while(!stopCondition) {
 
                 payload = id + " " + averageCalculator() + " " + System.currentTimeMillis();
                 message = new MqttMessage(payload.getBytes());
@@ -53,7 +61,7 @@ public class MQTT_Client extends Thread{
                 MQTTclient.publish(topic, message);
                 //System.out.println(clientId + " Message published");
 
-                sleep(15000);
+                sleep(15000);  // busy waiting
             }
 
             MQTTclient.disconnect();
@@ -71,6 +79,19 @@ public class MQTT_Client extends Thread{
             throw new RuntimeException(e);
         }
 
+    }
+
+    private String calculateDistrict(int x, int y){
+        if(x <= 4 && y <= 4)
+            return "1";
+        else if (x >= 5 && y <= 4)
+            return "2";
+        else if (x >= 5 && y >= 5)
+            return "3";
+        else if (x <= 4 && y >= 5)
+            return "4";
+
+        return null;
     }
 
 

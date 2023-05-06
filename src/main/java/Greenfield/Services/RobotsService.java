@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 @Path("robots")
 public class RobotsService {
 
-    int[] numOfRobots;
+    private int[] numOfRobots = null;
 
     //private static Map<Integer,Robot> robots = new HashMap<Integer,Robot>();
 
@@ -35,13 +35,15 @@ public class RobotsService {
     }
 
 
-    //POST: request to be added to the city
+    //DELETE: request to remove a cleaning robot from the Greenfield city
     @Path("{id}")
     @DELETE
     @Consumes({"application/json", "application/xml"})
     public Response deleteRobot(@PathParam("id") int id){
-
         if(Robots.getInstance().removeById(id)){
+            int i = Robots.getInstance().getDistrictById(id);
+            if(i > 0)
+                numOfRobots[i]--;
             return Response.ok().type("application/json").build();
         }
         else return Response.status(Response.Status.NOT_MODIFIED).build();
@@ -55,7 +57,7 @@ public class RobotsService {
                 numOfRobots[i] = 0;
         }
         int min = numOfRobots[0];
-        int max = -1;
+        int max;
         int district = 0;
         int x,y;
 
@@ -64,6 +66,8 @@ public class RobotsService {
                 min = numOfRobots[i];
                 district = i;
             }
+
+        numOfRobots[district]++;
 
         switch (district){
             case 0: case 3:
