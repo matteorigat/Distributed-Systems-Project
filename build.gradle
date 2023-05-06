@@ -93,6 +93,8 @@ protobuf {
             grpc {}
         }
     }
+
+    generatedFilesBaseDir = "$projectDir/src/main/proto"
 }
 //end GRPC
 

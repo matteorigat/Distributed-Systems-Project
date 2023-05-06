@@ -1,6 +1,6 @@
 package Greenfield.Client;
 
-import it.ewlab.actor.ActorOuterClass.Actor;
+import Greenfield.ActorOuterClass.Actor;
 
 import java.io.IOException;
 import java.net.ServerSocket;

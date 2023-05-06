@@ -1,4 +1,4 @@
-package it.ewlab.actor;
+package Greenfield;
 
 message Actor {
 	required string name = 1;

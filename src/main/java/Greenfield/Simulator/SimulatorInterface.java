@@ -1,7 +1,5 @@
 package Greenfield.Simulator;
 
-import Greenfield.Beans.Robot;
-
 import java.util.ArrayList;
 import java.util.List;
 

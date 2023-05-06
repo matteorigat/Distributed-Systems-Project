@@ -1,13 +1,10 @@
 package Greenfield.Services;
 
 
-import Greenfield.Beans.Measure;
 import Greenfield.Beans.Measures;
-import Greenfield.Beans.Robots;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 
 @Path("measures")
