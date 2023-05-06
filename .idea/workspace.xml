@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="DELETE robot">
-      <change afterPath="$PROJECT_DIR$/paho31859000667167-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho31907725874167-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho31987399467375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho32061993104083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho32310993778458-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho32375505135958-tcplocalhost1883/.lck" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="Robot CLI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/CleaningRobotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Client/MQTT_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/MQTT_Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Client/gRPC_Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,14 +79,14 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Greenfield.Client" />
       <recent name="Greenfield.Services" />
       <recent name="Greenfield.Beans" />
-      <recent name="Greenfield.Client" />
       <recent name="REST.Client" />
       <recent name="REST.services" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobotController">
+  <component name="RunManager" selected="Application.AdministratorServer">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.Client.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -191,6 +187,8 @@
       <workItem from="1683229677513" duration="1418000" />
       <workItem from="1683270584890" duration="1862000" />
       <workItem from="1683291024929" duration="27775000" />
+      <workItem from="1683326844043" duration="248000" />
+      <workItem from="1683364312591" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -248,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683324019330</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Robot CLI">
+      <created>1683327087085</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683327087085</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +279,7 @@
     <MESSAGE value="MQTT completed" />
     <MESSAGE value="Administrator Client REST" />
     <MESSAGE value="DELETE robot" />
-    <option name="LAST_COMMIT_MESSAGE" value="DELETE robot" />
+    <MESSAGE value="Robot CLI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Robot CLI" />
   </component>
 </project>

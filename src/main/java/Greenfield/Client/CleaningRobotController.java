@@ -10,13 +10,17 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import it.ewlab.actor.ActorOuterClass;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Scanner;
 import static java.lang.Thread.sleep;
 
 public class CleaningRobotController {
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws IOException {
         Client client = Client.create();
         String serverAddress = "http://localhost:1337";
         ClientResponse clientResponse = null;
@@ -75,8 +79,35 @@ public class CleaningRobotController {
 
         //######################################################################################
 
+        gRPC_Client gRPCClient = new gRPC_Client(robotPort);
+        gRPCClient.start();
 
-        // code here
+
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        Socket s = new Socket("localhost", robotPort);
+
+        ActorOuterClass.Actor actor =
+                ActorOuterClass.Actor.newBuilder()
+                        .setName("Christian")
+                        .setSurname("Bale")
+                        .setSex(ActorOuterClass.Actor.Sex.MALE)
+                        .addMovie(ActorOuterClass.Actor.Movie.newBuilder()
+                                .setTitle("The Prestige")
+                                .setYear(2006))
+                        .addMovie(ActorOuterClass.Actor.Movie.newBuilder()
+                                .setTitle("The Dark Knight")
+                                .setYear(2008))
+                        .build();
+
+        actor.writeTo(s.getOutputStream());
+
+        s.close();
+
 
 
         //######################################################################################
@@ -98,6 +129,7 @@ public class CleaningRobotController {
             System.out.print("'quit': To quit :)\n > ");
             input = in.nextLine();
         }
+
 
         try {
             mqtt.join();
