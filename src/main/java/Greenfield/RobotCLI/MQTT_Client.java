@@ -1,9 +1,12 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
+import Greenfield.RobotOuterClass;
 import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.SimulatorInterface;
 import org.eclipse.paho.client.mqttv3.*;
+
+import java.net.Socket;
 
 public class MQTT_Client extends Thread{
 
@@ -61,7 +64,9 @@ public class MQTT_Client extends Thread{
                 MQTTclient.publish(topic, message);
                 //System.out.println(clientId + " Message published");
 
-                sleep(15000);  // busy waiting
+                synchronized (this){
+                    this.wait(15000);
+                }
             }
 
             MQTTclient.disconnect();

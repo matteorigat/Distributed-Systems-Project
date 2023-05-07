@@ -80,7 +80,11 @@ public class gRPC_Server extends Thread{
                     System.out.println("\n-----goodbye----- " + r.getId() + "\n\033[31m --> \033[0m");
                 }
             } catch (Exception e){ // always raised
-
+                try {
+                    s.close();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         t.start();

@@ -49,13 +49,14 @@ public class AdministratorServer {
                     String[] receivedMessage = new String(message.getPayload()).split(" ");
                     Measure measure = new Measure(Integer.parseInt(receivedMessage[0]), Double.parseDouble(receivedMessage[1]), Long.parseLong(receivedMessage[2]));
                     Measures.getInstance().add(measure);
-                    System.out.println(clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
-                            "\n\tTime:    " + time +
+                    System.out.println(//clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
+                            //"\n\tTime:    " + time +
                             "\n\tTopic:   " + topic +
                             "\n\tMessage: " + receivedMessage[0] + " " + receivedMessage[1] + " " + receivedMessage[2] +
-                            "\n\tQoS:     " + message.getQos() + "\n");
+                            //"\n\tQoS:     " + message.getQos() +
+                                    "\n");
 
-                    System.out.println("\n ***  Press a random key to exit *** \n");
+                    //System.out.println("\n ***  Press a random key to exit *** \n");
 
                 }
 

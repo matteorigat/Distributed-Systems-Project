@@ -38,11 +38,12 @@ public class Robots {
             if(r.getId() == robot.getId())
                 return false;
         robotslist.add(robot);
-        System.out.println("Robot successfully added" + robot.getPort());
+        System.out.println("\n--> ROBOT ADDED - " + robot.getId());
         return true;
     }
 
-    public synchronized Boolean removeById(int id){
+    public synchronized boolean removeById(int id){
+        System.out.println("\n--> ROBOT REMOVED - " + id);
         return robotslist.removeIf(r -> r.getId() == id);
     }
 

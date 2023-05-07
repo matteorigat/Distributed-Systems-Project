@@ -42,8 +42,11 @@ public class RobotsService {
     public Response deleteRobot(@PathParam("id") int id){
         if(Robots.getInstance().removeById(id)){
             int i = Robots.getInstance().getDistrictById(id);
-            if(i > 0)
+            if(i > 0){
                 numOfRobots[i]--;
+                System.out.println("\n-1 robot on district " + i);
+            }
+
             return Response.ok().type("application/json").build();
         }
         else return Response.status(Response.Status.NOT_MODIFIED).build();
@@ -67,6 +70,7 @@ public class RobotsService {
                 district = i;
             }
 
+        System.out.println("\n+1 robot on district " + district);
         numOfRobots[district]++;
 
         switch (district){
