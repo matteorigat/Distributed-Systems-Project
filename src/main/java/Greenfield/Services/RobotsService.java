@@ -11,7 +11,6 @@ import javax.ws.rs.core.Response;
 @Path("robots")
 public class RobotsService {
 
-    //private static Map<Integer,Robot> robots = new HashMap<Integer,Robot>();
 
     //GET: The list of the cleaning robots currently located in Greenfield
     @GET

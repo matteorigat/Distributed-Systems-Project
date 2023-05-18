@@ -105,7 +105,7 @@ public class CleaningRobotController {
 
         //######################################################################################
 
-        //############################## Robot CLI ##################################################
+        //############################## Robot CLI #############################################
 
         //######################################################################################
 
@@ -163,6 +163,17 @@ public class CleaningRobotController {
         }
     }
 
+
+
+    //######################################################################################
+
+    //###################### Start Methods Section #########################################
+
+    //######################################################################################
+
+
+
+
     private static void sendgRPC(int robotId, int robotPort, boolean hello, boolean mechanic, boolean goodbye) throws IOException {
         RobotOuterClass.Robot robotgRPC =
                 RobotOuterClass.Robot.newBuilder()
@@ -200,10 +211,6 @@ public class CleaningRobotController {
         }
     }
 
-    private boolean probMechanic(){
-        return Math.random() <= 0.1;
-    }
-
     private static ClientResponse postRequest(Client client, String url, Robot r){
         WebResource webResource = client.resource(url);
         String input = new Gson().toJson(r);
@@ -235,6 +242,8 @@ public class CleaningRobotController {
         }
     }
 
-
+    private boolean probMechanic(){
+        return Math.random() <= 0.1;
+    }
 
 }

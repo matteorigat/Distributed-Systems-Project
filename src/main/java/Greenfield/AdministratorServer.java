@@ -7,7 +7,6 @@ import com.sun.net.httpserver.HttpServer;
 import org.eclipse.paho.client.mqttv3.*;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

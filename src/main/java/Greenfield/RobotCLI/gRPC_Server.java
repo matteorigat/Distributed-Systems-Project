@@ -71,15 +71,15 @@ public class gRPC_Server extends Thread{
                 if(r.getHello()){
                     robot = new Greenfield.Beans.Robot(r.getId(), r.getPort());
                     robotsList.add(robot);
-                    System.out.println("\n-----hello----- " + r.getId() + "\n\033[31m --> \033[0m");
+                    System.out.println("\n----- hello ----- " + r.getId() + "\n\033[31m --> \033[0m");
                 }
                 else if(r.getMechanic())
-                    System.out.println("\n-----mechanic----- " + r.getId() + "\n\033[31m --> \033[0m");
+                    System.out.println("\n----- mechanic ----- " + r.getId() + "\n\033[31m --> \033[0m");
                 else if (r.getGoodbye()) {
                     robotsList.removeById(r.getId());
-                    System.out.println("\n-----goodbye----- " + r.getId() + "\n\033[31m --> \033[0m");
+                    System.out.println("\n----- goodbye ----- " + r.getId() + "\n\033[31m --> \033[0m");
                 }
-            } catch (Exception e){ // always raised
+            } catch (Exception e){ // always raised at the end
                 try {
                     s.close();
                 } catch (IOException ex) {

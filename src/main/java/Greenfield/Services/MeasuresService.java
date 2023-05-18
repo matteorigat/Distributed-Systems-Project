@@ -19,7 +19,7 @@ public class MeasuresService {
     public Response getLastMeasuresById(@PathParam("id") int id, @PathParam("n") int n){
         double r = Measures.getInstance().getAverageLastNById(id, n);
         if(!Double.isNaN(r))
-            return Response.ok(r).build();
+            return Response.ok(String.valueOf(r)).build();
         else
             return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -33,7 +33,7 @@ public class MeasuresService {
     public Response getMeasurest1t2(@PathParam("t1") long t1, @PathParam("t2") long t2){
         double r = Measures.getInstance().getAveraget1t2(t1, t2);
         if(!Double.isNaN(r))
-            return Response.ok(r).build();
+            return Response.ok(String.valueOf(r)).build();
         else
             return Response.status(Response.Status.NOT_FOUND).build();
     }

@@ -29,7 +29,7 @@ public class AdministratorClient {
             input = in.nextLine();
             switch (input){
 
-                //GET: The list of the cleaning robots currently located in Greenfield
+//1             //GET: The list of the cleaning robots currently located in Greenfield
                 case "1":
                     getPath = "/robots";
                     clientResponse = getRequest(client,serverAddress+getPath);
@@ -45,7 +45,7 @@ public class AdministratorClient {
                     break;
 
 
-                //GET: The average of the last n air pollution levels sent to the server by a given robot
+//2             //GET: The average of the last n air pollution levels sent to the server by a given robot
                 case "2":
                     do{
                         System.out.print("\nInsert the robot id\n\033[31m --> \033[0m");
@@ -62,8 +62,8 @@ public class AdministratorClient {
                     getPath = "/measures/get/" + robotId + "/" + n;
                     clientResponse = getRequest(client,serverAddress+getPath);
                     if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-                        Double d = clientResponse.getEntity(Double.class);
-                        System.out.println("\n\nFor robot " + robotId + " the average of last " + n + " measures is: " + d);
+                        String av = clientResponse.getEntity(String.class);
+                        System.out.println("\n\nFor robot " + robotId + " the average of last " + n + " measurements is: " + av);
                     }
                     else {
                         System.out.println("\nGET request failed.\n" + clientResponse.toString());
@@ -71,7 +71,7 @@ public class AdministratorClient {
                     break;
 
 
-                //GET: The average of the air pollution levels sent by all the robots to the server
+//3             //GET: The average of the air pollution levels sent by all the robots to the server
                 //     and occurred from timestamps t1 and t2
                 case "3":
                     do {
@@ -89,8 +89,8 @@ public class AdministratorClient {
                     getPath = "/measures/timeget/" + t1 + "/" + t2;
                     clientResponse = getRequest(client,serverAddress+getPath);
                     if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-                        Double d = clientResponse.getEntity(Double.class);
-                        System.out.println("\n\nFrom t1 to t2 the average of all measurements of the robots is: " + d);
+                        String av = clientResponse.getEntity(String.class);
+                        System.out.println("\n\nFrom t1 to t2 the average of all measurements of the robots is: " + av);
                     }
                     else {
                         System.out.println("\nGET request failed.\n" + clientResponse.toString());
@@ -99,7 +99,7 @@ public class AdministratorClient {
 
 
 
-                // Remove cleaning robot from the Greenfield city.
+//4             // Remove cleaning robot from the Greenfield city.
                 case "4":
                     do{
                         System.out.print("\nInsert the robot id\n\033[31m --> \033[0m");

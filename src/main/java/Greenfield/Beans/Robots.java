@@ -16,6 +16,7 @@ public class Robots {
 
     @XmlElement(name="Greenfield_robots")
     private List<Robot> robotslist;
+
     //@JsonIgnore
     private int[] numOfRobots;
 

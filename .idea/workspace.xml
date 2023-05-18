@@ -4,44 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="first sliding window implementation">
-      <change afterPath="$PROJECT_DIR$/paho11211213805500-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho11235222926708-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho11581036239083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho11595914002917-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12018696526542-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12044117593292-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12063581343458-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12128286548083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12141299191875-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12232274661250-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12238445500083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12317305799708-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12396418629750-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12693557513167-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12815871456417-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12823821286083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho13218252624500-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho13226107163542-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho13278378399375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho7293241609125-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho7524367912708-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho7686857112208-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho7744142904666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho7816294832083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8027966199250-tcplocalhost1883/.lck" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="sliding window">
+      <change afterPath="$PROJECT_DIR$/paho14478071736417-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14506326287458-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14511686941125-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14811337118833-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14822526955042-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14832709494375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15499228718583-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15511724452708-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15517927869500-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measures.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/AsyncReadFromSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/AsyncReadFromSimulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/ClientResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/ClientResponseData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/SimulatorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Simulator/SimulatorInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +122,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobotController">
+  <component name="RunManager" selected="Application.AdministratorClient">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -297,7 +277,7 @@
       <workItem from="1684164075390" duration="1632000" />
       <workItem from="1684254799783" duration="2070000" />
       <workItem from="1684316733855" duration="3149000" />
-      <workItem from="1684420365568" duration="13177000" />
+      <workItem from="1684420365568" duration="16796000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -404,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684426987485</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="sliding window">
+      <created>1684437717763</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684437717763</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,6 +423,7 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="district topic fix" />
     <MESSAGE value="first sliding window implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="first sliding window implementation" />
+    <MESSAGE value="sliding window" />
+    <option name="LAST_COMMIT_MESSAGE" value="sliding window" />
   </component>
 </project>
