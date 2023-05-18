@@ -12,12 +12,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 
     //start GRPC
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.10.0'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.22.2'
 
     // https://mvnrepository.com/artifact/io.grpc/grpc-all
     implementation group: 'io.grpc', name: 'grpc-all', version: '1.25.0'
@@ -26,29 +26,29 @@ dependencies {
 
     //REST Dependencies
     // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl
-    implementation group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.2'
+    implementation group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
     // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-jaxrs
-    implementation group: 'org.codehaus.jackson', name: 'jackson-jaxrs', version: '1.9.2'
+    implementation group: 'org.codehaus.jackson', name: 'jackson-jaxrs', version: '1.9.13'
     // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
-    implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.2'
+    implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
     // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-xc
-    implementation group: 'org.codehaus.jackson', name: 'jackson-xc', version: '1.9.2'
+    implementation group: 'org.codehaus.jackson', name: 'jackson-xc', version: '1.9.13'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-client
-    implementation group: 'com.sun.jersey', name: 'jersey-client', version: '1.19.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-client', version: '1.19.4'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-core
-    implementation group: 'com.sun.jersey', name: 'jersey-core', version: '1.19.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-core', version: '1.19.4'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-json
-    implementation group: 'com.sun.jersey', name: 'jersey-json', version: '1.19.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-json', version: '1.19.4'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-server
-    implementation group: 'com.sun.jersey', name: 'jersey-server', version: '1.19.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-server', version: '1.19.4'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-servlet
-    implementation group: 'com.sun.jersey', name: 'jersey-servlet', version: '1.19.1'
+    implementation group: 'com.sun.jersey', name: 'jersey-servlet', version: '1.19.4'
     // https://mvnrepository.com/artifact/org.codehaus.jettison/jettison
-    implementation group: 'org.codehaus.jettison', name: 'jettison', version: '1.1'
+    implementation group: 'org.codehaus.jettison', name: 'jettison', version: '1.5.4'
     // https://mvnrepository.com/artifact/javax.ws.rs/jsr311-api
     implementation group: 'javax.ws.rs', name: 'jsr311-api', version: '1.1.1'
     // https://mvnrepository.com/artifact/com.sun.jersey/jersey-server
-    implementation group: 'com.sun.jersey', name: 'jersey-server', version: '1.2'
+    implementation group: 'com.sun.jersey', name: 'jersey-server', version: '1.19.4'
 
 
 
