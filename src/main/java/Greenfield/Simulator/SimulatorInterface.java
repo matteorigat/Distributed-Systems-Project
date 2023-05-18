@@ -15,14 +15,12 @@ public class SimulatorInterface implements Buffer{
 
     @Override
     public synchronized void addMeasurement(Measurement m) {
-        System.out.println("sim meas: " + m);
         buffer.add(m);
         if(buffer.size() >= 8){
             measurementList = new ArrayList<>(buffer.subList(buffer.size() - 8, buffer.size()));
             synchronized (arfs){
                 arfs.notify();
             }
-            System.out.println("after notify");
             buffer = new ArrayList<>(buffer.subList(buffer.size() - 4, buffer.size()));
         }
     }
@@ -31,7 +29,7 @@ public class SimulatorInterface implements Buffer{
     public synchronized List<Measurement> readAllAndClean() {
         List<Measurement> ml = new ArrayList<>(measurementList);
         measurementList.clear();
-        System.out.println("read clean: " + ml);
+        //System.out.println("read clean: " + ml);
         return ml;
     }
 

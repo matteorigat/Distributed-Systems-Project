@@ -1,9 +1,7 @@
 package Greenfield;
 
-import Greenfield.Beans.Measure;
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
-import Greenfield.Services.ClientResponseData;
 import com.sun.jersey.api.client.*;
 
 import java.util.Scanner;
@@ -16,11 +14,10 @@ public class AdministratorClient {
         ClientResponse clientResponse = null;
         String getPath;
         Robots robots;
-        ClientResponseData clientResponseData;
 
         Scanner in = new Scanner(System.in);
         String input;
-        System.out.println("\n\u001B[31mWelcome to the AdministratorClient!\u001B[0m");
+        System.out.println("\n\033[31mWelcome to the AdministratorClient!\033[0m");
 
         while(true){
             System.out.println("\n\nPress:");
@@ -65,10 +62,8 @@ public class AdministratorClient {
                     getPath = "/measures/get/" + robotId + "/" + n;
                     clientResponse = getRequest(client,serverAddress+getPath);
                     if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-                        clientResponseData = clientResponse.getEntity(ClientResponseData.class);
-                        System.out.println("\n\nMeasurements -- n:" + clientResponseData.getMeasurements().size());
-                        for(Measure m: clientResponseData.getMeasurements())
-                            System.out.println("id: " + m.getId() + " value: " + m.getValue() + " timestamp: " + m.getTimestamp());
+                        Double d = clientResponse.getEntity(Double.class);
+                        System.out.println("\n\nFor robot " + robotId + " the average of last " + n + " measures is: " + d);
                     }
                     else {
                         System.out.println("\nGET request failed.\n" + clientResponse.toString());
@@ -94,10 +89,8 @@ public class AdministratorClient {
                     getPath = "/measures/timeget/" + t1 + "/" + t2;
                     clientResponse = getRequest(client,serverAddress+getPath);
                     if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
-                        clientResponseData = clientResponse.getEntity(ClientResponseData.class);
-                        System.out.println("\n\nMeasurements -- n:" + clientResponseData.getMeasurements().size());
-                        for(Measure m: clientResponseData.getMeasurements())
-                            System.out.println("id: " + m.getId() + " value: " + m.getValue() + " timestamp: " + m.getTimestamp());
+                        Double d = clientResponse.getEntity(Double.class);
+                        System.out.println("\n\nFrom t1 to t2 the average of all measurements of the robots is: " + d);
                     }
                     else {
                         System.out.println("\nGET request failed.\n" + clientResponse.toString());

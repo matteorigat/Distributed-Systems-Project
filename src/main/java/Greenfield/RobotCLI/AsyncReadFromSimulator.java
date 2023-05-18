@@ -28,12 +28,10 @@ public class AsyncReadFromSimulator extends Thread{
 
         try {
             while(!stopCondition){
-                listOfMeasurements.add(averageCalculator());
-                System.out.println("add avarage: " + listOfMeasurements);
+                averageCalculator();
                 synchronized (this){
                     this.wait();
                 }
-                System.out.println("after wait");
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -41,7 +39,7 @@ public class AsyncReadFromSimulator extends Thread{
 
     }
 
-    private double averageCalculator(){
+    private synchronized void averageCalculator(){
         double average = 0;
         int i=0;
 
@@ -49,11 +47,17 @@ public class AsyncReadFromSimulator extends Thread{
             average += m.getValue();
             i++;
         }
-        System.out.println("avarage calc: " + average + " " + i);
-        return average/i;
+        if(i > 0)
+            listOfMeasurements.add(average/i);
     }
 
-    public synchronized List<Double> getListOfMeasurements() {
-        return listOfMeasurements;
+    public synchronized List<Double> getListOfMeasurementsAndClean() {
+        List<Double> ml = new ArrayList<>(listOfMeasurements);
+        listOfMeasurements.clear();
+        return ml;
+    }
+
+    public boolean isEmptyList() {
+        return listOfMeasurements.isEmpty();
     }
 }

@@ -49,20 +49,20 @@ public class MQTT_Client extends Thread{
             AsyncReadFromSimulator arfs = new AsyncReadFromSimulator(sim);
             arfs.start();
 
-
             String payload = null;
             MqttMessage message = null;
 
             while(!stopCondition) {
-                System.out.println(arfs.getListOfMeasurements());
-                payload = id  + " " + System.currentTimeMillis() + " " + id;
-                message = new MqttMessage(payload.getBytes());
+                if(!arfs.isEmptyList()){
+                    payload = id  + "§" + arfs.getListOfMeasurementsAndClean() + "§" + System.currentTimeMillis();
+                    message = new MqttMessage(payload.getBytes());
 
-                // Set the QoS on the Message
-                message.setQos(qos);
-                //System.out.println(clientId + " Publishing message: " + payload + " ...");
-                MQTTclient.publish(topic, message);
-                //System.out.println(clientId + " Message published");
+                    // Set the QoS on the Message
+                    message.setQos(qos);
+                    //System.out.println(clientId + " Publishing message: " + payload + " ...");
+                    MQTTclient.publish(topic, message);
+                    //System.out.println(clientId + " Message published");
+                }
 
                 synchronized (this){
                     this.wait(15000);
@@ -98,7 +98,5 @@ public class MQTT_Client extends Thread{
 
         return null;
     }
-
-
 
 }

@@ -1,19 +1,21 @@
 package Greenfield.Beans;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlRootElement
 public class Measure {
 
     private int id;
-    private double value;
+    private List<Double> values = new ArrayList<>();
     private long timestamp;
 
     public Measure(){}
 
-    public Measure(int id, double value, long timestamp) {
+    public Measure(int id, List<Double> values, long timestamp) {
         this.id = id;
-        this.value = value;
+        this.values = values;
         this.timestamp = timestamp;
     }
 
@@ -25,12 +27,12 @@ public class Measure {
         this.id = id;
     }
 
-    public double getValue() {
-        return value;
+    public List<Double> getValues() {
+        return values;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setValues(List<Double> values) {
+        this.values = values;
     }
 
     public long getTimestamp() {

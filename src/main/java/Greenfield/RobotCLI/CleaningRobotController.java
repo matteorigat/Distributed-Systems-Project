@@ -117,6 +117,7 @@ public class CleaningRobotController {
             System.out.println("2: To go to the mechanic now.");
             System.out.print("'quit': To leave the Greenfield city and quit the console :)\n\033[31m --> \033[0m");
             input = in.nextLine();
+            System.out.print("\n");
 
             switch (input) {
                 case "1":
@@ -157,8 +158,9 @@ public class CleaningRobotController {
             System.out.println("gRPC join");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }finally {
+            System.exit(0);
         }
-        return;
     }
 
     private static void sendgRPC(int robotId, int robotPort, boolean hello, boolean mechanic, boolean goodbye) throws IOException {
@@ -191,7 +193,7 @@ public class CleaningRobotController {
     private static void deleteRobotFromServer(int robotId){
         postPath = "/robots/" + robotId;
         clientResponse = deleteRequest(client, serverAddress+postPath);
-        if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
+        if(clientResponse != null && clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
             System.out.println("\nDELETE request completed.\n" + clientResponse.toString());
         } else {
             System.out.println("\nDELETE request failed.\n" + clientResponse.toString());

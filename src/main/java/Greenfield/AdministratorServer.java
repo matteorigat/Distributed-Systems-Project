@@ -8,6 +8,8 @@ import org.eclipse.paho.client.mqttv3.*;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AdministratorServer {
@@ -43,18 +45,26 @@ public class AdministratorServer {
             // Callback
             client.setCallback(new MqttCallback() {
 
+                // Called when a message arrives from the server that matches any subscription made by the client
                 public void messageArrived(String topic, MqttMessage message) {
-                    // Called when a message arrives from the server that matches any subscription made by the client
-                    String time = new Timestamp(System.currentTimeMillis()).toString();
-                    String[] receivedMessage = new String(message.getPayload()).split(" ");
-                    Measure measure = new Measure(Integer.parseInt(receivedMessage[0]), Double.parseDouble(receivedMessage[1]), Long.parseLong(receivedMessage[2]));
+
+                    String[] receivedMessage = new String(message.getPayload()).split("§");
+                    List<Double> values = new ArrayList<>();
+                    String numbersString = receivedMessage[1].substring(1, receivedMessage[1].length() - 1); // Remove [ ]
+                    for(String s : numbersString.split(", "))
+                        values.add(Double.parseDouble(s));
+
+                    Measure measure = new Measure(Integer.parseInt(receivedMessage[0]), values, Long.parseLong(receivedMessage[2]));
                     Measures.getInstance().add(measure);
+
+
                     System.out.println(//clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
-                            //"\n\tTime:    " + time +
                             "\n\tTopic:   " + topic +
-                            "\n\tMessage: " + receivedMessage[0] + " " + receivedMessage[1] + " " + receivedMessage[2] +
+                            "\n\tRobot id:   " + receivedMessage[0] +
+                            "\n\tAverages:   " + numbersString +
+                            "\n\tTimestamp:   " + receivedMessage[2]  +
                             //"\n\tQoS:     " + message.getQos() +
-                                    "\n");
+                            "\n");
 
                     //System.out.println("\n ***  Press a random key to exit *** \n");
 
@@ -97,5 +107,6 @@ public class AdministratorServer {
         System.out.println("Stopping server");
         server.stop(0);
         System.out.println("Server stopped");
+        System.exit(0);
     }
 }

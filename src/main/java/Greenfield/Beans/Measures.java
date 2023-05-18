@@ -36,32 +36,41 @@ public class Measures {
         measures.add(measure);
     }
 
-    public synchronized List<Measure> getLastMeasuresById(int id, int n){
-        List<Measure> measuresCopy = new ArrayList<>();
-        int c=0;
+    public synchronized double getAverageLastNById(int id, int n){
+        int count = 0;
+        double sum = 0;
+        int isum = 0;
 
-        for (int i = measures.size() - 1; i >= 0; i--) {
+        for (int i = measures.size() - 1; i >= 0; i--){  // among all the measures
             Measure m = measures.get(i);
-            if(m.getId() == id){
-                c++;
-                measuresCopy.add(m);
-                if (c == n)
-                    return measuresCopy;
+            if(m.getId() == id){   // find the ones that match id
+                count++;
+                for(Double d : m.getValues()){
+                    sum += d;
+                    isum++;
+                }
+                if (count == n)   // sum for n cycles
+                    return sum/isum;
             }
         }
 
-        return measuresCopy;
+        return sum/isum;
     }
 
 
-    public synchronized List<Measure> getMeasurest1t2(long t1, long t2){
-        List<Measure> measuresCopy = new ArrayList<>();
+    public synchronized double getAveraget1t2(long t1, long t2){
+        double sum = 0;
+        int isum = 0;
 
         for (Measure m : measures)
             if(m.getTimestamp() >= t1  && m.getTimestamp() <= t2)
-                measuresCopy.add(m);
+                for(Double d : m.getValues()){
+                    sum += d;
+                    isum++;
+                }
 
-        return measuresCopy;
+        return sum/isum;
+
     }
 
 }

@@ -46,12 +46,12 @@ public class Robots {
             if(r.getId() == robot.getId())
                 return false;
         robotslist.add(robot);
-        System.out.println("\n--> ROBOT ADDED - " + robot.getId());
+        System.out.println("\n\033[31m--> ROBOT ADDED -- \033[0mid: " + robot.getId());
         return true;
     }
 
     public synchronized boolean removeById(int id){
-        System.out.println("\n--> ROBOT REMOVED - " + id);
+        System.out.println("\n\033[31m--> ROBOT REMOVED -- \033[0mid:" + id);
         removeFromDistrictById(id);
         return robotslist.removeIf(r -> r.getId() == id);
     }
@@ -83,16 +83,11 @@ public class Robots {
         int x,y;
 
         for (int i = 0; i < numOfRobots.length; i++) {
-            System.out.println(i + " " + numOfRobots[i]);
             if (numOfRobots[i] < numOfRobots[district]) {
                 district = i;
             }
         }
-
-        System.out.println("\n+1 robot on district " + district);
-        System.out.println(numOfRobots[district]);
         numOfRobots[district]++;
-        System.out.println(numOfRobots[district]);
 
         switch (district){
             case 0: case 3:
