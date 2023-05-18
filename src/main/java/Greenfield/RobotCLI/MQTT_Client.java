@@ -1,12 +1,9 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
-import Greenfield.RobotOuterClass;
-import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.SimulatorInterface;
 import org.eclipse.paho.client.mqttv3.*;
 
-import java.net.Socket;
 
 public class MQTT_Client extends Thread{
 
@@ -20,7 +17,7 @@ public class MQTT_Client extends Thread{
 
     private int id;
 
-    private SimulatorInterface sim;
+    private final SimulatorInterface sim;
 
     public MQTT_Client(SimulatorInterface sim, Robot robot) {
         this.sim = sim;
@@ -49,13 +46,16 @@ public class MQTT_Client extends Thread{
             MQTTclient.connect(connOpts);
             //System.out.println(clientId + " Connected\n");
 
+            AsyncReadFromSimulator arfs = new AsyncReadFromSimulator(sim);
+            arfs.start();
+
 
             String payload = null;
             MqttMessage message = null;
 
             while(!stopCondition) {
-
-                payload = id + " " + averageCalculator() + " " + System.currentTimeMillis();
+                System.out.println(arfs.getListOfMeasurements());
+                payload = id  + " " + System.currentTimeMillis() + " " + id;
                 message = new MqttMessage(payload.getBytes());
 
                 // Set the QoS on the Message
@@ -68,7 +68,7 @@ public class MQTT_Client extends Thread{
                     this.wait(15000);
                 }
             }
-
+            arfs.stopMeGently();
             MQTTclient.disconnect();
             System.out.println("\nPublisher " + clientId + " disconnected");
 
@@ -100,15 +100,5 @@ public class MQTT_Client extends Thread{
     }
 
 
-    private double averageCalculator(){
-        double average = 0;
-        int i=0;
 
-        for(Measurement m : sim.readAllAndClean()){
-            average += m.getValue();
-            i++;
-        }
-
-        return average/i;
-    }
 }

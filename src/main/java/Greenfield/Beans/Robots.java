@@ -1,5 +1,6 @@
 package Greenfield.Beans;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+//import org.codehaus.jackson.annotate.JsonIgnore;
 
 @XmlRootElement
 @XmlAccessorType (XmlAccessType.FIELD)
@@ -14,6 +16,7 @@ public class Robots {
 
     @XmlElement(name="Greenfield_robots")
     private List<Robot> robotslist;
+    //@JsonIgnore
     private int[] numOfRobots;
 
     private static Robots instance;

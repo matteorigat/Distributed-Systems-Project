@@ -62,6 +62,7 @@ public class AdministratorServer {
 
                 public void connectionLost(Throwable cause) {
                     System.out.println(clientId + " Connectionlost! cause:" + cause.getMessage()+ "-  Thread PID: " + Thread.currentThread().getId());
+                    System.out.println(cause.getCause() + "\n" + cause.toString() + "\n" + cause.getLocalizedMessage());
                 }
 
                 public void deliveryComplete(IMqttDeliveryToken token) {

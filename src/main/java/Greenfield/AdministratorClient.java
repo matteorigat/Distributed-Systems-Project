@@ -82,12 +82,12 @@ public class AdministratorClient {
                     do {
                         System.out.print("\nInsert the first timestamp\n\033[31m --> \033[0m");
                         input = in.nextLine();
-                    } while(isNotNumeric(input));
+                    } while(isNotTimestamp(input));
                     long t1 = Long.parseLong(input.trim());
                     do {
                         System.out.print("\nInsert the second timestamp\n\033[31m --> \033[0m");
                         input = in.nextLine();
-                    } while(isNotNumeric(input));
+                    } while(isNotTimestamp(input));
                     long t2 = Long.parseLong(input.trim());
 
 
@@ -152,6 +152,15 @@ public class AdministratorClient {
     private static boolean isNotNumeric(String str) {
         try {
             Integer.parseInt(str);
+            return false;
+        } catch(NumberFormatException e){
+            return true;
+        }
+    }
+
+    private static boolean isNotTimestamp(String str) {
+        try {
+            Long.parseLong(str);
             return false;
         } catch(NumberFormatException e){
             return true;
