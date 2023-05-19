@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Greenfield;
+
+message gRPCMessage {
+
+    int32 id = 1;
+    int32 port = 2;
+    string message = 3;
+
+}
+
+service gRPCService {
+
+    rpc grpc(stream gRPCMessage) returns (stream gRPCMessage);
+}

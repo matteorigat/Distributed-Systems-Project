@@ -10,7 +10,7 @@ public class SimulatorInterface implements Buffer{
     private List<Measurement> measurementList = new ArrayList<>();
     private List<Measurement> buffer = new ArrayList<>();
 
-    private AsyncReadFromSimulator arfs;
+    private AsyncReadFromSimulator arfs = null;
 
 
     @Override
@@ -18,8 +18,10 @@ public class SimulatorInterface implements Buffer{
         buffer.add(m);
         if(buffer.size() >= 8){
             measurementList = new ArrayList<>(buffer.subList(buffer.size() - 8, buffer.size()));
-            synchronized (arfs){
-                arfs.notify();
+            if(arfs != null){
+                synchronized (arfs){
+                    arfs.notify();
+                }
             }
             buffer = new ArrayList<>(buffer.subList(buffer.size() - 4, buffer.size()));
         }

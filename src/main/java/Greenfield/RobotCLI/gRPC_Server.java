@@ -1,92 +1,51 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robots;
-import Greenfield.RobotOuterClass.Robot;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.util.ArrayList;
 
 public class gRPC_Server extends Thread{
 
     private final int robotPort;
 
-    private Robots robotsList;
+    private final Robots robots;
+
+    private final ArrayList<gRPC_Client> arrgrpc;
+
     private volatile boolean stopCondition = false;
-    private ServerSocket serverSocket = null;
 
-
-    public gRPC_Server(int robotPort, Robots robotsList) {
+    protected gRPC_Server(int robotPort, Robots robots, ArrayList<gRPC_Client> arrgrpc) {
         this.robotPort = robotPort;
-        this.robotsList = robotsList;
+        this.robots = robots;
+        this.arrgrpc = arrgrpc;
     }
 
-    public void stopMeGently() {
+    protected void stopMeGently() {
         stopCondition = true;
-        if (serverSocket != null) {
-            try {
-                serverSocket.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
-
 
     @Override
     public void run(){
         super.run();
 
         try {
-            serverSocket = new ServerSocket(robotPort);
+            Server server = ServerBuilder.forPort(robotPort).addService(new gRPC_ServiceImpl(robots, arrgrpc)).build();
+            server.start();
             System.out.println("The gRPC server is running...\n");
-        } catch (IOException e) {
+            while (!stopCondition){
+                synchronized (this){
+                    this.wait();
+                }
+            }
+            server.shutdown();
+            server.awaitTermination();
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        Socket socket = null;
-
-        while (!stopCondition){
-            try {
-                socket = serverSocket.accept();
-                asyncReadFromSocket(socket);
-
-            } catch (IOException e) {
-                if(!serverSocket.isClosed())
-                    throw new RuntimeException(e);
-            }
-
-        }
-
         System.out.println("The gRPC server has stopped...\n");
-    }
-
-
-    private void asyncReadFromSocket(final Socket s){
-        Thread t = new Thread(() -> {
-            Robot r = null;
-            Greenfield.Beans.Robot robot;
-            try {
-                r = Robot.parseFrom(s.getInputStream());
-                if(r.getHello()){
-                    robot = new Greenfield.Beans.Robot(r.getId(), r.getPort());
-                    robotsList.add(robot);
-                    System.out.println("\n----- hello ----- " + r.getId() + "\n\033[31m --> \033[0m");
-                }
-                else if(r.getMechanic())
-                    System.out.println("\n----- mechanic ----- " + r.getId() + "\n\033[31m --> \033[0m");
-                else if (r.getGoodbye()) {
-                    robotsList.removeById(r.getId());
-                    System.out.println("\n----- goodbye ----- " + r.getId() + "\n\033[31m --> \033[0m");
-                }
-            } catch (Exception e){ // always raised at the end
-                try {
-                    s.close();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-        t.start();
     }
 }

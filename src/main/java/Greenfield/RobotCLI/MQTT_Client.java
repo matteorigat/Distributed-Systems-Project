@@ -19,13 +19,13 @@ public class MQTT_Client extends Thread{
 
     private final SimulatorInterface sim;
 
-    public MQTT_Client(SimulatorInterface sim, Robot robot) {
+    protected MQTT_Client(SimulatorInterface sim, Robot robot) {
         this.sim = sim;
         this.id = robot.getId();
         this.topic += calculateDistrict(robot.getPosition().x, robot.getPosition().y);
     }
 
-    public void stopMeGently() {
+    protected void stopMeGently() {
         stopCondition = true;
     }
 

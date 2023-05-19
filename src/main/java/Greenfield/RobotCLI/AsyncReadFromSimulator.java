@@ -13,12 +13,12 @@ public class AsyncReadFromSimulator extends Thread{
 
     private volatile boolean stopCondition = false;
 
-    public AsyncReadFromSimulator(SimulatorInterface sim) {
+    protected AsyncReadFromSimulator(SimulatorInterface sim) {
         this.sim = sim;
         sim.setArfs(this);
     }
 
-    public void stopMeGently() {
+    protected void stopMeGently() {
         stopCondition = true;
     }
 
@@ -51,13 +51,13 @@ public class AsyncReadFromSimulator extends Thread{
             listOfMeasurements.add(average/i);
     }
 
-    public synchronized List<Double> getListOfMeasurementsAndClean() {
+    protected synchronized List<Double> getListOfMeasurementsAndClean() {
         List<Double> ml = new ArrayList<>(listOfMeasurements);
         listOfMeasurements.clear();
         return ml;
     }
 
-    public boolean isEmptyList() {
+    protected boolean isEmptyList() {
         return listOfMeasurements.isEmpty();
     }
 }

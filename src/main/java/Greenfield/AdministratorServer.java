@@ -98,11 +98,6 @@ public class AdministratorServer {
             me.printStackTrace();
         }
 
-
-        /*
-        System.out.println("Hit return to stop...");
-        System.in.read();
-        */
         System.out.println("Stopping server");
         server.stop(0);
         System.out.println("Server stopped");

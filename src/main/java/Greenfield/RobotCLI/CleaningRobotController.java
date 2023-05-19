@@ -1,6 +1,5 @@
 package Greenfield.RobotCLI;
 
-import Greenfield.RobotOuterClass;
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
 import Greenfield.Services.RobotResponseData;
@@ -13,8 +12,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CleaningRobotController {
@@ -25,14 +23,19 @@ public class CleaningRobotController {
     private static String input;
     private static String postPath;
     private static String serverAddress;
-    private static RobotOuterClass.Robot robotgRPC;
+    private static ArrayList<gRPC_Client> arrgrpc = new ArrayList<>();
+
+    private static int robotId;
+    private static int robotPort;
+    private static Robot robot;
+
 
     public static void main(String args[]) throws IOException {
 
         Scanner in = new Scanner(System.in);
 
-        int robotId = -1;
-        int robotPort = -1;
+        robotId = -1;
+        robotPort = -1;
 
         do{
             System.out.print("\nInsert the robot id\n\033[31m --> \033[0m");
@@ -47,7 +50,7 @@ public class CleaningRobotController {
                 robotPort = Integer.parseInt(input);
         } while(robotPort  <= 1023 || robotPort  >= 65535);
 
-        Robot robot = new Robot(robotId,robotPort);
+        robot = new Robot(robotId,robotPort);
 
 
         //######################################################################################
@@ -86,11 +89,32 @@ public class CleaningRobotController {
 
         //######################################################################################
 
-        gRPC_Server gRPCClient = new gRPC_Server(robotPort, robots);
-        gRPCClient.start();
+        gRPC_Server grpc = new gRPC_Server(robotPort, robots, arrgrpc);
+        grpc.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        for(int i=0; i<robots.getRobotslist().size(); i++) {
+            if (robots.getRobotslist().get(i).getId() != robotId) {
+                gRPC_Client grpcClient = new gRPC_Client(robots.getRobotslist().get(i));
+                grpcClient.start();
+                arrgrpc.add(grpcClient);
+            }
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
 
         //Hello message to other robots in the peer to peer network
-        sendgRPC(robotId,robotPort,true,false,false);
+        sendMessage("hello");
 
         //######################################################################################
 
@@ -127,24 +151,28 @@ public class CleaningRobotController {
 
                 case "2":
                     //Message to other robots in the peer to peer network to go to mechanic
-                    sendgRPC(robotId,robotPort,false,true,false);
+                    sendMessage("mechanic");
                     break;
 
                 case "quit":
-                    // COMPLETE MECHANIC ????
+                    // COMPLETE MECHANIC BEFORE QUIT
 
                     //Goodbye message to other robots in the peer to peer network
-                    sendgRPC(robotId, robotPort,false,false,true);
-                    gRPCClient.stopMeGently();
-
+                    sendMessage("quit");
 
                     //DELETE: request to remove a cleaning robot from the Greenfield city
                     deleteRobotFromServer(robotId);
+
+                    grpc.stopMeGently();
                     mqtt.stopMeGently();
+                    pm10.stopMeGently();
+
+                    synchronized (grpc){
+                        grpc.notify();
+                    }
                     synchronized (mqtt){
                         mqtt.notify();
                     }
-                    pm10.stopMeGently();
                     break;
             }
         }
@@ -154,7 +182,7 @@ public class CleaningRobotController {
             System.out.println("mqtt join");
             pm10.join();
             System.out.println("pm10 join");
-            gRPCClient.join();
+            grpc.join();
             System.out.println("gRPC join");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -171,37 +199,18 @@ public class CleaningRobotController {
 
     //######################################################################################
 
-
-
-
-    private static void sendgRPC(int robotId, int robotPort, boolean hello, boolean mechanic, boolean goodbye) throws IOException {
-        RobotOuterClass.Robot robotgRPC =
-                RobotOuterClass.Robot.newBuilder()
-                        .setId(robotId)
-                        .setPort(robotPort)
-                        .setIp("localhost")
-                        .setHello(hello)
-                        .setMechanic(mechanic)
-                        .setGoodbye(goodbye)
-                        .build();
-
-        Socket s;
-        for(int i=0; i<robots.getRobotslist().size(); i++){
-            if(robots.getRobotslist().get(i).getId() != robotId){
-                try {
-                    s = new Socket("localhost", robots.getRobotslist().get(i).getPort());
-                    robotgRPC.writeTo(s.getOutputStream());
-                    s.close();
-                } catch (ConnectException e) {
-                    robots.getRobotslist().remove(i);
-                    deleteRobotFromServer(robots.getRobotslist().get(i).getId());
-                    continue;
-                }
+    private static void sendMessage(String m){
+        for(gRPC_Client c: arrgrpc){
+            c.setMessage(m, robot);
+            synchronized (c){
+                c.notify();
             }
+            if(m.equals("quit"))
+                c.stopMeGently();
         }
     }
 
-    private static void deleteRobotFromServer(int robotId){
+    protected static void deleteRobotFromServer(int robotId){
         postPath = "/robots/" + robotId;
         clientResponse = deleteRequest(client, serverAddress+postPath);
         if(clientResponse != null && clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {

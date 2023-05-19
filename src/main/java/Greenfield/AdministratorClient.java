@@ -24,7 +24,7 @@ public class AdministratorClient {
             System.out.println("1: To get the list of the cleaning robots currently located in Greenfield.");
             System.out.println("2: The average of the last n air pollution levels sent to the server by a given robot.");
             System.out.println("3: The average of the air pollution levels sent by all the robots to the server and occurred from timestamps t1 and t2.");
-            System.out.println("4: Remove cleaning robot from the Greenfield city.");
+            //System.out.println("4: Remove cleaning robot from the Greenfield city.");
             System.out.print("\nAny other button to quit.\n\033[31m --> \033[0m");
             input = in.nextLine();
             switch (input){
@@ -100,7 +100,7 @@ public class AdministratorClient {
 
 
 //4             // Remove cleaning robot from the Greenfield city.
-                case "4":
+                /*case "4":
                     do{
                         System.out.print("\nInsert the robot id\n\033[31m --> \033[0m");
                         input = in.nextLine();
@@ -113,7 +113,7 @@ public class AdministratorClient {
                     } else {
                         System.out.println("\nDELETE request failed.\n" + clientResponse.toString());
                     }
-                    break;
+                    break;*/
 
 
                 default: return;
@@ -132,7 +132,7 @@ public class AdministratorClient {
         }
     }
 
-    private static ClientResponse deleteRequest(Client client, String url){
+    /*private static ClientResponse deleteRequest(Client client, String url){
         WebResource webResource = client.resource(url);
         try {
             return webResource.type("application/json").delete(ClientResponse.class);
@@ -140,7 +140,7 @@ public class AdministratorClient {
             System.out.println("Server non disponibile");
             return null;
         }
-    }
+    }*/
 
     private static boolean isNotNumeric(String str) {
         try {
