@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/paho17926313773166-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18068582180875-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18130014782833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18148352020666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18231785023500-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18254268526541-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18291358304583-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18311598822208-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18413828301666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18463018376166-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18635419513666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18691210891458-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18747156539125-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho18761216305875-tcplocalhost1883/.lck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="dependencies upgrade">
+      <change afterPath="$PROJECT_DIR$/paho442964675583-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho457173104666-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/ChatClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/ChatServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/ChatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/ChatService.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/main/grpc/com/example/chat/ChatServiceGrpc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/main/java/com/example/chat/ChatServiceOuterClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,27 +74,29 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/Simulator&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/proto",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/proto" />
+      <recent name="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI" />
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/Simulator" />
       <recent name="$PROJECT_DIR$/src/main/java/REST/Beans" />
       <recent name="$PROJECT_DIR$/src/main" />
@@ -120,9 +116,9 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdministratorClient">
-    <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
+  <component name="RunManager" selected="Application.ChatClient">
+    <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
@@ -134,12 +130,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
+    <configuration name="ChatClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.ChatClient" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Greenfield.*" />
+          <option name="PATTERN" value="Greenfield.RobotCLI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.ChatServer" />
+      <module name="Distributed-Systems-Project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Greenfield.RobotCLI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -159,28 +168,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="Distributed-Systems-Project [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
     </configuration>
     <configuration name="Distributed-Systems-Project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -228,19 +215,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.CleaningRobotController" />
+      <item itemvalue="Application.ChatClient" />
+      <item itemvalue="Application.ChatServer" />
       <item itemvalue="Application.AdministratorServer" />
-      <item itemvalue="Application.AdministratorClient" />
-      <item itemvalue="Gradle.Distributed-Systems-Project [buildDependents]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ChatClient" />
+        <item itemvalue="Application.ChatServer" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
         <item itemvalue="Application.AdministratorServer" />
-        <item itemvalue="Application.AdministratorClient" />
-        <item itemvalue="Gradle.Distributed-Systems-Project [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -276,6 +263,8 @@
       <workItem from="1684254799783" duration="2070000" />
       <workItem from="1684316733855" duration="3149000" />
       <workItem from="1684420365568" duration="18319000" />
+      <workItem from="1684443411416" duration="172000" />
+      <workItem from="1684480920727" duration="2296000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -396,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684442137492</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="dependencies upgrade">
+      <created>1684443554725</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684443554725</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +425,7 @@
     <MESSAGE value="first sliding window implementation" />
     <MESSAGE value="sliding window" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="dependencies upgrade" />
+    <option name="LAST_COMMIT_MESSAGE" value="dependencies upgrade" />
   </component>
 </project>
