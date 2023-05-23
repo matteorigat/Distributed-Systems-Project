@@ -17,20 +17,22 @@ import java.util.Scanner;
 
 public class CleaningRobotController {
 
-    private static final Client client = Client.create();
-    private static ClientResponse clientResponse = null;
-    private static Robots robots = null;
-    private static String input;
-    private static String postPath;
-    private static String serverAddress;
-    private static ArrayList<gRPC_Client> arrgrpc = new ArrayList<>();
+    private final Client client = Client.create();
+    private ClientResponse clientResponse = null;
+    private String input;
+    private String postPath;
+    private String serverAddress;
+    private ArrayList<gRPC_Client> arrgrpc = new ArrayList<>();
 
-    private static int robotId;
-    private static int robotPort;
-    private static Robot robot;
+    private int robotId;
+    private int robotPort;
+    private Robot robot;
+
+    private boolean mechanic = false;
+    private boolean wantMechanic = false;
 
 
-    public static void main(String args[]) throws IOException {
+    public void Init(){
 
         Scanner in = new Scanner(System.in);
 
@@ -67,7 +69,8 @@ public class CleaningRobotController {
         if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
             RobotResponseData resp = clientResponse.getEntity(RobotResponseData.class);
             robot.setPosition(resp.getPosition().x, resp.getPosition().y);
-            robots = resp.getRobots();
+            for(Robot r: resp.getRobots().getRobotslist())
+                Robots.getInstance().add(r);
         } else {
             System.out.println("POST request failed.");
             return;
@@ -89,7 +92,7 @@ public class CleaningRobotController {
 
         //######################################################################################
 
-        gRPC_Server grpc = new gRPC_Server(robotPort, robots, arrgrpc);
+        gRPC_Server grpc = new gRPC_Server(robot, arrgrpc, this);
         grpc.start();
 
         try {
@@ -98,9 +101,9 @@ public class CleaningRobotController {
             throw new RuntimeException(e);
         }
 
-        for(int i=0; i<robots.getRobotslist().size(); i++) {
-            if (robots.getRobotslist().get(i).getId() != robotId) {
-                gRPC_Client grpcClient = new gRPC_Client(robots.getRobotslist().get(i));
+        for(int i=0; i<Robots.getInstance().getRobotslist().size(); i++) {
+            if (Robots.getInstance().getRobotslist().get(i).getId() != robotId) {
+                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i));
                 grpcClient.start();
                 arrgrpc.add(grpcClient);
             }
@@ -127,11 +130,15 @@ public class CleaningRobotController {
         mqtt.start();
 
 
+        asyncStartMechanic();
+
+
         //######################################################################################
 
         //############################## Robot CLI #############################################
 
         //######################################################################################
+
 
 
         System.out.print("\033[31m\nWelcome to the RobotClient!\033[0m");
@@ -145,12 +152,13 @@ public class CleaningRobotController {
 
             switch (input) {
                 case "1":
-                    for (Robot r : robots.getRobotslist())
+                    for (Robot r : Robots.getInstance().getRobotslist())
                         System.out.println(r.toString());
                     break;
 
                 case "2":
                     //Message to other robots in the peer to peer network to go to mechanic
+                    wantMechanic = true;
                     sendMessage("mechanic");
                     break;
 
@@ -199,7 +207,7 @@ public class CleaningRobotController {
 
     //######################################################################################
 
-    private static void sendMessage(String m){
+    private void sendMessage(String m){
         for(gRPC_Client c: arrgrpc){
             c.setMessage(m, robot);
             synchronized (c){
@@ -210,7 +218,7 @@ public class CleaningRobotController {
         }
     }
 
-    protected static void deleteRobotFromServer(int robotId){
+    protected void deleteRobotFromServer(int robotId){
         postPath = "/robots/" + robotId;
         clientResponse = deleteRequest(client, serverAddress+postPath);
         if(clientResponse != null && clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
@@ -220,7 +228,7 @@ public class CleaningRobotController {
         }
     }
 
-    private static ClientResponse postRequest(Client client, String url, Robot r){
+    private ClientResponse postRequest(Client client, String url, Robot r){
         WebResource webResource = client.resource(url);
         String input = new Gson().toJson(r);
         try {
@@ -231,7 +239,7 @@ public class CleaningRobotController {
         }
     }
 
-    private static ClientResponse deleteRequest(Client client, String url){
+    private ClientResponse deleteRequest(Client client, String url){
         WebResource webResource = client.resource(url);
         try {
             return webResource.type("application/json").delete(ClientResponse.class);
@@ -242,7 +250,7 @@ public class CleaningRobotController {
     }
 
 
-    private static boolean isNumeric(String str) {
+    private boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -251,8 +259,33 @@ public class CleaningRobotController {
         }
     }
 
+    private void asyncStartMechanic(){
+        Thread t = new Thread(() -> {
+            try {
+                while(!input.equals("quit")){
+                    Thread.sleep(10000);
+                    if(Math.random() <= 0.1){
+                        wantMechanic = true;
+                        sendMessage("mechanic");
+                    }
+                }
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        t.start();
+    }
+
     private boolean probMechanic(){
         return Math.random() <= 0.1;
     }
 
+    public boolean isMechanic() {
+        return mechanic;
+    }
+
+    public boolean WantMechanic() {
+        return wantMechanic;
+    }
 }

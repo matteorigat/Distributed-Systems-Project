@@ -19,13 +19,13 @@ public final class GRPCService {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
+     * <code>uint32 id = 1;</code>
      * @return The id.
      */
     int getId();
 
     /**
-     * <code>int32 port = 2;</code>
+     * <code>uint32 port = 2;</code>
      * @return The port.
      */
     int getPort();
@@ -41,6 +41,12 @@ public final class GRPCService {
      */
     com.google.protobuf.ByteString
         getMessageBytes();
+
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
   }
   /**
    * Protobuf type {@code Greenfield.gRPCMessage}
@@ -90,18 +96,23 @@ public final class GRPCService {
               break;
             case 8: {
 
-              id_ = input.readInt32();
+              id_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              port_ = input.readInt32();
+              port_ = input.readUInt32();
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               message_ = s;
+              break;
+            }
+            case 32: {
+
+              timestamp_ = input.readUInt64();
               break;
             }
             default: {
@@ -139,7 +150,7 @@ public final class GRPCService {
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>uint32 id = 1;</code>
      * @return The id.
      */
     public int getId() {
@@ -149,7 +160,7 @@ public final class GRPCService {
     public static final int PORT_FIELD_NUMBER = 2;
     private int port_;
     /**
-     * <code>int32 port = 2;</code>
+     * <code>uint32 port = 2;</code>
      * @return The port.
      */
     public int getPort() {
@@ -192,6 +203,16 @@ public final class GRPCService {
       }
     }
 
+    public static final int TIMESTAMP_FIELD_NUMBER = 4;
+    private long timestamp_;
+    /**
+     * <code>uint64 timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -207,13 +228,16 @@ public final class GRPCService {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (id_ != 0) {
-        output.writeInt32(1, id_);
+        output.writeUInt32(1, id_);
       }
       if (port_ != 0) {
-        output.writeInt32(2, port_);
+        output.writeUInt32(2, port_);
       }
       if (!getMessageBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeUInt64(4, timestamp_);
       }
       unknownFields.writeTo(output);
     }
@@ -226,14 +250,18 @@ public final class GRPCService {
       size = 0;
       if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
+          .computeUInt32Size(1, id_);
       }
       if (port_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, port_);
+          .computeUInt32Size(2, port_);
       }
       if (!getMessageBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, timestamp_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -256,6 +284,8 @@ public final class GRPCService {
           != other.getPort()) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -273,6 +303,9 @@ public final class GRPCService {
       hash = (53 * hash) + getPort();
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -412,6 +445,8 @@ public final class GRPCService {
 
         message_ = "";
 
+        timestamp_ = 0L;
+
         return this;
       }
 
@@ -441,6 +476,7 @@ public final class GRPCService {
         result.id_ = id_;
         result.port_ = port_;
         result.message_ = message_;
+        result.timestamp_ = timestamp_;
         onBuilt();
         return result;
       }
@@ -499,6 +535,9 @@ public final class GRPCService {
           message_ = other.message_;
           onChanged();
         }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -530,14 +569,14 @@ public final class GRPCService {
 
       private int id_ ;
       /**
-       * <code>int32 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @return The id.
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @param value The id to set.
        * @return This builder for chaining.
        */
@@ -548,7 +587,7 @@ public final class GRPCService {
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>uint32 id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearId() {
@@ -560,14 +599,14 @@ public final class GRPCService {
 
       private int port_ ;
       /**
-       * <code>int32 port = 2;</code>
+       * <code>uint32 port = 2;</code>
        * @return The port.
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>uint32 port = 2;</code>
        * @param value The port to set.
        * @return This builder for chaining.
        */
@@ -578,7 +617,7 @@ public final class GRPCService {
         return this;
       }
       /**
-       * <code>int32 port = 2;</code>
+       * <code>uint32 port = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPort() {
@@ -663,6 +702,36 @@ public final class GRPCService {
         onChanged();
         return this;
       }
+
+      private long timestamp_ ;
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @return The timestamp.
+       */
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+        
+        timestamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 timestamp = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -730,11 +799,11 @@ public final class GRPCService {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021gRPCService.proto\022\nGreenfield\"8\n\013gRPCM" +
-      "essage\022\n\n\002id\030\001 \001(\005\022\014\n\004port\030\002 \001(\005\022\017\n\007mess" +
-      "age\030\003 \001(\t2K\n\013gRPCService\022<\n\004grpc\022\027.Green" +
-      "field.gRPCMessage\032\027.Greenfield.gRPCMessa" +
-      "ge(\0010\001b\006proto3"
+      "\n\021gRPCService.proto\022\nGreenfield\"K\n\013gRPCM" +
+      "essage\022\n\n\002id\030\001 \001(\r\022\014\n\004port\030\002 \001(\r\022\017\n\007mess" +
+      "age\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\0042K\n\013gRPCServ" +
+      "ice\022<\n\004grpc\022\027.Greenfield.gRPCMessage\032\027.G" +
+      "reenfield.gRPCMessage(\0010\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -745,7 +814,7 @@ public final class GRPCService {
     internal_static_Greenfield_gRPCMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Greenfield_gRPCMessage_descriptor,
-        new java.lang.String[] { "Id", "Port", "Message", });
+        new java.lang.String[] { "Id", "Port", "Message", "Timestamp", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
