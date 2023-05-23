@@ -2,7 +2,6 @@ package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
-import Greenfield.CleaningRobot;
 import Greenfield.gRPCServiceGrpc.gRPCServiceImplBase;
 import Greenfield.GRPCService.*;
 import io.grpc.stub.StreamObserver;
@@ -12,7 +11,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
-import static Greenfield.RobotCLI.CleaningRobotController.deleteRobotFromServer;
 
 public class gRPC_ServiceImpl extends gRPCServiceImplBase {
 
