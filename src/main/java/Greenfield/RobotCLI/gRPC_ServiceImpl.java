@@ -72,10 +72,30 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                                 .build();
 
                         responseObserver.onNext(reply);
+                        System.out.println("ME: ok sent");
                     }
                     else if (robotController.isMechanic()){
-                        System.out.println("v ");
+                        robotController.getMechanicQueue().add(responseObserver);
+                        System.out.println("ME: added to queue");
+                    } else if(robotController.WantMechanic() && !robotController.isMechanic()){
+                        if(grpcMessage.getTimestamp() < robotController.getMyTimestamp()){
+                            gRPCMessage reply = gRPCMessage.newBuilder()
+                                    .setId(robot.getId())
+                                    .setPort(robot.getPort())
+                                    .setMessage("OK")
+                                    .setTimestamp(System.currentTimeMillis())
+                                    .build();
+
+                            responseObserver.onNext(reply);
+                            System.out.println("ME: ok sent 2");
+                        } else {
+                            robotController.getMechanicQueue().add(responseObserver);
+                            System.out.println("ME: added to queue 2");
+                        }
+
                     }
+                } else if(message.equals("OK")){
+                    robotController.getMechanicOk().add(responseObserver);
                 }
             }
 

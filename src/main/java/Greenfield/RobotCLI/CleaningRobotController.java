@@ -2,6 +2,7 @@ package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
+import Greenfield.GRPCService;
 import Greenfield.Services.RobotResponseData;
 import Greenfield.Simulator.PM10Simulator;
 import Greenfield.Simulator.SimulatorInterface;
@@ -10,6 +11,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +32,11 @@ public class CleaningRobotController {
 
     private boolean mechanic = false;
     private boolean wantMechanic = false;
+
+    private long myTimestamp;
+
+    private ArrayList<StreamObserver> mechanicQueue = new ArrayList<>();
+    private ArrayList<StreamObserver> mechanicOk = new ArrayList<>();
 
 
     public void Init(){
@@ -208,8 +215,9 @@ public class CleaningRobotController {
     //######################################################################################
 
     private void sendMessage(String m){
+        long time = System.currentTimeMillis();
         for(gRPC_Client c: arrgrpc){
-            c.setMessage(m, robot);
+            c.setMessage(m, time, robot);
             synchronized (c){
                 c.notify();
             }
@@ -266,7 +274,27 @@ public class CleaningRobotController {
                     Thread.sleep(10000);
                     if(Math.random() <= 0.1){
                         wantMechanic = true;
+                        mechanicOk.clear();
                         sendMessage("mechanic");
+                        while (!mechanicOk.isEmpty() && mechanicOk.size() < Robots.getInstance().getRobotslist().size()){
+                            Thread.sleep(100);
+                        }
+                        mechanic = true;
+                        wantMechanic = false;
+                        System.out.println("I'm in the mechanic");
+                        Thread.sleep(10000);  // MECHANIC HEREEEEEE
+                        mechanic = false;
+
+                        GRPCService.gRPCMessage reply = GRPCService.gRPCMessage.newBuilder()
+                                .setId(robot.getId())
+                                .setPort(robot.getPort())
+                                .setMessage("OK")
+                                .setTimestamp(System.currentTimeMillis())
+                                .build();
+
+                        for(StreamObserver s: mechanicQueue)
+                            s.onNext(reply);
+
                     }
                 }
                 Thread.sleep(10000);
@@ -287,5 +315,17 @@ public class CleaningRobotController {
 
     public boolean WantMechanic() {
         return wantMechanic;
+    }
+
+    public long getMyTimestamp() {
+        return myTimestamp;
+    }
+
+    public ArrayList<StreamObserver> getMechanicQueue() {
+        return mechanicQueue;
+    }
+
+    public ArrayList<StreamObserver> getMechanicOk() {
+        return mechanicOk;
     }
 }

@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="implementation bidirectional gRPC">
-      <change afterPath="$PROJECT_DIR$/paho10134505403000-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho10152493163708-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho10175852015416-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8839503799583-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8869618817833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8941711436000-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot.java" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="implementation Ricart &amp; Agrawala algorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,9 +112,9 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobotController">
-    <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
+  <component name="RunManager" selected="Application.CleaningRobot">
+    <configuration name="CleaningRobot" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.CleaningRobot" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
@@ -219,19 +211,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.CleaningRobotController" />
+      <item itemvalue="Application.CleaningRobot" />
       <item itemvalue="Application.gRPC_Client" />
       <item itemvalue="Application.gRPCServer" />
-      <item itemvalue="Application.AdministratorServer" />
       <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CleaningRobot" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
         <item itemvalue="Application.gRPC_Client" />
         <item itemvalue="Application.gRPCServer" />
-        <item itemvalue="Application.AdministratorServer" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +265,8 @@
       <workItem from="1684525325954" duration="7476000" />
       <workItem from="1684603317944" duration="2235000" />
       <workItem from="1684861062294" duration="21000" />
-      <workItem from="1684861087204" duration="5376000" />
+      <workItem from="1684861087204" duration="6075000" />
+      <workItem from="1684920704943" duration="3746000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -415,7 +408,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684534581367</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="implementation Ricart &amp; Agrawala algorithm">
+      <created>1684867414458</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1684867414458</updated>
+    </task>
+    <task id="LOCAL-00022" summary="implementation Ricart &amp; Agrawala algorithm">
+      <created>1684867445390</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1684867445390</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +458,8 @@
     <MESSAGE value="dependencies upgrade" />
     <MESSAGE value="first implementation bidirectional gRPC" />
     <MESSAGE value="implementation bidirectional gRPC" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementation bidirectional gRPC" />
+    <MESSAGE value="implementation Ricart &amp; Agrawala algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementation Ricart &amp; Agrawala algorithm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

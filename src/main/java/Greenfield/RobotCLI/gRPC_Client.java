@@ -15,7 +15,6 @@ public class gRPC_Client extends Thread{
 
     private gRPCMessage message;
 
-
     private volatile boolean stopCondition = false;
 
     protected gRPC_Client(Robot robot) {
@@ -72,11 +71,12 @@ public class gRPC_Client extends Thread{
         return robot;
     }
 
-    protected void setMessage(String m, Robot r){
+    protected void setMessage(String m, long time, Robot r){
         message = gRPCMessage.newBuilder()
                 .setId(r.getId())
                 .setPort(r.getPort())
                 .setMessage(m)
+                .setTimestamp(time)
                 .build();
     }
 
