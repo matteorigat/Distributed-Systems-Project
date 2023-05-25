@@ -13,8 +13,8 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import io.grpc.stub.StreamObserver;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class CleaningRobotController {
@@ -24,10 +24,10 @@ public class CleaningRobotController {
     private String input;
     private String postPath;
     private String serverAddress;
-    private ArrayList<gRPC_Client> arrgrpc = new ArrayList<>();
 
-    private int robotId;
-    private int robotPort;
+    private final HashMap<gRPC_Client, StreamObserver> clientRobotConnection = new HashMap<>();
+    private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
+
     private Robot robot;
 
     private boolean mechanic = false;
@@ -36,15 +36,15 @@ public class CleaningRobotController {
     private long myTimestamp;
 
     private ArrayList<StreamObserver> mechanicQueue = new ArrayList<>();
-    private ArrayList<StreamObserver> mechanicOk = new ArrayList<>();
+    private ArrayList<Integer> mechanicOk = new ArrayList<>();
 
 
     public void Init(){
 
         Scanner in = new Scanner(System.in);
 
-        robotId = -1;
-        robotPort = -1;
+        int robotId = -1;
+        int robotPort = -1;
 
         do{
             System.out.print("\nInsert the robot id\n\033[31m --> \033[0m");
@@ -89,8 +89,8 @@ public class CleaningRobotController {
 
         //######################################################################################
 
-        SimulatorInterface sim = new SimulatorInterface();
-        PM10Simulator pm10 = new PM10Simulator(sim);
+        SimulatorInterface simulator = new SimulatorInterface();
+        PM10Simulator pm10 = new PM10Simulator(simulator);
         pm10.start();
 
         //######################################################################################
@@ -99,7 +99,7 @@ public class CleaningRobotController {
 
         //######################################################################################
 
-        gRPC_Server grpc = new gRPC_Server(robot, arrgrpc, this);
+        gRPC_Server grpc = new gRPC_Server(robot, this);
         grpc.start();
 
         try {
@@ -109,10 +109,9 @@ public class CleaningRobotController {
         }
 
         for(int i=0; i<Robots.getInstance().getRobotslist().size(); i++) {
-            if (Robots.getInstance().getRobotslist().get(i).getId() != robotId) {
-                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i));
+            if (Robots.getInstance().getRobotslist().get(i).getId() != robot.getId()) {
+                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i), this);
                 grpcClient.start();
-                arrgrpc.add(grpcClient);
             }
         }
 
@@ -133,11 +132,11 @@ public class CleaningRobotController {
         //######################################################################################
 
 
-        MQTT_Client mqtt = new MQTT_Client(sim, robot);
+        MQTT_Client mqtt = new MQTT_Client(simulator, robot);
         mqtt.start();
 
 
-        asyncStartMechanic();
+        Thread mechanicThread = asyncStartMechanic();
 
 
         //######################################################################################
@@ -153,7 +152,7 @@ public class CleaningRobotController {
             System.out.println("\n\nPress:");
             System.out.println("1: To display the robotList");
             System.out.println("2: To go to the mechanic now.");
-            System.out.print("'quit': To leave the Greenfield city and quit the console :)\n\033[31m --> \033[0m");
+            System.out.println("'quit': To leave the Greenfield city"); // :) \n[31m --> [0m
             input = in.nextLine();
             System.out.print("\n");
 
@@ -170,13 +169,19 @@ public class CleaningRobotController {
                     break;
 
                 case "quit":
-                    // COMPLETE MECHANIC BEFORE QUIT
+                    while (isMechanic()){
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
 
                     //Goodbye message to other robots in the peer to peer network
                     sendMessage("quit");
 
                     //DELETE: request to remove a cleaning robot from the Greenfield city
-                    deleteRobotFromServer(robotId);
+                    deleteRobotFromServer(robot.getId());
 
                     grpc.stopMeGently();
                     mqtt.stopMeGently();
@@ -197,6 +202,8 @@ public class CleaningRobotController {
             System.out.println("mqtt join");
             pm10.join();
             System.out.println("pm10 join");
+            mechanicThread.join();
+            System.out.println("mechanic join");
             grpc.join();
             System.out.println("gRPC join");
         } catch (InterruptedException e) {
@@ -207,7 +214,6 @@ public class CleaningRobotController {
     }
 
 
-
     //######################################################################################
 
     //###################### Start Methods Section #########################################
@@ -215,14 +221,14 @@ public class CleaningRobotController {
     //######################################################################################
 
     private void sendMessage(String m){
-        long time = System.currentTimeMillis();
-        for(gRPC_Client c: arrgrpc){
-            c.setMessage(m, time, robot);
+        for(gRPC_Client c: clientRobotConnection.keySet()){
+            if(m.equals("quit"))
+                c.stopMeGently();
+
+            c.setMessage(m, robot);
             synchronized (c){
                 c.notify();
             }
-            if(m.equals("quit"))
-                c.stopMeGently();
         }
     }
 
@@ -267,21 +273,23 @@ public class CleaningRobotController {
         }
     }
 
-    private void asyncStartMechanic(){
+    private Thread asyncStartMechanic(){
         Thread t = new Thread(() -> {
             try {
                 while(!input.equals("quit")){
-                    Thread.sleep(10000);
+                    //System.out.print("1s ");
+                    Thread.sleep(1000);
                     if(Math.random() <= 0.1){
+                        System.out.println("starting mechanic steps");
                         wantMechanic = true;
                         mechanicOk.clear();
                         sendMessage("mechanic");
-                        while (!mechanicOk.isEmpty() && mechanicOk.size() < Robots.getInstance().getRobotslist().size()){
+                        while (mechanicOk.size() < Robots.getInstance().getRobotslist().size()-1){
                             Thread.sleep(100);
                         }
                         mechanic = true;
                         wantMechanic = false;
-                        System.out.println("I'm in the mechanic");
+                        System.out.println("\033[31mI'm in the mechanic\033[0m");
                         Thread.sleep(10000);  // MECHANIC HEREEEEEE
                         mechanic = false;
 
@@ -294,19 +302,17 @@ public class CleaningRobotController {
 
                         for(StreamObserver s: mechanicQueue)
                             s.onNext(reply);
+                        mechanicQueue.clear();
+                        System.out.println("end mechanic");
 
                     }
                 }
-                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });
         t.start();
-    }
-
-    private boolean probMechanic(){
-        return Math.random() <= 0.1;
+        return t;
     }
 
     public boolean isMechanic() {
@@ -321,11 +327,23 @@ public class CleaningRobotController {
         return myTimestamp;
     }
 
+    public void setMyTimestamp(long myTimestamp) {
+        this.myTimestamp = myTimestamp;
+    }
+
     public ArrayList<StreamObserver> getMechanicQueue() {
         return mechanicQueue;
     }
 
-    public ArrayList<StreamObserver> getMechanicOk() {
+    public ArrayList<Integer> getMechanicOk() {
         return mechanicOk;
+    }
+
+    public HashMap<gRPC_Client, StreamObserver> getClientRobotConnection() {
+        return clientRobotConnection;
+    }
+
+    public HashMap<Integer, gRPC_Client> getClientRobotId() {
+        return clientRobotId;
     }
 }

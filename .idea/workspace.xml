@@ -5,6 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="implementation Ricart &amp; Agrawala algorithm">
+      <change afterPath="$PROJECT_DIR$/paho12718860888000-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12745538061375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12768062024292-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho12825823721333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho13997911657833-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14153974282791-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14327975493416-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14631761082791-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14664024649916-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14698051921416-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho14781752550666-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15066202541666-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15083602951000-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15116108398708-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15847060878375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho15934689083000-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16468250667333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16490120800291-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16531763073083-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16860901778625-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16889753809833-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16895869787250-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho16901375910291-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" afterDir="false" />
@@ -113,6 +136,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.CleaningRobot">
+    <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
+      <module name="Distributed-Systems-Project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Greenfield.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CleaningRobot" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.CleaningRobot" />
       <module name="Distributed-Systems-Project.main" />
@@ -128,19 +164,6 @@
     </configuration>
     <configuration name="CleaningRobotController" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.CleaningRobotController" />
-      <module name="Distributed-Systems-Project.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Greenfield.RobotCLI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gRPCServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.gRPCServer" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
@@ -211,19 +234,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.CleaningRobotController" />
+      <item itemvalue="Application.AdministratorServer" />
       <item itemvalue="Application.CleaningRobot" />
       <item itemvalue="Application.gRPC_Client" />
-      <item itemvalue="Application.gRPCServer" />
       <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AdministratorServer" />
         <item itemvalue="Application.CleaningRobot" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
         <item itemvalue="Application.gRPC_Client" />
-        <item itemvalue="Application.gRPCServer" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +289,8 @@
       <workItem from="1684603317944" duration="2235000" />
       <workItem from="1684861062294" duration="21000" />
       <workItem from="1684861087204" duration="6075000" />
-      <workItem from="1684920704943" duration="3746000" />
+      <workItem from="1684920704943" duration="3767000" />
+      <workItem from="1685008708082" duration="16400000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -422,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684867445390</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="implementation Ricart &amp; Agrawala algorithm">
+      <created>1684924474858</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1684924474858</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

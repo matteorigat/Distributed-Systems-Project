@@ -12,15 +12,12 @@ public class gRPC_Server extends Thread{
 
     private final Robot robot;
 
-    private final ArrayList<gRPC_Client> arrgrpc;
-
     private CleaningRobotController robotController;
 
     private volatile boolean stopCondition = false;
 
-    protected gRPC_Server(Robot robot, ArrayList<gRPC_Client> arrgrpc, CleaningRobotController cr) {
+    protected gRPC_Server(Robot robot, CleaningRobotController cr) {
         this.robot = robot;
-        this.arrgrpc = arrgrpc;
         this.robotController = cr;
     }
 
@@ -33,7 +30,7 @@ public class gRPC_Server extends Thread{
         super.run();
 
         try {
-            Server server = ServerBuilder.forPort(robot.getPort()).addService(new gRPC_ServiceImpl(robot, arrgrpc, robotController)).build();
+            Server server = ServerBuilder.forPort(robot.getPort()).addService(new gRPC_ServiceImpl(robot, robotController)).build();
             server.start();
             System.out.println("The gRPC server is running...\n");
             while (!stopCondition){
