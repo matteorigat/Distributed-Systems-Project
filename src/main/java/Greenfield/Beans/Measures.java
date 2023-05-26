@@ -12,7 +12,7 @@ import java.util.List;
 public class Measures {
 
     @XmlElement(name="Greenfield_measure")
-    private List<Measure> measures;
+    private final List<Measure> measures;
 
     private static Measures instance;
 

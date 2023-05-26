@@ -1,6 +1,7 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
+import Greenfield.Beans.Robots;
 import Greenfield.gRPCServiceGrpc;
 import Greenfield.gRPCServiceGrpc.gRPCServiceStub;
 import Greenfield.GRPCService.*;
@@ -8,13 +9,15 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.util.Map;
+
 public class gRPC_Client extends Thread{
 
     private final static String IP = "localhost";
     private final Robot robot;
 
     private gRPCMessage mess;
-    private CleaningRobotController robotController;
+    private final CleaningRobotController robotController;
 
     private volatile boolean stopCondition = false;
 
@@ -45,7 +48,7 @@ public class gRPC_Client extends Thread{
             public void onNext(gRPCMessage grpcMessage) {
                 int id = grpcMessage.getId();
                 String message = grpcMessage.getMessage();
-                StreamObserver responseObserver = robotController.getClientRobotConnection().get(robotController.getClientRobotId().get(id));
+                StreamObserver<gRPCMessage> responseObserver = robotController.getClientRobotConnection().get(robotController.getClientRobotId().get(id));
                 System.out.println("\nCallback from robot: " +id+ " message: " +message);
 
                 if(message.equals("OK")){
@@ -90,8 +93,15 @@ public class gRPC_Client extends Thread{
                     }
                 }
             }
-            public void onError(Throwable throwable) {}
-            public void onCompleted() {}
+            public void onError(Throwable throwable) {
+                System.out.println("onError Callback");
+                channel.shutdownNow();
+
+            }
+            public void onCompleted() {
+                System.out.println("onCompleted Callback");
+                channel.shutdownNow();
+            }
         });
 
         robotController.getClientRobotConnection().put(this, serverStream);
@@ -111,8 +121,6 @@ public class gRPC_Client extends Thread{
             serverStream.onNext(mess);
 
         }
-
-        serverStream.onCompleted();
     }
 
     protected Robot getRobot() {
@@ -130,4 +138,6 @@ public class gRPC_Client extends Thread{
                 .build();
     }
 
+
 }
+

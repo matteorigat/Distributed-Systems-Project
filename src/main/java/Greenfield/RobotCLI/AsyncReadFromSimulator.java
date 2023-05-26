@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AsyncReadFromSimulator extends Thread{
 
-    private List<Double> listOfMeasurements = new ArrayList<>();
+    private final List<Double> listOfMeasurements = new ArrayList<>();
     private final SimulatorInterface sim;
 
     private volatile boolean stopCondition = false;

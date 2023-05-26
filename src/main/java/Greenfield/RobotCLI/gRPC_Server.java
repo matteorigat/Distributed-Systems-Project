@@ -1,18 +1,16 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
-import Greenfield.Beans.Robots;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class gRPC_Server extends Thread{
 
     private final Robot robot;
 
-    private CleaningRobotController robotController;
+    private final CleaningRobotController robotController;
 
     private volatile boolean stopCondition = false;
 

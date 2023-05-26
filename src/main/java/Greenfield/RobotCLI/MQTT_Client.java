@@ -8,14 +8,14 @@ import org.eclipse.paho.client.mqttv3.*;
 public class MQTT_Client extends Thread{
 
     private MqttClient MQTTclient;
-    private String broker = "tcp://localhost:1883";
+    private final String broker = "tcp://localhost:1883";
     private String clientId = MqttClient.generateClientId();
     private String topic = "greenfield/pollution/district";
-    private int qos = 2;
+    private final int qos = 2;
 
     private volatile boolean stopCondition = false;
 
-    private int id;
+    private final int id;
 
     private final SimulatorInterface sim;
 

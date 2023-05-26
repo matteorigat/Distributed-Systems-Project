@@ -15,10 +15,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Robots {
 
     @XmlElement(name="Greenfield_robots")
-    private List<Robot> robotslist;
+    private final List<Robot> robotslist;
 
     //@JsonIgnore
-    private int[] numOfRobots;
+    private final int[] numOfRobots;
 
     private static Robots instance;
 

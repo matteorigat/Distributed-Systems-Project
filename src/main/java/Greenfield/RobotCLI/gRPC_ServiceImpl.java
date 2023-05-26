@@ -14,11 +14,11 @@ import java.util.Map;
 public class gRPC_ServiceImpl extends gRPCServiceImplBase {
 
     //an hashset to store all the streams which the server uses to communicate with each client
-    private final HashSet<StreamObserver> observers = new LinkedHashSet<StreamObserver>();
+    private final HashSet<StreamObserver<gRPCMessage>> observers = new LinkedHashSet<StreamObserver<gRPCMessage>>();
 
-    private Robot robot;
+    private final Robot robot;
 
-    private CleaningRobotController robotController;
+    private final CleaningRobotController robotController;
 
     protected gRPC_ServiceImpl(Robot robot, CleaningRobotController cr) {
         this.robot = robot;
@@ -53,7 +53,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                     grpcClient.start();
                     robotController.getClientRobotConnection().put(grpcClient, responseObserver);
 
-                    if(robotController.WantMechanic()){
+                    /*if(robotController.WantMechanic()){    // se faccio questa call back la connessione cade
                         gRPCMessage reply = gRPCMessage.newBuilder()
                                 .setId(robot.getId())
                                 .setPort(robot.getPort())
@@ -62,7 +62,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                                 .build();
 
                         responseObserver.onNext(reply);
-                    }
+                    }*/
                 }
                 else if(message.equals("mechanic")){
                     if(!robotController.isMechanic() && !robotController.WantMechanic()){
@@ -108,24 +108,22 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                 synchronized (observers) {
                     observers.remove(responseObserver);
                 }
-                if(responseObserver == null)
-                    System.out.println("response is null");
-                System.out.println("conteins response? " + robotController.getClientRobotConnection().keySet().contains(responseObserver));
+
                 gRPC_Client key = null;
-                for(Map.Entry<gRPC_Client, StreamObserver> e: robotController.getClientRobotConnection().entrySet())
+                for(Map.Entry<gRPC_Client, StreamObserver<gRPCMessage>> e: robotController.getClientRobotConnection().entrySet())
                     if(e.getValue().equals(responseObserver)){
                         System.out.println("key found");
                         key = e.getKey();
                         break;
                     }
-                System.out.println(key);
                 if(key != null){
                     int id = key.getRobot().getId();
                     System.out.println("id: " + id);
                     Robots.getInstance().removeById(id);
                     robotController.deleteRobotFromServer(id);// only one robot is successful
-                    robotController.getMechanicQueue().remove(responseObserver);
-                    robotController.getMechanicOk().remove(id);
+                    robotController.getMechanicQueue().remove(key);
+                    if(robotController.getMechanicOk().contains(id))
+                        robotController.getMechanicOk().remove(id);
                 }
             }
 
@@ -135,23 +133,21 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                 synchronized (observers) {
                     observers.remove(responseObserver);
                 }
-                if(responseObserver == null)
-                    System.out.println("response is null");
-                System.out.println("conteins response? " + robotController.getClientRobotConnection().keySet().contains(responseObserver));
+
                 gRPC_Client key = null;
-                for(Map.Entry<gRPC_Client, StreamObserver> e: robotController.getClientRobotConnection().entrySet())
+                for(Map.Entry<gRPC_Client, StreamObserver<gRPCMessage>> e: robotController.getClientRobotConnection().entrySet())
                     if(e.getValue().equals(responseObserver)){
                         System.out.println("key found");
                         key = e.getKey();
                         break;
                     }
-                System.out.println(key);
                 if(key != null){
                     int id = key.getRobot().getId();
                     System.out.println("id: " + id);
                     Robots.getInstance().removeById(id);
-                    robotController.getMechanicQueue().remove(responseObserver);
-                    robotController.getMechanicOk().remove(id);
+                    robotController.getMechanicQueue().remove(key);
+                    if(robotController.getMechanicOk().contains(id))
+                        robotController.getMechanicOk().remove(id);
                 }
             }
         };

@@ -4,32 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="implementation Ricart &amp; Agrawala algorithm">
-      <change afterPath="$PROJECT_DIR$/paho12718860888000-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12745538061375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12768062024292-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho12825823721333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho13997911657833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14153974282791-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14327975493416-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14631761082791-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14664024649916-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14698051921416-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho14781752550666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho15066202541666-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho15083602951000-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho15116108398708-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho15847060878375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho15934689083000-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16468250667333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16490120800291-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16531763073083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16860901778625-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16889753809833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16895869787250-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho16901375910291-tcplocalhost1883/.lck" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="Ricart &amp; Agrawala algorithm completed">
+      <change afterPath="$PROJECT_DIR$/paho28161706821375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho28246031420917-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho28253027731125-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho28259451787333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho28265232918875-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho28271060548417-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Measures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/AsyncReadFromSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/AsyncReadFromSimulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" afterDir="false" />
@@ -242,10 +229,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AdministratorServer" />
-        <item itemvalue="Application.CleaningRobot" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
+        <item itemvalue="Application.AdministratorServer" />
+        <item itemvalue="Application.CleaningRobot" />
         <item itemvalue="Application.gRPC_Client" />
       </list>
     </recent_temporary>
@@ -290,7 +277,9 @@
       <workItem from="1684861062294" duration="21000" />
       <workItem from="1684861087204" duration="6075000" />
       <workItem from="1684920704943" duration="3767000" />
-      <workItem from="1685008708082" duration="16400000" />
+      <workItem from="1685008708082" duration="24331000" />
+      <workItem from="1685049826220" duration="631000" />
+      <workItem from="1685051461235" duration="2295000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -453,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684924474858</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ricart &amp; Agrawala algorithm completed">
+      <created>1685034197607</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1685034197607</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +486,8 @@
     <MESSAGE value="first implementation bidirectional gRPC" />
     <MESSAGE value="implementation bidirectional gRPC" />
     <MESSAGE value="implementation Ricart &amp; Agrawala algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementation Ricart &amp; Agrawala algorithm" />
+    <MESSAGE value="Ricart &amp; Agrawala algorithm completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ricart &amp; Agrawala algorithm completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

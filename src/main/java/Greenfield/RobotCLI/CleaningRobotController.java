@@ -25,7 +25,7 @@ public class CleaningRobotController {
     private String postPath;
     private String serverAddress;
 
-    private final HashMap<gRPC_Client, StreamObserver> clientRobotConnection = new HashMap<>();
+    private final HashMap<gRPC_Client, StreamObserver<GRPCService.gRPCMessage>> clientRobotConnection = new HashMap<>();
     private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
 
     private Robot robot;
@@ -35,8 +35,8 @@ public class CleaningRobotController {
 
     private long myTimestamp;
 
-    private ArrayList<StreamObserver> mechanicQueue = new ArrayList<>();
-    private ArrayList<Integer> mechanicOk = new ArrayList<>();
+    private final ArrayList<StreamObserver<GRPCService.gRPCMessage>> mechanicQueue = new ArrayList<>();
+    private final ArrayList<Integer> mechanicOk = new ArrayList<>();
 
 
     public void Init(){
@@ -289,7 +289,7 @@ public class CleaningRobotController {
                         }
                         mechanic = true;
                         wantMechanic = false;
-                        System.out.println("\033[31mI'm in the mechanic\033[0m");
+                        System.out.println("\033[31mI'm at the mechanic\033[0m");
                         Thread.sleep(10000);  // MECHANIC HEREEEEEE
                         mechanic = false;
 
@@ -300,7 +300,7 @@ public class CleaningRobotController {
                                 .setTimestamp(System.currentTimeMillis())
                                 .build();
 
-                        for(StreamObserver s: mechanicQueue)
+                        for(StreamObserver<GRPCService.gRPCMessage> s: mechanicQueue)
                             s.onNext(reply);
                         mechanicQueue.clear();
                         System.out.println("end mechanic");
@@ -331,7 +331,7 @@ public class CleaningRobotController {
         this.myTimestamp = myTimestamp;
     }
 
-    public ArrayList<StreamObserver> getMechanicQueue() {
+    public ArrayList<StreamObserver<GRPCService.gRPCMessage>> getMechanicQueue() {
         return mechanicQueue;
     }
 
@@ -339,11 +339,12 @@ public class CleaningRobotController {
         return mechanicOk;
     }
 
-    public HashMap<gRPC_Client, StreamObserver> getClientRobotConnection() {
+    public HashMap<gRPC_Client, StreamObserver<GRPCService.gRPCMessage>> getClientRobotConnection() {
         return clientRobotConnection;
     }
 
     public HashMap<Integer, gRPC_Client> getClientRobotId() {
         return clientRobotId;
     }
+
 }
