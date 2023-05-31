@@ -1,8 +1,8 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
-import Greenfield.GreetingServiceGrpc;
-import Greenfield.GreetingServiceGrpc.*;
+import Greenfield.gRPCServiceGrpc;
+import Greenfield.gRPCServiceGrpc.*;
 import Greenfield.GRPCService.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -22,15 +22,7 @@ public class gRPC_Client extends Thread{
     public void run() {
         super.run();
 
-        System.out.println("Trying to call greeting synchronous method:\n");
-
-        synchronousCall();
-
-        System.out.println("\n...Done!");
-
-        System.out.println("--------------");
-
-        System.out.println("Now calling streamGreeting asynchronous method:\n");
+        System.out.println("Trying calling streamGreeting asynchronous method:\n");
 
         try {
             asynchronousStreamCall();
@@ -43,28 +35,6 @@ public class gRPC_Client extends Thread{
     }
 
 
-    //calling a synchronous rpc operation
-    public void synchronousCall(){
-
-        //plaintext channel on the address (ip/port) which offers the GreetingService service
-        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:" + robot.getPort()).usePlaintext().build();
-
-        //creating a blocking stub on the channel
-        GreetingServiceBlockingStub stub = GreetingServiceGrpc.newBlockingStub(channel);
-
-        //creating the HelloResponse object which will be provided as input to the RPC method
-        HelloRequest request = HelloRequest.newBuilder().setName("Pippo").build();
-
-        //calling the method. it returns an instance of HelloResponse
-        HelloResponse response = stub.greeting(request);
-
-        //printing the answer
-        System.out.println(response.getGreeting());
-
-        //closing the channel
-        channel.shutdown();
-
-    }
 
     //calling an asynchronous method based on stream
     public void asynchronousStreamCall() throws InterruptedException {
@@ -73,13 +43,13 @@ public class gRPC_Client extends Thread{
         final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:" + robot.getPort()).usePlaintext().build();
 
         //creating an asynchronous stub on the channel
-        GreetingServiceStub stub = GreetingServiceGrpc.newStub(channel);
+        gRPCServiceStub stub = gRPCServiceGrpc.newStub(channel);
 
         //creating the HelloResponse object which will be provided as input to the RPC method
         HelloRequest request = HelloRequest.newBuilder().setName("Pippo").build();
 
         //calling the RPC method. since it is asynchronous, we need to define handlers
-        stub.streamGreeting(request, new StreamObserver<HelloResponse>() {
+        stub.hello(request, new StreamObserver<HelloResponse>() {
 
             //this hanlder takes care of each item received in the stream
             public void onNext(HelloResponse helloResponse) {

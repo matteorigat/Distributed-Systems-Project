@@ -13,9 +13,7 @@ message HelloResponse {
 }
 
 // Defining a Service, a Service can have multiple RPC operations
-service GreetingService {
+service gRPCService {
 
-    rpc greeting(HelloRequest) returns (HelloResponse);
-
-    rpc streamGreeting(HelloRequest) returns (stream HelloResponse);
+    rpc hello(HelloRequest) returns (stream HelloResponse);
 }

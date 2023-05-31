@@ -1395,11 +1395,9 @@ public final class GRPCService {
     java.lang.String[] descriptorData = {
       "\n\021gRPCService.proto\022\nGreenfield\"-\n\014Hello" +
       "Request\022\014\n\004name\030\001 \001(\t\022\017\n\007hobbies\030\002 \003(\t\"!" +
-      "\n\rHelloResponse\022\020\n\010greeting\030\001 \001(\t2\233\001\n\017Gr" +
-      "eetingService\022?\n\010greeting\022\030.Greenfield.H" +
-      "elloRequest\032\031.Greenfield.HelloResponse\022G" +
-      "\n\016streamGreeting\022\030.Greenfield.HelloReque" +
-      "st\032\031.Greenfield.HelloResponse0\001b\006proto3"
+      "\n\rHelloResponse\022\020\n\010greeting\030\001 \001(\t2M\n\013gRP" +
+      "CService\022>\n\005hello\022\030.Greenfield.HelloRequ" +
+      "est\032\031.Greenfield.HelloResponse0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
