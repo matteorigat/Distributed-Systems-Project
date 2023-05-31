@@ -53,7 +53,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                     grpcClient.start();
                     robotController.getClientRobotConnection().put(grpcClient, responseObserver);
 
-                    /*if(robotController.WantMechanic()){    // se faccio questa call back la connessione cade
+                    if(robotController.WantMechanic()){    // se faccio questa call back la connessione cade
                         gRPCMessage reply = gRPCMessage.newBuilder()
                                 .setId(robot.getId())
                                 .setPort(robot.getPort())
@@ -62,7 +62,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
                                 .build();
 
                         responseObserver.onNext(reply);
-                    }*/
+                    }
                 }
                 else if(message.equals("mechanic")){
                     if(!robotController.isMechanic() && !robotController.WantMechanic()){
