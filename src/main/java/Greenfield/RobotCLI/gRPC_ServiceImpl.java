@@ -14,7 +14,7 @@ import java.util.Map;
 public class gRPC_ServiceImpl extends gRPCServiceImplBase {
 
     //an hashset to store all the streams which the server uses to communicate with each client
-    private final HashSet<StreamObserver<gRPCMessage>> observers = new LinkedHashSet<StreamObserver<gRPCMessage>>();
+    private final HashSet<StreamObserver<Hello>> observers = new LinkedHashSet<StreamObserver<Hello>>();
 
     private final Robot robot;
 
@@ -26,12 +26,59 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
     }
 
     @Override
-    public StreamObserver<gRPCMessage> grpc(final StreamObserver<gRPCMessage> responseObserver){
-
+    public StreamObserver<Hello> hello(StreamObserver<Hello> responseObserver) {
         //the stream used to communicate with a specific client is stored in a hash set (avoiding duplicates)
         synchronized (observers) {
             observers.add(responseObserver);
         }
+
+        return new StreamObserver<Hello>() {
+
+            //receiving a message from a specific client
+            public void onNext(Hello hello) {
+
+                //unwrapping message
+                int id = hello.getId();
+                int port = hello.getPort();
+                Robot r = new Robot(id, port);
+                r.setPosition(hello.getX(), hello.getY());
+                System.out.println("\nHello message from robot: " + id);
+
+                Robots.getInstance().add(r);
+                gRPC_Client grpcClient = new gRPC_Client(r, robotController);
+                grpcClient.start();
+                robotController.getClientRobotConnection().put(grpcClient, responseObserver);
+
+                if(robotController.WantMechanic()){    // se faccio questa call back la connessione cade
+                    System.out.println("Mechanic in hello onNext");
+                    /*gRPCMessage reply = gRPCMessage.newBuilder()
+                            .setId(robot.getId())
+                            .setPort(robot.getPort())
+                            .setMessage("mechanic")
+                            .setTimestamp(System.currentTimeMillis())
+                            .build();
+
+                    responseObserver.onNext(reply);*/
+                }
+
+            }
+
+            public void onError(Throwable throwable) {
+                System.out.println("onError Callback");
+
+            }
+            public void onCompleted() {
+                System.out.println("onCompleted Callback");
+            }
+
+        };
+    }
+
+    /*
+
+    @Override
+    public StreamObserver<gRPCMessage> grpc(final StreamObserver<gRPCMessage> responseObserver){
+
         //it returns the stream that will be used by the clients to send messages.
         //the client will write on this stream
         return new StreamObserver<gRPCMessage>() {
@@ -152,4 +199,6 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
             }
         };
     }
+
+     */
 }

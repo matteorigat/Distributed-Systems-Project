@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="gRPC bug fix">
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="pre gRPC changes">
+      <change afterPath="$PROJECT_DIR$/paho2371284571375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho2419489910584-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho2432151326750-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho2451706236625-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +118,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobot">
+  <component name="RunManager" selected="Application.AdministratorServer">
     <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
       <module name="Distributed-Systems-Project.main" />
@@ -268,7 +277,7 @@
       <workItem from="1685049826220" duration="631000" />
       <workItem from="1685051461235" duration="2295000" />
       <workItem from="1685118877916" duration="62000" />
-      <workItem from="1685523190452" duration="620000" />
+      <workItem from="1685523190452" duration="3459000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -445,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685118930805</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="pre gRPC changes">
+      <created>1685523857569</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685523857569</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +500,8 @@
     <MESSAGE value="implementation Ricart &amp; Agrawala algorithm" />
     <MESSAGE value="Ricart &amp; Agrawala algorithm completed" />
     <MESSAGE value="gRPC bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="gRPC bug fix" />
+    <MESSAGE value="pre gRPC changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="pre gRPC changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

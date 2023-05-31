@@ -1,16 +1,31 @@
 syntax = "proto3";
 package Greenfield;
 
-message gRPCMessage {
 
+message Hello{
     uint32 id = 1;
     uint32 port = 2;
-    string message = 3;
-    uint64 timestamp = 4;
+    uint32 x = 3;
+    uint32 y = 4;
+}
 
+message Mechanic{
+    uint32 id = 1;
+    uint64 timestamp = 2;
+}
+
+message Ok{
+    uint32 id = 1;
+}
+
+message GoodBye{
+    int32 id = 1;
 }
 
 service gRPCService {
 
-    rpc grpc(stream gRPCMessage) returns (stream gRPCMessage);
+    rpc hello(stream Hello) returns (stream Hello);
+    rpc mechanic(stream Mechanic) returns (stream Mechanic);
+    rpc ok(stream Ok) returns (stream Ok);
+    rpc goodbye(stream GoodBye) returns (stream GoodBye);
 }

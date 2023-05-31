@@ -25,7 +25,7 @@ public class CleaningRobotController {
     private String postPath;
     private String serverAddress;
 
-    private final HashMap<gRPC_Client, StreamObserver<GRPCService.gRPCMessage>> clientRobotConnection = new HashMap<>();
+    private final HashMap<gRPC_Client, StreamObserver<GRPCService.Hello>> clientRobotConnection = new HashMap<>();
     private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
 
     private Robot robot;
@@ -35,7 +35,7 @@ public class CleaningRobotController {
 
     private long myTimestamp;
 
-    private final ArrayList<StreamObserver<GRPCService.gRPCMessage>> mechanicQueue = new ArrayList<>();
+    private final ArrayList<StreamObserver<GRPCService.Mechanic>> mechanicQueue = new ArrayList<>();
     private final ArrayList<Integer> mechanicOk = new ArrayList<>();
 
 
@@ -123,7 +123,7 @@ public class CleaningRobotController {
 
 
         //Hello message to other robots in the peer to peer network
-        sendMessage("hello");
+        sendHelloMessage();
 
         //######################################################################################
 
@@ -136,7 +136,7 @@ public class CleaningRobotController {
         mqtt.start();
 
 
-        Thread mechanicThread = asyncStartMechanic();
+        //Thread mechanicThread = asyncStartMechanic();
 
 
         //######################################################################################
@@ -165,7 +165,7 @@ public class CleaningRobotController {
                 case "2":
                     //Message to other robots in the peer to peer network to go to mechanic
                     wantMechanic = true;
-                    sendMessage("mechanic");
+                    //sendMessage("mechanic");
                     break;
 
                 case "quit":
@@ -178,7 +178,7 @@ public class CleaningRobotController {
                     }
 
                     //Goodbye message to other robots in the peer to peer network
-                    sendMessage("quit");
+                    //sendMessage("quit");
 
                     //DELETE: request to remove a cleaning robot from the Greenfield city
                     deleteRobotFromServer(robot.getId());
@@ -202,7 +202,7 @@ public class CleaningRobotController {
             System.out.println("mqtt join");
             pm10.join();
             System.out.println("pm10 join");
-            mechanicThread.join();
+            //mechanicThread.join();
             System.out.println("mechanic join");
             grpc.join();
             System.out.println("gRPC join");
@@ -220,12 +220,9 @@ public class CleaningRobotController {
 
     //######################################################################################
 
-    private void sendMessage(String m){
+    private void sendHelloMessage(){
         for(gRPC_Client c: clientRobotConnection.keySet()){
-            if(m.equals("quit"))
-                c.stopMeGently();
-
-            c.setMessage(m, robot);
+            c.setHello(robot);
             synchronized (c){
                 c.notify();
             }
@@ -283,7 +280,7 @@ public class CleaningRobotController {
                         System.out.println("starting mechanic steps");
                         wantMechanic = true;
                         mechanicOk.clear();
-                        sendMessage("mechanic");
+                        //sendMessage("mechanic");
                         while (mechanicOk.size() < Robots.getInstance().getRobotslist().size()-1){
                             Thread.sleep(100);
                         }
@@ -293,14 +290,12 @@ public class CleaningRobotController {
                         Thread.sleep(10000);  // MECHANIC HEREEEEEE
                         mechanic = false;
 
-                        GRPCService.gRPCMessage reply = GRPCService.gRPCMessage.newBuilder()
+                        GRPCService.Mechanic reply = GRPCService.Mechanic.newBuilder()
                                 .setId(robot.getId())
-                                .setPort(robot.getPort())
-                                .setMessage("OK")
                                 .setTimestamp(System.currentTimeMillis())
                                 .build();
 
-                        for(StreamObserver<GRPCService.gRPCMessage> s: mechanicQueue)
+                        for(StreamObserver<GRPCService.Mechanic> s: mechanicQueue)
                             s.onNext(reply);
                         mechanicQueue.clear();
                         System.out.println("end mechanic");
@@ -331,7 +326,7 @@ public class CleaningRobotController {
         this.myTimestamp = myTimestamp;
     }
 
-    public ArrayList<StreamObserver<GRPCService.gRPCMessage>> getMechanicQueue() {
+    public ArrayList<StreamObserver<GRPCService.Mechanic>> getMechanicQueue() {
         return mechanicQueue;
     }
 
@@ -339,7 +334,7 @@ public class CleaningRobotController {
         return mechanicOk;
     }
 
-    public HashMap<gRPC_Client, StreamObserver<GRPCService.gRPCMessage>> getClientRobotConnection() {
+    public HashMap<gRPC_Client, StreamObserver<GRPCService.Hello>> getClientRobotConnection() {
         return clientRobotConnection;
     }
 

@@ -16,7 +16,7 @@ public class gRPC_Client extends Thread{
     private final static String IP = "localhost";
     private final Robot robot;
 
-    private gRPCMessage mess;
+    private Hello mess;
     private final CleaningRobotController robotController;
 
     private volatile boolean stopCondition = false;
@@ -42,56 +42,11 @@ public class gRPC_Client extends Thread{
 
         //the stub returns a stream (to communicate with the server, and thus with all the other clients).
         //the argument is the stream of messages which are transmitted by the server.
-        StreamObserver<gRPCMessage> serverStream = stub.grpc(new StreamObserver<gRPCMessage>() {
+        StreamObserver<Hello> serverStream = stub.hello(new StreamObserver<Hello>() {
 
             //remember: all the methods here are CALLBACKS which are handled in an asynchronous manner.
-            public void onNext(gRPCMessage grpcMessage) {
-                int id = grpcMessage.getId();
-                String message = grpcMessage.getMessage();
-                StreamObserver<gRPCMessage> responseObserver = robotController.getClientRobotConnection().get(robotController.getClientRobotId().get(id));
-                System.out.println("\nCallback from robot: " +id+ " message: " +message);
-
-                if(message.equals("OK")){
-                    if(!robotController.getMechanicOk().contains(id))
-                        robotController.getMechanicOk().add(grpcMessage.getId());
-                    System.out.println("Callback received ok");
-                }
-                else if(message.equals("mechanic")){
-                    if(!robotController.isMechanic() && !robotController.WantMechanic()){
-                        gRPCMessage reply = gRPCMessage.newBuilder()
-                                .setId(robot.getId())
-                                .setPort(robot.getPort())
-                                .setMessage("OK")
-                                .setTimestamp(System.currentTimeMillis())
-                                .build();
-
-                        responseObserver.onNext(reply);
-                        System.out.println("Callback ok sent, i dont't want mechanic");
-                    }
-                    else if (robotController.isMechanic()){
-                        robotController.getMechanicQueue().add(responseObserver);
-                        System.out.println("Callback added to queue");
-                    }
-                    else if(robotController.WantMechanic() && !robotController.isMechanic()){
-                        if(grpcMessage.getTimestamp() < robotController.getMyTimestamp()){
-                            gRPCMessage reply = gRPCMessage.newBuilder()
-                                    .setId(robot.getId())
-                                    .setPort(robot.getPort())
-                                    .setMessage("OK")
-                                    .setTimestamp(System.currentTimeMillis())
-                                    .build();
-
-                            responseObserver.onNext(reply);
-                            System.out.println("Callback ok sent, i wait to go to mechanic");
-                        } else {
-                            robotController.getMechanicQueue().add(responseObserver);
-                            System.out.println("Callback added to queue, i'm first");
-                        }
-
-                    } else {
-                        System.out.println("Callback mechanic something wrong in gRPC_Client");
-                    }
-                }
+            public void onNext(Hello hello) {
+                System.out.println("onNext Callback");
             }
             public void onError(Throwable throwable) {
                 System.out.println("onError Callback");
@@ -127,16 +82,23 @@ public class gRPC_Client extends Thread{
         return robot;
     }
 
-    protected void setMessage(String m, Robot r){
-        long time = System.currentTimeMillis();
-        robotController.setMyTimestamp(time);
-        mess = gRPCMessage.newBuilder()
+    protected void setHello(Robot r){
+        mess = Hello.newBuilder()
                 .setId(r.getId())
                 .setPort(r.getPort())
-                .setMessage(m)
-                .setTimestamp(time)
+                .setX(r.getPosition().x)
+                .setY(r.getPosition().y)
                 .build();
     }
+
+    /*protected void setMechanic(Robot r){
+        long time = System.currentTimeMillis();
+        robotController.setMyTimestamp(time);
+        mess = Mechanic.newBuilder()
+                .setId(r.getId())
+                .setTimestamp(time)
+                .build();
+    }*/
 
 
 }
