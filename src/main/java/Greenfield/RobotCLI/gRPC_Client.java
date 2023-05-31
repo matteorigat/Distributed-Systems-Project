@@ -1,105 +1,114 @@
 package Greenfield.RobotCLI;
 
 import Greenfield.Beans.Robot;
-import Greenfield.Beans.Robots;
-import Greenfield.gRPCServiceGrpc;
-import Greenfield.gRPCServiceGrpc.gRPCServiceStub;
+import Greenfield.GreetingServiceGrpc;
+import Greenfield.GreetingServiceGrpc.*;
 import Greenfield.GRPCService.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class gRPC_Client extends Thread{
 
-    private final static String IP = "localhost";
-    private final Robot robot;
+    private Robot robot;
 
-    private Hello mess;
-    private final CleaningRobotController robotController;
-
-    private volatile boolean stopCondition = false;
-
-    protected gRPC_Client(Robot robot, CleaningRobotController rc) {
+    public gRPC_Client(Robot robot) {
         this.robot = robot;
-        this.robotController = rc;
-    }
-
-    protected void stopMeGently() {
-        stopCondition = true;
     }
 
     @Override
-    public void run(){
+    public void run() {
         super.run();
 
-        //opening a connection with robot
-        final ManagedChannel channel = ManagedChannelBuilder.forTarget(IP+":"+robot.getPort()).usePlaintext().build();
+        System.out.println("Trying to call greeting synchronous method:\n");
 
-        //creating the asynchronous stub
-        gRPCServiceStub stub = gRPCServiceGrpc.newStub(channel);
+        synchronousCall();
 
-        //the stub returns a stream (to communicate with the server, and thus with all the other clients).
-        //the argument is the stream of messages which are transmitted by the server.
-        StreamObserver<Hello> serverStream = stub.hello(new StreamObserver<Hello>() {
+        System.out.println("\n...Done!");
 
-            //remember: all the methods here are CALLBACKS which are handled in an asynchronous manner.
-            public void onNext(Hello hello) {
-                System.out.println("onNext Callback");
+        System.out.println("--------------");
+
+        System.out.println("Now calling streamGreeting asynchronous method:\n");
+
+        try {
+            asynchronousStreamCall();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("\n...Done!");
+
+    }
+
+
+    //calling a synchronous rpc operation
+    public void synchronousCall(){
+
+        //plaintext channel on the address (ip/port) which offers the GreetingService service
+        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:" + robot.getPort()).usePlaintext().build();
+
+        //creating a blocking stub on the channel
+        GreetingServiceBlockingStub stub = GreetingServiceGrpc.newBlockingStub(channel);
+
+        //creating the HelloResponse object which will be provided as input to the RPC method
+        HelloRequest request = HelloRequest.newBuilder().setName("Pippo").build();
+
+        //calling the method. it returns an instance of HelloResponse
+        HelloResponse response = stub.greeting(request);
+
+        //printing the answer
+        System.out.println(response.getGreeting());
+
+        //closing the channel
+        channel.shutdown();
+
+    }
+
+    //calling an asynchronous method based on stream
+    public void asynchronousStreamCall() throws InterruptedException {
+
+        //plaintext channel on the address (ip/port) which offers the GreetingService service
+        final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:" + robot.getPort()).usePlaintext().build();
+
+        //creating an asynchronous stub on the channel
+        GreetingServiceStub stub = GreetingServiceGrpc.newStub(channel);
+
+        //creating the HelloResponse object which will be provided as input to the RPC method
+        HelloRequest request = HelloRequest.newBuilder().setName("Pippo").build();
+
+        //calling the RPC method. since it is asynchronous, we need to define handlers
+        stub.streamGreeting(request, new StreamObserver<HelloResponse>() {
+
+            //this hanlder takes care of each item received in the stream
+            public void onNext(HelloResponse helloResponse) {
+
+                //each item is just printed
+                System.out.println(helloResponse.getGreeting());
+
             }
+
+            //if there are some errors, this method will be called
             public void onError(Throwable throwable) {
-                System.out.println("onError Callback");
+
+                System.out.println("Error! "+throwable.getMessage());
+
+            }
+
+            //when the stream is completed (the server called "onCompleted") just close the channel
+            public void onCompleted() {
+
                 channel.shutdownNow();
 
             }
-            public void onCompleted() {
-                System.out.println("onCompleted Callback");
-                channel.shutdownNow();
-            }
+
         });
 
-        robotController.getClientRobotConnection().put(this, serverStream);
+        //you need this. otherwise the method will terminate before that answers from the server are received
+        channel.awaitTermination(10, TimeUnit.SECONDS);
 
-        //while loop which reads the message from robotController
-        while(!stopCondition){
 
-            try {
-                synchronized (this){
-                    this.wait();
-                }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-            //we use the stream to communicate to the server our message.
-            serverStream.onNext(mess);
-
-        }
     }
-
-    protected Robot getRobot() {
-        return robot;
-    }
-
-    protected void setHello(Robot r){
-        mess = Hello.newBuilder()
-                .setId(r.getId())
-                .setPort(r.getPort())
-                .setX(r.getPosition().x)
-                .setY(r.getPosition().y)
-                .build();
-    }
-
-    /*protected void setMechanic(Robot r){
-        long time = System.currentTimeMillis();
-        robotController.setMyTimestamp(time);
-        mess = Mechanic.newBuilder()
-                .setId(r.getId())
-                .setTimestamp(time)
-                .build();
-    }*/
-
 
 }
-

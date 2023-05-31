@@ -2,30 +2,20 @@ syntax = "proto3";
 package Greenfield;
 
 
-message Hello{
-    uint32 id = 1;
-    uint32 port = 2;
-    uint32 x = 3;
-    uint32 y = 4;
+// Request payload
+message HelloRequest {
+    string name = 1;
+    repeated string hobbies = 2;
 }
 
-message Mechanic{
-    uint32 id = 1;
-    uint64 timestamp = 2;
+message HelloResponse {
+    string greeting = 1;
 }
 
-message Ok{
-    uint32 id = 1;
-}
+// Defining a Service, a Service can have multiple RPC operations
+service GreetingService {
 
-message GoodBye{
-    int32 id = 1;
-}
+    rpc greeting(HelloRequest) returns (HelloResponse);
 
-service gRPCService {
-
-    rpc hello(stream Hello) returns (stream Hello);
-    rpc mechanic(stream Mechanic) returns (stream Mechanic);
-    rpc ok(stream Ok) returns (stream Ok);
-    rpc goodbye(stream GoodBye) returns (stream GoodBye);
+    rpc streamGreeting(HelloRequest) returns (stream HelloResponse);
 }

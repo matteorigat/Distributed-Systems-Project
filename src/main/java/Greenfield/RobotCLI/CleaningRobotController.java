@@ -25,7 +25,7 @@ public class CleaningRobotController {
     private String postPath;
     private String serverAddress;
 
-    private final HashMap<gRPC_Client, StreamObserver<GRPCService.Hello>> clientRobotConnection = new HashMap<>();
+    private final HashMap<gRPC_Client, StreamObserver<GRPCService.HelloRequest>> clientRobotConnection = new HashMap<>();
     private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
 
     private Robot robot;
@@ -35,7 +35,7 @@ public class CleaningRobotController {
 
     private long myTimestamp;
 
-    private final ArrayList<StreamObserver<GRPCService.Mechanic>> mechanicQueue = new ArrayList<>();
+    private final ArrayList<StreamObserver<GRPCService.HelloRequest>> mechanicQueue = new ArrayList<>();
     private final ArrayList<Integer> mechanicOk = new ArrayList<>();
 
 
@@ -110,7 +110,7 @@ public class CleaningRobotController {
 
         for(int i=0; i<Robots.getInstance().getRobotslist().size(); i++) {
             if (Robots.getInstance().getRobotslist().get(i).getId() != robot.getId()) {
-                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i), this);
+                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i));
                 grpcClient.start();
             }
         }
@@ -123,7 +123,7 @@ public class CleaningRobotController {
 
 
         //Hello message to other robots in the peer to peer network
-        sendHelloMessage();
+        //sendHelloMessage();
 
         //######################################################################################
 
@@ -220,14 +220,14 @@ public class CleaningRobotController {
 
     //######################################################################################
 
-    private void sendHelloMessage(){
+    /*private void sendHelloMessage(){
         for(gRPC_Client c: clientRobotConnection.keySet()){
             c.setHello(robot);
             synchronized (c){
                 c.notify();
             }
         }
-    }
+    }*/
 
     protected void deleteRobotFromServer(int robotId){
         postPath = "/robots/" + robotId;
@@ -290,13 +290,13 @@ public class CleaningRobotController {
                         Thread.sleep(10000);  // MECHANIC HEREEEEEE
                         mechanic = false;
 
-                        GRPCService.Mechanic reply = GRPCService.Mechanic.newBuilder()
+                        /*GRPCService.Mechanic reply = GRPCService.Mechanic.newBuilder()
                                 .setId(robot.getId())
                                 .setTimestamp(System.currentTimeMillis())
                                 .build();
 
                         for(StreamObserver<GRPCService.Mechanic> s: mechanicQueue)
-                            s.onNext(reply);
+                            s.onNext(reply);*/
                         mechanicQueue.clear();
                         System.out.println("end mechanic");
 
@@ -326,7 +326,7 @@ public class CleaningRobotController {
         this.myTimestamp = myTimestamp;
     }
 
-    public ArrayList<StreamObserver<GRPCService.Mechanic>> getMechanicQueue() {
+    public ArrayList<StreamObserver<GRPCService.HelloRequest>> getMechanicQueue() {
         return mechanicQueue;
     }
 
@@ -334,7 +334,7 @@ public class CleaningRobotController {
         return mechanicOk;
     }
 
-    public HashMap<gRPC_Client, StreamObserver<GRPCService.Hello>> getClientRobotConnection() {
+    public HashMap<gRPC_Client, StreamObserver<GRPCService.HelloRequest>> getClientRobotConnection() {
         return clientRobotConnection;
     }
 

@@ -14,54 +14,73 @@ public final class GRPCService {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface HelloOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Greenfield.Hello)
+  public interface HelloRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Greenfield.HelloRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
+     * <code>string name = 1;</code>
+     * @return The name.
      */
-    int getId();
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
 
     /**
-     * <code>uint32 port = 2;</code>
-     * @return The port.
+     * <code>repeated string hobbies = 2;</code>
+     * @return A list containing the hobbies.
      */
-    int getPort();
-
+    java.util.List<java.lang.String>
+        getHobbiesList();
     /**
-     * <code>uint32 x = 3;</code>
-     * @return The x.
+     * <code>repeated string hobbies = 2;</code>
+     * @return The count of hobbies.
      */
-    int getX();
-
+    int getHobbiesCount();
     /**
-     * <code>uint32 y = 4;</code>
-     * @return The y.
+     * <code>repeated string hobbies = 2;</code>
+     * @param index The index of the element to return.
+     * @return The hobbies at the given index.
      */
-    int getY();
+    java.lang.String getHobbies(int index);
+    /**
+     * <code>repeated string hobbies = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the hobbies at the given index.
+     */
+    com.google.protobuf.ByteString
+        getHobbiesBytes(int index);
   }
   /**
-   * Protobuf type {@code Greenfield.Hello}
+   * <pre>
+   * Request payload
+   * </pre>
+   *
+   * Protobuf type {@code Greenfield.HelloRequest}
    */
-  public  static final class Hello extends
+  public  static final class HelloRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Greenfield.Hello)
-      HelloOrBuilder {
+      // @@protoc_insertion_point(message_implements:Greenfield.HelloRequest)
+      HelloRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Hello.newBuilder() to construct.
-    private Hello(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use HelloRequest.newBuilder() to construct.
+    private HelloRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Hello() {
+    private HelloRequest() {
+      name_ = "";
+      hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Hello();
+      return new HelloRequest();
     }
 
     @java.lang.Override
@@ -69,7 +88,7 @@ public final class GRPCService {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Hello(
+    private HelloRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -77,6 +96,7 @@ public final class GRPCService {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -87,24 +107,19 @@ public final class GRPCService {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = input.readUInt32();
+              name_ = s;
               break;
             }
-            case 16: {
-
-              port_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-
-              x_ = input.readUInt32();
-              break;
-            }
-            case 32: {
-
-              y_ = input.readUInt32();
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                hobbies_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              hobbies_.add(s);
               break;
             }
             default: {
@@ -122,61 +137,95 @@ public final class GRPCService {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          hobbies_ = hobbies_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Hello_descriptor;
+      return Greenfield.GRPCService.internal_static_Greenfield_HelloRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Hello_fieldAccessorTable
+      return Greenfield.GRPCService.internal_static_Greenfield_HelloRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Greenfield.GRPCService.Hello.class, Greenfield.GRPCService.Hello.Builder.class);
+              Greenfield.GRPCService.HelloRequest.class, Greenfield.GRPCService.HelloRequest.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
     /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
+     * <code>string name = 1;</code>
+     * @return The name.
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int PORT_FIELD_NUMBER = 2;
-    private int port_;
+    public static final int HOBBIES_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList hobbies_;
     /**
-     * <code>uint32 port = 2;</code>
-     * @return The port.
+     * <code>repeated string hobbies = 2;</code>
+     * @return A list containing the hobbies.
      */
-    public int getPort() {
-      return port_;
+    public com.google.protobuf.ProtocolStringList
+        getHobbiesList() {
+      return hobbies_;
     }
-
-    public static final int X_FIELD_NUMBER = 3;
-    private int x_;
     /**
-     * <code>uint32 x = 3;</code>
-     * @return The x.
+     * <code>repeated string hobbies = 2;</code>
+     * @return The count of hobbies.
      */
-    public int getX() {
-      return x_;
+    public int getHobbiesCount() {
+      return hobbies_.size();
     }
-
-    public static final int Y_FIELD_NUMBER = 4;
-    private int y_;
     /**
-     * <code>uint32 y = 4;</code>
-     * @return The y.
+     * <code>repeated string hobbies = 2;</code>
+     * @param index The index of the element to return.
+     * @return The hobbies at the given index.
      */
-    public int getY() {
-      return y_;
+    public java.lang.String getHobbies(int index) {
+      return hobbies_.get(index);
+    }
+    /**
+     * <code>repeated string hobbies = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the hobbies at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getHobbiesBytes(int index) {
+      return hobbies_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -193,17 +242,11 @@ public final class GRPCService {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeUInt32(1, id_);
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (port_ != 0) {
-        output.writeUInt32(2, port_);
-      }
-      if (x_ != 0) {
-        output.writeUInt32(3, x_);
-      }
-      if (y_ != 0) {
-        output.writeUInt32(4, y_);
+      for (int i = 0; i < hobbies_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, hobbies_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -214,21 +257,16 @@ public final class GRPCService {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (port_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, port_);
-      }
-      if (x_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, x_);
-      }
-      if (y_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, y_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < hobbies_.size(); i++) {
+          dataSize += computeStringSizeNoTag(hobbies_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getHobbiesList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -240,19 +278,15 @@ public final class GRPCService {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Greenfield.GRPCService.Hello)) {
+      if (!(obj instanceof Greenfield.GRPCService.HelloRequest)) {
         return super.equals(obj);
       }
-      Greenfield.GRPCService.Hello other = (Greenfield.GRPCService.Hello) obj;
+      Greenfield.GRPCService.HelloRequest other = (Greenfield.GRPCService.HelloRequest) obj;
 
-      if (getId()
-          != other.getId()) return false;
-      if (getPort()
-          != other.getPort()) return false;
-      if (getX()
-          != other.getX()) return false;
-      if (getY()
-          != other.getY()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getHobbiesList()
+          .equals(other.getHobbiesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -264,82 +298,80 @@ public final class GRPCService {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (37 * hash) + PORT_FIELD_NUMBER;
-      hash = (53 * hash) + getPort();
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + getX();
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + getY();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (getHobbiesCount() > 0) {
+        hash = (37 * hash) + HOBBIES_FIELD_NUMBER;
+        hash = (53 * hash) + getHobbiesList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(byte[] data)
+    public static Greenfield.GRPCService.HelloRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(java.io.InputStream input)
+    public static Greenfield.GRPCService.HelloRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Hello parseDelimitedFrom(java.io.InputStream input)
+    public static Greenfield.GRPCService.HelloRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Hello parseDelimitedFrom(
+    public static Greenfield.GRPCService.HelloRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Hello parseFrom(
+    public static Greenfield.GRPCService.HelloRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -352,7 +384,7 @@ public final class GRPCService {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Greenfield.GRPCService.Hello prototype) {
+    public static Builder newBuilder(Greenfield.GRPCService.HelloRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -368,26 +400,30 @@ public final class GRPCService {
       return builder;
     }
     /**
-     * Protobuf type {@code Greenfield.Hello}
+     * <pre>
+     * Request payload
+     * </pre>
+     *
+     * Protobuf type {@code Greenfield.HelloRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Greenfield.Hello)
-        Greenfield.GRPCService.HelloOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Greenfield.HelloRequest)
+        Greenfield.GRPCService.HelloRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Hello_descriptor;
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Hello_fieldAccessorTable
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Greenfield.GRPCService.Hello.class, Greenfield.GRPCService.Hello.Builder.class);
+                Greenfield.GRPCService.HelloRequest.class, Greenfield.GRPCService.HelloRequest.Builder.class);
       }
 
-      // Construct using Greenfield.GRPCService.Hello.newBuilder()
+      // Construct using Greenfield.GRPCService.HelloRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -405,31 +441,27 @@ public final class GRPCService {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        name_ = "";
 
-        port_ = 0;
-
-        x_ = 0;
-
-        y_ = 0;
-
+        hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Hello_descriptor;
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloRequest_descriptor;
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Hello getDefaultInstanceForType() {
-        return Greenfield.GRPCService.Hello.getDefaultInstance();
+      public Greenfield.GRPCService.HelloRequest getDefaultInstanceForType() {
+        return Greenfield.GRPCService.HelloRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Hello build() {
-        Greenfield.GRPCService.Hello result = buildPartial();
+      public Greenfield.GRPCService.HelloRequest build() {
+        Greenfield.GRPCService.HelloRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -437,12 +469,15 @@ public final class GRPCService {
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Hello buildPartial() {
-        Greenfield.GRPCService.Hello result = new Greenfield.GRPCService.Hello(this);
-        result.id_ = id_;
-        result.port_ = port_;
-        result.x_ = x_;
-        result.y_ = y_;
+      public Greenfield.GRPCService.HelloRequest buildPartial() {
+        Greenfield.GRPCService.HelloRequest result = new Greenfield.GRPCService.HelloRequest(this);
+        int from_bitField0_ = bitField0_;
+        result.name_ = name_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          hobbies_ = hobbies_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.hobbies_ = hobbies_;
         onBuilt();
         return result;
       }
@@ -481,27 +516,29 @@ public final class GRPCService {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Greenfield.GRPCService.Hello) {
-          return mergeFrom((Greenfield.GRPCService.Hello)other);
+        if (other instanceof Greenfield.GRPCService.HelloRequest) {
+          return mergeFrom((Greenfield.GRPCService.HelloRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Greenfield.GRPCService.Hello other) {
-        if (other == Greenfield.GRPCService.Hello.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
+      public Builder mergeFrom(Greenfield.GRPCService.HelloRequest other) {
+        if (other == Greenfield.GRPCService.HelloRequest.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
         }
-        if (other.getPort() != 0) {
-          setPort(other.getPort());
-        }
-        if (other.getX() != 0) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0) {
-          setY(other.getY());
+        if (!other.hobbies_.isEmpty()) {
+          if (hobbies_.isEmpty()) {
+            hobbies_ = other.hobbies_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureHobbiesIsMutable();
+            hobbies_.addAll(other.hobbies_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -518,11 +555,11 @@ public final class GRPCService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Greenfield.GRPCService.Hello parsedMessage = null;
+        Greenfield.GRPCService.HelloRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Greenfield.GRPCService.Hello) e.getUnfinishedMessage();
+          parsedMessage = (Greenfield.GRPCService.HelloRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -531,123 +568,190 @@ public final class GRPCService {
         }
         return this;
       }
+      private int bitField0_;
 
-      private int id_ ;
+      private java.lang.Object name_ = "";
       /**
-       * <code>uint32 id = 1;</code>
-       * @return The id.
+       * <code>string name = 1;</code>
+       * @return The name.
        */
-      public int getId() {
-        return id_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>uint32 id = 1;</code>
-       * @param value The id to set.
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
        * @return This builder for chaining.
        */
-      public Builder setId(int value) {
-        
-        id_ = value;
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 id = 1;</code>
+       * <code>string name = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearName() {
         
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int port_ ;
-      /**
-       * <code>uint32 port = 2;</code>
-       * @return The port.
-       */
-      public int getPort() {
-        return port_;
-      }
-      /**
-       * <code>uint32 port = 2;</code>
-       * @param value The port to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPort(int value) {
-        
-        port_ = value;
+        name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 port = 2;</code>
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
-      public Builder clearPort() {
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
         
-        port_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int x_ ;
-      /**
-       * <code>uint32 x = 3;</code>
-       * @return The x.
-       */
-      public int getX() {
-        return x_;
-      }
-      /**
-       * <code>uint32 x = 3;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(int value) {
-        
-        x_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 x = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        
-        x_ = 0;
+        name_ = value;
         onChanged();
         return this;
       }
 
-      private int y_ ;
-      /**
-       * <code>uint32 y = 4;</code>
-       * @return The y.
-       */
-      public int getY() {
-        return y_;
+      private com.google.protobuf.LazyStringList hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureHobbiesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          hobbies_ = new com.google.protobuf.LazyStringArrayList(hobbies_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>uint32 y = 4;</code>
-       * @param value The y to set.
+       * <code>repeated string hobbies = 2;</code>
+       * @return A list containing the hobbies.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getHobbiesList() {
+        return hobbies_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @return The count of hobbies.
+       */
+      public int getHobbiesCount() {
+        return hobbies_.size();
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @param index The index of the element to return.
+       * @return The hobbies at the given index.
+       */
+      public java.lang.String getHobbies(int index) {
+        return hobbies_.get(index);
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the hobbies at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getHobbiesBytes(int index) {
+        return hobbies_.getByteString(index);
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The hobbies to set.
        * @return This builder for chaining.
        */
-      public Builder setY(int value) {
-        
-        y_ = value;
+      public Builder setHobbies(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureHobbiesIsMutable();
+        hobbies_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 y = 4;</code>
+       * <code>repeated string hobbies = 2;</code>
+       * @param value The hobbies to add.
        * @return This builder for chaining.
        */
-      public Builder clearY() {
-        
-        y_ = 0;
+      public Builder addHobbies(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureHobbiesIsMutable();
+        hobbies_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @param values The hobbies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllHobbies(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureHobbiesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, hobbies_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHobbies() {
+        hobbies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string hobbies = 2;</code>
+       * @param value The bytes of the hobbies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addHobbiesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureHobbiesIsMutable();
+        hobbies_.add(value);
         onChanged();
         return this;
       }
@@ -664,82 +768,83 @@ public final class GRPCService {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Greenfield.Hello)
+      // @@protoc_insertion_point(builder_scope:Greenfield.HelloRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:Greenfield.Hello)
-    private static final Greenfield.GRPCService.Hello DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:Greenfield.HelloRequest)
+    private static final Greenfield.GRPCService.HelloRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Greenfield.GRPCService.Hello();
+      DEFAULT_INSTANCE = new Greenfield.GRPCService.HelloRequest();
     }
 
-    public static Greenfield.GRPCService.Hello getDefaultInstance() {
+    public static Greenfield.GRPCService.HelloRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Hello>
-        PARSER = new com.google.protobuf.AbstractParser<Hello>() {
+    private static final com.google.protobuf.Parser<HelloRequest>
+        PARSER = new com.google.protobuf.AbstractParser<HelloRequest>() {
       @java.lang.Override
-      public Hello parsePartialFrom(
+      public HelloRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Hello(input, extensionRegistry);
+        return new HelloRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Hello> parser() {
+    public static com.google.protobuf.Parser<HelloRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Hello> getParserForType() {
+    public com.google.protobuf.Parser<HelloRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Greenfield.GRPCService.Hello getDefaultInstanceForType() {
+    public Greenfield.GRPCService.HelloRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface MechanicOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Greenfield.Mechanic)
+  public interface HelloResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Greenfield.HelloResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
+     * <code>string greeting = 1;</code>
+     * @return The greeting.
      */
-    int getId();
-
+    java.lang.String getGreeting();
     /**
-     * <code>uint64 timestamp = 2;</code>
-     * @return The timestamp.
+     * <code>string greeting = 1;</code>
+     * @return The bytes for greeting.
      */
-    long getTimestamp();
+    com.google.protobuf.ByteString
+        getGreetingBytes();
   }
   /**
-   * Protobuf type {@code Greenfield.Mechanic}
+   * Protobuf type {@code Greenfield.HelloResponse}
    */
-  public  static final class Mechanic extends
+  public  static final class HelloResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Greenfield.Mechanic)
-      MechanicOrBuilder {
+      // @@protoc_insertion_point(message_implements:Greenfield.HelloResponse)
+      HelloResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Mechanic.newBuilder() to construct.
-    private Mechanic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use HelloResponse.newBuilder() to construct.
+    private HelloResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Mechanic() {
+    private HelloResponse() {
+      greeting_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new Mechanic();
+      return new HelloResponse();
     }
 
     @java.lang.Override
@@ -747,7 +852,7 @@ public final class GRPCService {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Mechanic(
+    private HelloResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -765,14 +870,10 @@ public final class GRPCService {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-
-              timestamp_ = input.readUInt64();
+              greeting_ = s;
               break;
             }
             default: {
@@ -796,35 +897,51 @@ public final class GRPCService {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Mechanic_descriptor;
+      return Greenfield.GRPCService.internal_static_Greenfield_HelloResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Mechanic_fieldAccessorTable
+      return Greenfield.GRPCService.internal_static_Greenfield_HelloResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Greenfield.GRPCService.Mechanic.class, Greenfield.GRPCService.Mechanic.Builder.class);
+              Greenfield.GRPCService.HelloResponse.class, Greenfield.GRPCService.HelloResponse.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int GREETING_FIELD_NUMBER = 1;
+    private volatile java.lang.Object greeting_;
     /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
+     * <code>string greeting = 1;</code>
+     * @return The greeting.
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getGreeting() {
+      java.lang.Object ref = greeting_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        greeting_ = s;
+        return s;
+      }
     }
-
-    public static final int TIMESTAMP_FIELD_NUMBER = 2;
-    private long timestamp_;
     /**
-     * <code>uint64 timestamp = 2;</code>
-     * @return The timestamp.
+     * <code>string greeting = 1;</code>
+     * @return The bytes for greeting.
      */
-    public long getTimestamp() {
-      return timestamp_;
+    public com.google.protobuf.ByteString
+        getGreetingBytes() {
+      java.lang.Object ref = greeting_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        greeting_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -841,11 +958,8 @@ public final class GRPCService {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeUInt32(1, id_);
-      }
-      if (timestamp_ != 0L) {
-        output.writeUInt64(2, timestamp_);
+      if (!getGreetingBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, greeting_);
       }
       unknownFields.writeTo(output);
     }
@@ -856,13 +970,8 @@ public final class GRPCService {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
-      }
-      if (timestamp_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, timestamp_);
+      if (!getGreetingBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, greeting_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -874,15 +983,13 @@ public final class GRPCService {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Greenfield.GRPCService.Mechanic)) {
+      if (!(obj instanceof Greenfield.GRPCService.HelloResponse)) {
         return super.equals(obj);
       }
-      Greenfield.GRPCService.Mechanic other = (Greenfield.GRPCService.Mechanic) obj;
+      Greenfield.GRPCService.HelloResponse other = (Greenfield.GRPCService.HelloResponse) obj;
 
-      if (getId()
-          != other.getId()) return false;
-      if (getTimestamp()
-          != other.getTimestamp()) return false;
+      if (!getGreeting()
+          .equals(other.getGreeting())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -894,79 +1001,76 @@ public final class GRPCService {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTimestamp());
+      hash = (37 * hash) + GREETING_FIELD_NUMBER;
+      hash = (53 * hash) + getGreeting().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(byte[] data)
+    public static Greenfield.GRPCService.HelloResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(java.io.InputStream input)
+    public static Greenfield.GRPCService.HelloResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Mechanic parseDelimitedFrom(java.io.InputStream input)
+    public static Greenfield.GRPCService.HelloResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Mechanic parseDelimitedFrom(
+    public static Greenfield.GRPCService.HelloResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Greenfield.GRPCService.Mechanic parseFrom(
+    public static Greenfield.GRPCService.HelloResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -979,7 +1083,7 @@ public final class GRPCService {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Greenfield.GRPCService.Mechanic prototype) {
+    public static Builder newBuilder(Greenfield.GRPCService.HelloResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -995,26 +1099,26 @@ public final class GRPCService {
       return builder;
     }
     /**
-     * Protobuf type {@code Greenfield.Mechanic}
+     * Protobuf type {@code Greenfield.HelloResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Greenfield.Mechanic)
-        Greenfield.GRPCService.MechanicOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Greenfield.HelloResponse)
+        Greenfield.GRPCService.HelloResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Mechanic_descriptor;
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Mechanic_fieldAccessorTable
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Greenfield.GRPCService.Mechanic.class, Greenfield.GRPCService.Mechanic.Builder.class);
+                Greenfield.GRPCService.HelloResponse.class, Greenfield.GRPCService.HelloResponse.Builder.class);
       }
 
-      // Construct using Greenfield.GRPCService.Mechanic.newBuilder()
+      // Construct using Greenfield.GRPCService.HelloResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1032,9 +1136,7 @@ public final class GRPCService {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
-
-        timestamp_ = 0L;
+        greeting_ = "";
 
         return this;
       }
@@ -1042,17 +1144,17 @@ public final class GRPCService {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Mechanic_descriptor;
+        return Greenfield.GRPCService.internal_static_Greenfield_HelloResponse_descriptor;
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Mechanic getDefaultInstanceForType() {
-        return Greenfield.GRPCService.Mechanic.getDefaultInstance();
+      public Greenfield.GRPCService.HelloResponse getDefaultInstanceForType() {
+        return Greenfield.GRPCService.HelloResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Mechanic build() {
-        Greenfield.GRPCService.Mechanic result = buildPartial();
+      public Greenfield.GRPCService.HelloResponse build() {
+        Greenfield.GRPCService.HelloResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1060,10 +1162,9 @@ public final class GRPCService {
       }
 
       @java.lang.Override
-      public Greenfield.GRPCService.Mechanic buildPartial() {
-        Greenfield.GRPCService.Mechanic result = new Greenfield.GRPCService.Mechanic(this);
-        result.id_ = id_;
-        result.timestamp_ = timestamp_;
+      public Greenfield.GRPCService.HelloResponse buildPartial() {
+        Greenfield.GRPCService.HelloResponse result = new Greenfield.GRPCService.HelloResponse(this);
+        result.greeting_ = greeting_;
         onBuilt();
         return result;
       }
@@ -1102,21 +1203,19 @@ public final class GRPCService {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Greenfield.GRPCService.Mechanic) {
-          return mergeFrom((Greenfield.GRPCService.Mechanic)other);
+        if (other instanceof Greenfield.GRPCService.HelloResponse) {
+          return mergeFrom((Greenfield.GRPCService.HelloResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Greenfield.GRPCService.Mechanic other) {
-        if (other == Greenfield.GRPCService.Mechanic.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
-        if (other.getTimestamp() != 0L) {
-          setTimestamp(other.getTimestamp());
+      public Builder mergeFrom(Greenfield.GRPCService.HelloResponse other) {
+        if (other == Greenfield.GRPCService.HelloResponse.getDefaultInstance()) return this;
+        if (!other.getGreeting().isEmpty()) {
+          greeting_ = other.greeting_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1133,11 +1232,11 @@ public final class GRPCService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Greenfield.GRPCService.Mechanic parsedMessage = null;
+        Greenfield.GRPCService.HelloResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Greenfield.GRPCService.Mechanic) e.getUnfinishedMessage();
+          parsedMessage = (Greenfield.GRPCService.HelloResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1147,1034 +1246,78 @@ public final class GRPCService {
         return this;
       }
 
-      private int id_ ;
+      private java.lang.Object greeting_ = "";
       /**
-       * <code>uint32 id = 1;</code>
-       * @return The id.
+       * <code>string greeting = 1;</code>
+       * @return The greeting.
        */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>uint32 id = 1;</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
-       */
-      public Builder setId(int value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private long timestamp_ ;
-      /**
-       * <code>uint64 timestamp = 2;</code>
-       * @return The timestamp.
-       */
-      public long getTimestamp() {
-        return timestamp_;
-      }
-      /**
-       * <code>uint64 timestamp = 2;</code>
-       * @param value The timestamp to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTimestamp(long value) {
-        
-        timestamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 timestamp = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTimestamp() {
-        
-        timestamp_ = 0L;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:Greenfield.Mechanic)
-    }
-
-    // @@protoc_insertion_point(class_scope:Greenfield.Mechanic)
-    private static final Greenfield.GRPCService.Mechanic DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Greenfield.GRPCService.Mechanic();
-    }
-
-    public static Greenfield.GRPCService.Mechanic getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Mechanic>
-        PARSER = new com.google.protobuf.AbstractParser<Mechanic>() {
-      @java.lang.Override
-      public Mechanic parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Mechanic(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Mechanic> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Mechanic> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public Greenfield.GRPCService.Mechanic getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface OkOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Greenfield.Ok)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
-     */
-    int getId();
-  }
-  /**
-   * Protobuf type {@code Greenfield.Ok}
-   */
-  public  static final class Ok extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Greenfield.Ok)
-      OkOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Ok.newBuilder() to construct.
-    private Ok(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Ok() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Ok();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Ok(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              id_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Ok_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return Greenfield.GRPCService.internal_static_Greenfield_Ok_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              Greenfield.GRPCService.Ok.class, Greenfield.GRPCService.Ok.Builder.class);
-    }
-
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>uint32 id = 1;</code>
-     * @return The id.
-     */
-    public int getId() {
-      return id_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeUInt32(1, id_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Greenfield.GRPCService.Ok)) {
-        return super.equals(obj);
-      }
-      Greenfield.GRPCService.Ok other = (Greenfield.GRPCService.Ok) obj;
-
-      if (getId()
-          != other.getId()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static Greenfield.GRPCService.Ok parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.Ok parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.Ok parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.Ok parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(Greenfield.GRPCService.Ok prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code Greenfield.Ok}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Greenfield.Ok)
-        Greenfield.GRPCService.OkOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Ok_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Ok_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                Greenfield.GRPCService.Ok.class, Greenfield.GRPCService.Ok.Builder.class);
-      }
-
-      // Construct using Greenfield.GRPCService.Ok.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        id_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return Greenfield.GRPCService.internal_static_Greenfield_Ok_descriptor;
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.Ok getDefaultInstanceForType() {
-        return Greenfield.GRPCService.Ok.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.Ok build() {
-        Greenfield.GRPCService.Ok result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.Ok buildPartial() {
-        Greenfield.GRPCService.Ok result = new Greenfield.GRPCService.Ok(this);
-        result.id_ = id_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Greenfield.GRPCService.Ok) {
-          return mergeFrom((Greenfield.GRPCService.Ok)other);
+      public java.lang.String getGreeting() {
+        java.lang.Object ref = greeting_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          greeting_ = s;
+          return s;
         } else {
-          super.mergeFrom(other);
-          return this;
+          return (java.lang.String) ref;
         }
-      }
-
-      public Builder mergeFrom(Greenfield.GRPCService.Ok other) {
-        if (other == Greenfield.GRPCService.Ok.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        Greenfield.GRPCService.Ok parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Greenfield.GRPCService.Ok) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int id_ ;
-      /**
-       * <code>uint32 id = 1;</code>
-       * @return The id.
-       */
-      public int getId() {
-        return id_;
       }
       /**
-       * <code>uint32 id = 1;</code>
-       * @param value The id to set.
-       * @return This builder for chaining.
+       * <code>string greeting = 1;</code>
+       * @return The bytes for greeting.
        */
-      public Builder setId(int value) {
-        
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint32 id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearId() {
-        
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:Greenfield.Ok)
-    }
-
-    // @@protoc_insertion_point(class_scope:Greenfield.Ok)
-    private static final Greenfield.GRPCService.Ok DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Greenfield.GRPCService.Ok();
-    }
-
-    public static Greenfield.GRPCService.Ok getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Ok>
-        PARSER = new com.google.protobuf.AbstractParser<Ok>() {
-      @java.lang.Override
-      public Ok parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Ok(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Ok> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Ok> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public Greenfield.GRPCService.Ok getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GoodByeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Greenfield.GoodBye)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
-     */
-    int getId();
-  }
-  /**
-   * Protobuf type {@code Greenfield.GoodBye}
-   */
-  public  static final class GoodBye extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Greenfield.GoodBye)
-      GoodByeOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GoodBye.newBuilder() to construct.
-    private GoodBye(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GoodBye() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GoodBye();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GoodBye(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              id_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return Greenfield.GRPCService.internal_static_Greenfield_GoodBye_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return Greenfield.GRPCService.internal_static_Greenfield_GoodBye_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              Greenfield.GRPCService.GoodBye.class, Greenfield.GRPCService.GoodBye.Builder.class);
-    }
-
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>int32 id = 1;</code>
-     * @return The id.
-     */
-    public int getId() {
-      return id_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (id_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Greenfield.GRPCService.GoodBye)) {
-        return super.equals(obj);
-      }
-      Greenfield.GRPCService.GoodBye other = (Greenfield.GRPCService.GoodBye) obj;
-
-      if (getId()
-          != other.getId()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.GoodBye parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.GoodBye parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Greenfield.GRPCService.GoodBye parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(Greenfield.GRPCService.GoodBye prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code Greenfield.GoodBye}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Greenfield.GoodBye)
-        Greenfield.GRPCService.GoodByeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return Greenfield.GRPCService.internal_static_Greenfield_GoodBye_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return Greenfield.GRPCService.internal_static_Greenfield_GoodBye_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                Greenfield.GRPCService.GoodBye.class, Greenfield.GRPCService.GoodBye.Builder.class);
-      }
-
-      // Construct using Greenfield.GRPCService.GoodBye.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        id_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return Greenfield.GRPCService.internal_static_Greenfield_GoodBye_descriptor;
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.GoodBye getDefaultInstanceForType() {
-        return Greenfield.GRPCService.GoodBye.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.GoodBye build() {
-        Greenfield.GRPCService.GoodBye result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public Greenfield.GRPCService.GoodBye buildPartial() {
-        Greenfield.GRPCService.GoodBye result = new Greenfield.GRPCService.GoodBye(this);
-        result.id_ = id_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Greenfield.GRPCService.GoodBye) {
-          return mergeFrom((Greenfield.GRPCService.GoodBye)other);
+      public com.google.protobuf.ByteString
+          getGreetingBytes() {
+        java.lang.Object ref = greeting_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          greeting_ = b;
+          return b;
         } else {
-          super.mergeFrom(other);
-          return this;
+          return (com.google.protobuf.ByteString) ref;
         }
-      }
-
-      public Builder mergeFrom(Greenfield.GRPCService.GoodBye other) {
-        if (other == Greenfield.GRPCService.GoodBye.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        Greenfield.GRPCService.GoodBye parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Greenfield.GRPCService.GoodBye) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int id_ ;
-      /**
-       * <code>int32 id = 1;</code>
-       * @return The id.
-       */
-      public int getId() {
-        return id_;
       }
       /**
-       * <code>int32 id = 1;</code>
-       * @param value The id to set.
+       * <code>string greeting = 1;</code>
+       * @param value The greeting to set.
        * @return This builder for chaining.
        */
-      public Builder setId(int value) {
-        
-        id_ = value;
+      public Builder setGreeting(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        greeting_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>string greeting = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearGreeting() {
         
-        id_ = 0;
+        greeting_ = getDefaultInstance().getGreeting();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string greeting = 1;</code>
+       * @param value The bytes for greeting to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGreetingBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        greeting_ = value;
         onChanged();
         return this;
       }
@@ -2191,66 +1334,56 @@ public final class GRPCService {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Greenfield.GoodBye)
+      // @@protoc_insertion_point(builder_scope:Greenfield.HelloResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:Greenfield.GoodBye)
-    private static final Greenfield.GRPCService.GoodBye DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:Greenfield.HelloResponse)
+    private static final Greenfield.GRPCService.HelloResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Greenfield.GRPCService.GoodBye();
+      DEFAULT_INSTANCE = new Greenfield.GRPCService.HelloResponse();
     }
 
-    public static Greenfield.GRPCService.GoodBye getDefaultInstance() {
+    public static Greenfield.GRPCService.HelloResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GoodBye>
-        PARSER = new com.google.protobuf.AbstractParser<GoodBye>() {
+    private static final com.google.protobuf.Parser<HelloResponse>
+        PARSER = new com.google.protobuf.AbstractParser<HelloResponse>() {
       @java.lang.Override
-      public GoodBye parsePartialFrom(
+      public HelloResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GoodBye(input, extensionRegistry);
+        return new HelloResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GoodBye> parser() {
+    public static com.google.protobuf.Parser<HelloResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GoodBye> getParserForType() {
+    public com.google.protobuf.Parser<HelloResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Greenfield.GRPCService.GoodBye getDefaultInstanceForType() {
+    public Greenfield.GRPCService.HelloResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Greenfield_Hello_descriptor;
+    internal_static_Greenfield_HelloRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Greenfield_Hello_fieldAccessorTable;
+      internal_static_Greenfield_HelloRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Greenfield_Mechanic_descriptor;
+    internal_static_Greenfield_HelloResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Greenfield_Mechanic_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Greenfield_Ok_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Greenfield_Ok_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Greenfield_GoodBye_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Greenfield_GoodBye_fieldAccessorTable;
+      internal_static_Greenfield_HelloResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2260,46 +1393,30 @@ public final class GRPCService {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021gRPCService.proto\022\nGreenfield\"7\n\005Hello" +
-      "\022\n\n\002id\030\001 \001(\r\022\014\n\004port\030\002 \001(\r\022\t\n\001x\030\003 \001(\r\022\t\n" +
-      "\001y\030\004 \001(\r\")\n\010Mechanic\022\n\n\002id\030\001 \001(\r\022\021\n\ttime" +
-      "stamp\030\002 \001(\004\"\020\n\002Ok\022\n\n\002id\030\001 \001(\r\"\025\n\007GoodBye" +
-      "\022\n\n\002id\030\001 \001(\0052\337\001\n\013gRPCService\0221\n\005hello\022\021." +
-      "Greenfield.Hello\032\021.Greenfield.Hello(\0010\001\022" +
-      ":\n\010mechanic\022\024.Greenfield.Mechanic\032\024.Gree" +
-      "nfield.Mechanic(\0010\001\022(\n\002ok\022\016.Greenfield.O" +
-      "k\032\016.Greenfield.Ok(\0010\001\0227\n\007goodbye\022\023.Green" +
-      "field.GoodBye\032\023.Greenfield.GoodBye(\0010\001b\006" +
-      "proto3"
+      "\n\021gRPCService.proto\022\nGreenfield\"-\n\014Hello" +
+      "Request\022\014\n\004name\030\001 \001(\t\022\017\n\007hobbies\030\002 \003(\t\"!" +
+      "\n\rHelloResponse\022\020\n\010greeting\030\001 \001(\t2\233\001\n\017Gr" +
+      "eetingService\022?\n\010greeting\022\030.Greenfield.H" +
+      "elloRequest\032\031.Greenfield.HelloResponse\022G" +
+      "\n\016streamGreeting\022\030.Greenfield.HelloReque" +
+      "st\032\031.Greenfield.HelloResponse0\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_Greenfield_Hello_descriptor =
+    internal_static_Greenfield_HelloRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Greenfield_Hello_fieldAccessorTable = new
+    internal_static_Greenfield_HelloRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Greenfield_Hello_descriptor,
-        new java.lang.String[] { "Id", "Port", "X", "Y", });
-    internal_static_Greenfield_Mechanic_descriptor =
+        internal_static_Greenfield_HelloRequest_descriptor,
+        new java.lang.String[] { "Name", "Hobbies", });
+    internal_static_Greenfield_HelloResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_Greenfield_Mechanic_fieldAccessorTable = new
+    internal_static_Greenfield_HelloResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Greenfield_Mechanic_descriptor,
-        new java.lang.String[] { "Id", "Timestamp", });
-    internal_static_Greenfield_Ok_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_Greenfield_Ok_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Greenfield_Ok_descriptor,
-        new java.lang.String[] { "Id", });
-    internal_static_Greenfield_GoodBye_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_Greenfield_GoodBye_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Greenfield_GoodBye_descriptor,
-        new java.lang.String[] { "Id", });
+        internal_static_Greenfield_HelloResponse_descriptor,
+        new java.lang.String[] { "Greeting", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
