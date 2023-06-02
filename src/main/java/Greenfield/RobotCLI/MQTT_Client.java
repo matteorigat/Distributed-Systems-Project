@@ -22,7 +22,7 @@ public class MQTT_Client extends Thread{
     protected MQTT_Client(SimulatorInterface sim, Robot robot) {
         this.sim = sim;
         this.id = robot.getId();
-        this.topic += calculateDistrict(robot.getPosition().x, robot.getPosition().y);
+        this.topic += calculateDistrict(robot.getX(), robot.getY());
     }
 
     protected void stopMeGently() {
@@ -91,12 +91,10 @@ public class MQTT_Client extends Thread{
             return "1";
         else if (x >= 5 && y <= 4)
             return "2";
-        else if (x >= 5 && y >= 5)
+        else if (x >= 5)
             return "3";
-        else if (x <= 4 && y >= 5)
+        else
             return "4";
-
-        return null;
     }
 
 }

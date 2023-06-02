@@ -7,13 +7,15 @@ public class Robot {
 
     private int id;
     private int port;
-    private Coordinates position;
+
+    private int x;
+    private int y;
 
     public Robot(){}
+
     public Robot(int id, int port) {
         this.id = id;
         this.port = port;
-        position = new Coordinates();
     }
 
     public int getId() {
@@ -32,30 +34,28 @@ public class Robot {
         this.port = port;
     }
 
-    public Coordinates getPosition() {
-        return position;
+    public int getX() {
+        return x;
     }
 
-    public void setPosition(int x, int y){
-        position.x = x;
-        position.y = y;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public static class Coordinates{
-        public int x,y;
-
-        public Coordinates(){
-            x=-1;
-            y=-1;
-        }
+    public int getY() {
+        return y;
     }
 
+    public void setY(int y) {
+        this.y = y;
+    }
 
     @Override
     public String toString() {
-        return "Robot{" +
-                "id=" + id +
-                ", port=" + port +
+        return "Robot {" +
+                "id: " + id +
+                ", port: " + port +
+                ", position: " + x + " " + y +
                 '}';
     }
 }

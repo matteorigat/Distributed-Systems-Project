@@ -28,16 +28,15 @@ public class gRPC_Server extends Thread{
         super.run();
 
         try {
-            Server server = ServerBuilder.forPort(robot.getPort()).addService(new gRPC_ServiceImpl()).build();
+            Server server = ServerBuilder.forPort(robot.getPort()).addService(new gRPC_ServiceImpl(robot, robotController)).build();
             server.start();
             System.out.println("The gRPC server is running...\n");
-            /*while (!stopCondition){
+            while (!stopCondition){
                 synchronized (this){
                     this.wait();
                 }
             }
-            server.shutdown();*/
-            server.awaitTermination();
+            server.shutdown();
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

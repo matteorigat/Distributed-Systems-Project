@@ -18,7 +18,7 @@ public class Robots {
     private final List<Robot> robotslist;
 
     //@JsonIgnore
-    private final int[] numOfRobots;
+    private int[] numOfRobots;
 
     private static Robots instance;
 
@@ -52,15 +52,22 @@ public class Robots {
     }
 
     public synchronized boolean removeById(int id){
-        System.out.println("\n\033[31m--> ROBOT REMOVED -- \033[0mid:" + id);
-        removeFromDistrictById(id);
-        return robotslist.removeIf(r -> r.getId() == id);
+        int district = findDistrictById(id);
+        if(robotslist.removeIf(r -> r.getId() == id)){
+            System.out.println("\n\033[31m--> ROBOT REMOVED -- \033[0mid:" + id);
+            if(district >= 0)
+                numOfRobots[district]--;
+            return true;
+        }
+        return false;
     }
 
-    private void removeFromDistrictById(int id){
+    private int findDistrictById(int id){
         for(Robot r : robotslist)
             if(r.getId() == id)
-                numOfRobots[calculateDistrict(r.getPosition().x, r.getPosition().y)]--;
+                return calculateDistrict(r.getX(), r.getY());
+
+        return -1;
     }
 
     private int calculateDistrict(int x, int y){
@@ -68,16 +75,15 @@ public class Robots {
             return 0;
         else if (x >= 5 && y <= 4)
             return 1;
-        else if (x >= 5 && y >= 5)
+        else if (x >= 5)
             return 2;
-        else if (x <= 4 && y >= 5)
+        else
             return 3;
 
-        return -1;
     }
 
 
-    public Robot.Coordinates generatePosition(Robot r){
+    public void generatePosition(Robot r){
 
         int min, max;
         int district = 0;
@@ -99,7 +105,9 @@ public class Robots {
                 min = 5;
                 max = 9;
                 break;
-            default: return null;
+            default:
+                System.out.println("position error 1");
+                return;
         }
 
         x = (int)(min + (Math.random()*(max - min + 1)));
@@ -113,13 +121,22 @@ public class Robots {
                 min = 5;
                 max = 9;
                 break;
-            default: return null;
+            default:
+                System.out.println("position error 2");
+                return;
         }
 
         y = (int)(Math.floor(Math.random() *(max - min + 1) + min));
 
-        r.setPosition(x, y);
-        return r.getPosition();
+        r.setX(x);
+        r.setY(y);
     }
 
+    public int[] getNumOfRobots() {
+        return numOfRobots;
+    }
+
+    public void setNumOfRobots(int[] numOfRobots) {
+        this.numOfRobots = numOfRobots;
+    }
 }

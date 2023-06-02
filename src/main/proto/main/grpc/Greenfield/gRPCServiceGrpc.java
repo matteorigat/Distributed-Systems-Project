@@ -31,34 +31,158 @@ public final class gRPCServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<Greenfield.GRPCService.HelloRequest,
-      Greenfield.GRPCService.HelloResponse> getHelloMethod;
+      Greenfield.GRPCService.MechanicResponse> getHelloMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "hello",
       requestType = Greenfield.GRPCService.HelloRequest.class,
-      responseType = Greenfield.GRPCService.HelloResponse.class,
+      responseType = Greenfield.GRPCService.MechanicResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<Greenfield.GRPCService.HelloRequest,
-      Greenfield.GRPCService.HelloResponse> getHelloMethod() {
-    io.grpc.MethodDescriptor<Greenfield.GRPCService.HelloRequest, Greenfield.GRPCService.HelloResponse> getHelloMethod;
+      Greenfield.GRPCService.MechanicResponse> getHelloMethod() {
+    io.grpc.MethodDescriptor<Greenfield.GRPCService.HelloRequest, Greenfield.GRPCService.MechanicResponse> getHelloMethod;
     if ((getHelloMethod = gRPCServiceGrpc.getHelloMethod) == null) {
       synchronized (gRPCServiceGrpc.class) {
         if ((getHelloMethod = gRPCServiceGrpc.getHelloMethod) == null) {
           gRPCServiceGrpc.getHelloMethod = getHelloMethod =
-              io.grpc.MethodDescriptor.<Greenfield.GRPCService.HelloRequest, Greenfield.GRPCService.HelloResponse>newBuilder()
+              io.grpc.MethodDescriptor.<Greenfield.GRPCService.HelloRequest, Greenfield.GRPCService.MechanicResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hello"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   Greenfield.GRPCService.HelloRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  Greenfield.GRPCService.HelloResponse.getDefaultInstance()))
+                  Greenfield.GRPCService.MechanicResponse.getDefaultInstance()))
               .setSchemaDescriptor(new gRPCServiceMethodDescriptorSupplier("hello"))
               .build();
         }
       }
     }
     return getHelloMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<Greenfield.GRPCService.MechanicRequest,
+      Greenfield.GRPCService.OkResponse> getMechanicMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "mechanic",
+      requestType = Greenfield.GRPCService.MechanicRequest.class,
+      responseType = Greenfield.GRPCService.OkResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<Greenfield.GRPCService.MechanicRequest,
+      Greenfield.GRPCService.OkResponse> getMechanicMethod() {
+    io.grpc.MethodDescriptor<Greenfield.GRPCService.MechanicRequest, Greenfield.GRPCService.OkResponse> getMechanicMethod;
+    if ((getMechanicMethod = gRPCServiceGrpc.getMechanicMethod) == null) {
+      synchronized (gRPCServiceGrpc.class) {
+        if ((getMechanicMethod = gRPCServiceGrpc.getMechanicMethod) == null) {
+          gRPCServiceGrpc.getMechanicMethod = getMechanicMethod =
+              io.grpc.MethodDescriptor.<Greenfield.GRPCService.MechanicRequest, Greenfield.GRPCService.OkResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "mechanic"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.MechanicRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.OkResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new gRPCServiceMethodDescriptorSupplier("mechanic"))
+              .build();
+        }
+      }
+    }
+    return getMechanicMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<Greenfield.GRPCService.OkResponse,
+      Greenfield.GRPCService.OkResponse> getOkMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ok",
+      requestType = Greenfield.GRPCService.OkResponse.class,
+      responseType = Greenfield.GRPCService.OkResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<Greenfield.GRPCService.OkResponse,
+      Greenfield.GRPCService.OkResponse> getOkMethod() {
+    io.grpc.MethodDescriptor<Greenfield.GRPCService.OkResponse, Greenfield.GRPCService.OkResponse> getOkMethod;
+    if ((getOkMethod = gRPCServiceGrpc.getOkMethod) == null) {
+      synchronized (gRPCServiceGrpc.class) {
+        if ((getOkMethod = gRPCServiceGrpc.getOkMethod) == null) {
+          gRPCServiceGrpc.getOkMethod = getOkMethod =
+              io.grpc.MethodDescriptor.<Greenfield.GRPCService.OkResponse, Greenfield.GRPCService.OkResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ok"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.OkResponse.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.OkResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new gRPCServiceMethodDescriptorSupplier("ok"))
+              .build();
+        }
+      }
+    }
+    return getOkMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<Greenfield.GRPCService.QuitRequest,
+      Greenfield.GRPCService.QuitRequest> getQuitMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "quit",
+      requestType = Greenfield.GRPCService.QuitRequest.class,
+      responseType = Greenfield.GRPCService.QuitRequest.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<Greenfield.GRPCService.QuitRequest,
+      Greenfield.GRPCService.QuitRequest> getQuitMethod() {
+    io.grpc.MethodDescriptor<Greenfield.GRPCService.QuitRequest, Greenfield.GRPCService.QuitRequest> getQuitMethod;
+    if ((getQuitMethod = gRPCServiceGrpc.getQuitMethod) == null) {
+      synchronized (gRPCServiceGrpc.class) {
+        if ((getQuitMethod = gRPCServiceGrpc.getQuitMethod) == null) {
+          gRPCServiceGrpc.getQuitMethod = getQuitMethod =
+              io.grpc.MethodDescriptor.<Greenfield.GRPCService.QuitRequest, Greenfield.GRPCService.QuitRequest>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "quit"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.QuitRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.QuitRequest.getDefaultInstance()))
+              .setSchemaDescriptor(new gRPCServiceMethodDescriptorSupplier("quit"))
+              .build();
+        }
+      }
+    }
+    return getQuitMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<Greenfield.GRPCService.Alive,
+      Greenfield.GRPCService.Alive> getAliveMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "alive",
+      requestType = Greenfield.GRPCService.Alive.class,
+      responseType = Greenfield.GRPCService.Alive.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<Greenfield.GRPCService.Alive,
+      Greenfield.GRPCService.Alive> getAliveMethod() {
+    io.grpc.MethodDescriptor<Greenfield.GRPCService.Alive, Greenfield.GRPCService.Alive> getAliveMethod;
+    if ((getAliveMethod = gRPCServiceGrpc.getAliveMethod) == null) {
+      synchronized (gRPCServiceGrpc.class) {
+        if ((getAliveMethod = gRPCServiceGrpc.getAliveMethod) == null) {
+          gRPCServiceGrpc.getAliveMethod = getAliveMethod =
+              io.grpc.MethodDescriptor.<Greenfield.GRPCService.Alive, Greenfield.GRPCService.Alive>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "alive"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.Alive.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  Greenfield.GRPCService.Alive.getDefaultInstance()))
+              .setSchemaDescriptor(new gRPCServiceMethodDescriptorSupplier("alive"))
+              .build();
+        }
+      }
+    }
+    return getAliveMethod;
   }
 
   /**
@@ -94,8 +218,36 @@ public final class gRPCServiceGrpc {
     /**
      */
     public void hello(Greenfield.GRPCService.HelloRequest request,
-        io.grpc.stub.StreamObserver<Greenfield.GRPCService.HelloResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.MechanicResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getHelloMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void mechanic(Greenfield.GRPCService.MechanicRequest request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getMechanicMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void ok(Greenfield.GRPCService.OkResponse request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getOkMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void quit(Greenfield.GRPCService.QuitRequest request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.QuitRequest> responseObserver) {
+      asyncUnimplementedUnaryCall(getQuitMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> alive(
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> responseObserver) {
+      return asyncUnimplementedStreamingCall(getAliveMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -105,8 +257,36 @@ public final class gRPCServiceGrpc {
             asyncServerStreamingCall(
               new MethodHandlers<
                 Greenfield.GRPCService.HelloRequest,
-                Greenfield.GRPCService.HelloResponse>(
+                Greenfield.GRPCService.MechanicResponse>(
                   this, METHODID_HELLO)))
+          .addMethod(
+            getMechanicMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                Greenfield.GRPCService.MechanicRequest,
+                Greenfield.GRPCService.OkResponse>(
+                  this, METHODID_MECHANIC)))
+          .addMethod(
+            getOkMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                Greenfield.GRPCService.OkResponse,
+                Greenfield.GRPCService.OkResponse>(
+                  this, METHODID_OK)))
+          .addMethod(
+            getQuitMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                Greenfield.GRPCService.QuitRequest,
+                Greenfield.GRPCService.QuitRequest>(
+                  this, METHODID_QUIT)))
+          .addMethod(
+            getAliveMethod(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                Greenfield.GRPCService.Alive,
+                Greenfield.GRPCService.Alive>(
+                  this, METHODID_ALIVE)))
           .build();
     }
   }
@@ -135,9 +315,41 @@ public final class gRPCServiceGrpc {
     /**
      */
     public void hello(Greenfield.GRPCService.HelloRequest request,
-        io.grpc.stub.StreamObserver<Greenfield.GRPCService.HelloResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.MechanicResponse> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getHelloMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void mechanic(Greenfield.GRPCService.MechanicRequest request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getMechanicMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void ok(Greenfield.GRPCService.OkResponse request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getOkMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void quit(Greenfield.GRPCService.QuitRequest request,
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.QuitRequest> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getQuitMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> alive(
+        io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getAliveMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -164,10 +376,32 @@ public final class gRPCServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<Greenfield.GRPCService.HelloResponse> hello(
+    public java.util.Iterator<Greenfield.GRPCService.MechanicResponse> hello(
         Greenfield.GRPCService.HelloRequest request) {
       return blockingServerStreamingCall(
           getChannel(), getHelloMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<Greenfield.GRPCService.OkResponse> mechanic(
+        Greenfield.GRPCService.MechanicRequest request) {
+      return blockingServerStreamingCall(
+          getChannel(), getMechanicMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public Greenfield.GRPCService.OkResponse ok(Greenfield.GRPCService.OkResponse request) {
+      return blockingUnaryCall(
+          getChannel(), getOkMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public Greenfield.GRPCService.QuitRequest quit(Greenfield.GRPCService.QuitRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getQuitMethod(), getCallOptions(), request);
     }
   }
 
@@ -191,9 +425,29 @@ public final class gRPCServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new gRPCServiceFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<Greenfield.GRPCService.OkResponse> ok(
+        Greenfield.GRPCService.OkResponse request) {
+      return futureUnaryCall(
+          getChannel().newCall(getOkMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<Greenfield.GRPCService.QuitRequest> quit(
+        Greenfield.GRPCService.QuitRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getQuitMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_HELLO = 0;
+  private static final int METHODID_MECHANIC = 1;
+  private static final int METHODID_OK = 2;
+  private static final int METHODID_QUIT = 3;
+  private static final int METHODID_ALIVE = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -214,7 +468,19 @@ public final class gRPCServiceGrpc {
       switch (methodId) {
         case METHODID_HELLO:
           serviceImpl.hello((Greenfield.GRPCService.HelloRequest) request,
-              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.HelloResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.MechanicResponse>) responseObserver);
+          break;
+        case METHODID_MECHANIC:
+          serviceImpl.mechanic((Greenfield.GRPCService.MechanicRequest) request,
+              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse>) responseObserver);
+          break;
+        case METHODID_OK:
+          serviceImpl.ok((Greenfield.GRPCService.OkResponse) request,
+              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse>) responseObserver);
+          break;
+        case METHODID_QUIT:
+          serviceImpl.quit((Greenfield.GRPCService.QuitRequest) request,
+              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.QuitRequest>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -226,6 +492,9 @@ public final class gRPCServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_ALIVE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.alive(
+              (io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -278,6 +547,10 @@ public final class gRPCServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new gRPCServiceFileDescriptorSupplier())
               .addMethod(getHelloMethod())
+              .addMethod(getMechanicMethod())
+              .addMethod(getOkMethod())
+              .addMethod(getQuitMethod())
+              .addMethod(getAliveMethod())
               .build();
         }
       }

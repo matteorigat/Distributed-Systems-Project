@@ -5,22 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="second hello implementation">
-      <change afterPath="$PROJECT_DIR$/paho8034866322959-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8054475525834-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8062063113959-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8374319253084-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8387130762042-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8397705422625-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8428732150375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8699947589292-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8721446779209-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8727938662792-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho8761207812625-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29257312335042-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29272881497333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29306688418958-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29310805388333-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29323849784875-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29796710645417-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29816555163792-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29838074843958-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29937959317042-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29960545773833-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29968900381583-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29989226610958-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho29994562680917-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho30168548923417-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho30237357066375-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho30294809793792-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho30492110801584-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho30517976559584-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Beans/Robots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/CleaningRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/MQTT_Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI/gRPC_ServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotResponseData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/RobotsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/java/Greenfield/GRPCService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +140,20 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdministratorServer">
+  <component name="RunManager" selected="Application.AdministratorClient">
+    <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
+      <module name="Distributed-Systems-Project.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Greenfield.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdministratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorServer" />
       <module name="Distributed-Systems-Project.main" />
@@ -153,19 +182,6 @@
     </configuration>
     <configuration name="CleaningRobotController" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.CleaningRobotController" />
-      <module name="Distributed-Systems-Project.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Greenfield.RobotCLI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gRPC_Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Greenfield.RobotCLI.gRPC_Client" />
       <module name="Distributed-Systems-Project.main" />
       <extension name="coverage">
         <pattern>
@@ -223,19 +239,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.CleaningRobotController" />
+      <item itemvalue="Application.AdministratorClient" />
       <item itemvalue="Application.AdministratorServer" />
       <item itemvalue="Application.CleaningRobot" />
-      <item itemvalue="Application.gRPC_Client" />
       <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
       <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AdministratorClient" />
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
         <item itemvalue="Application.AdministratorServer" />
         <item itemvalue="Application.CleaningRobot" />
-        <item itemvalue="Application.gRPC_Client" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +300,9 @@
       <workItem from="1685051461235" duration="2295000" />
       <workItem from="1685118877916" duration="62000" />
       <workItem from="1685523190452" duration="6313000" />
-      <workItem from="1685529601435" duration="507000" />
+      <workItem from="1685529601435" duration="536000" />
+      <workItem from="1685554377521" duration="2537000" />
+      <workItem from="1685606721327" duration="26690000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -489,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685529414447</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="second hello implementation">
+      <created>1685530128360</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685530128360</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

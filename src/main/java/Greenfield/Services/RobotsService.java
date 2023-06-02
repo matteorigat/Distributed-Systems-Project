@@ -25,7 +25,8 @@ public class RobotsService {
     @Consumes({"application/json", "application/xml"})
     public Response addRobot(Robot r){
         if(Robots.getInstance().add(r)){
-            RobotResponseData robotResponseData = new RobotResponseData(Robots.getInstance().generatePosition(r), Robots.getInstance());
+            Robots.getInstance().generatePosition(r);
+            RobotResponseData robotResponseData = new RobotResponseData(Robots.getInstance(), r.getX(), r.getY());
             return Response.ok(robotResponseData).type("application/json").build();
         }
         else return Response.status(Response.Status.CONFLICT).build();

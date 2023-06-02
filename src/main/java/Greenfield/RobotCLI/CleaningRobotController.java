@@ -13,9 +13,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import io.grpc.stub.StreamObserver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class CleaningRobotController {
 
@@ -24,22 +22,16 @@ public class CleaningRobotController {
     private String input;
     private String postPath;
     private String serverAddress;
-
-    private final HashMap<gRPC_Client, StreamObserver<GRPCService.HelloRequest>> clientRobotConnection = new HashMap<>();
-    private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
-
     private Robot robot;
-
     private boolean mechanic = false;
     private boolean wantMechanic = false;
-
     private long myTimestamp;
+    private final HashMap<Integer, StreamObserver<GRPCService.OkResponse>> mechanicQueue = new HashMap<>();
+    private final HashSet<Integer> mechanicOk = new LinkedHashSet<Integer>();
+    private final HashMap<Integer, gRPC_Client> clientRobotId = new HashMap<>();
 
-    private final ArrayList<StreamObserver<GRPCService.HelloRequest>> mechanicQueue = new ArrayList<>();
-    private final ArrayList<Integer> mechanicOk = new ArrayList<>();
 
-
-    public void Init(){
+    public void Init() throws InterruptedException {
 
         Scanner in = new Scanner(System.in);
 
@@ -75,14 +67,15 @@ public class CleaningRobotController {
         System.out.println(clientResponse.toString());
         if(clientResponse.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
             RobotResponseData resp = clientResponse.getEntity(RobotResponseData.class);
-            robot.setPosition(resp.getPosition().x, resp.getPosition().y);
+            robot.setX(resp.getX());
+            robot.setY(resp.getY());
             for(Robot r: resp.getRobots().getRobotslist())
                 Robots.getInstance().add(r);
+            Robots.getInstance().setNumOfRobots(resp.getRobots().getNumOfRobots());
         } else {
             System.out.println("POST request failed.");
             return;
         }
-
         //######################################################################################
 
         //############################## Start Simulator #######################################
@@ -110,7 +103,7 @@ public class CleaningRobotController {
 
         for(int i=0; i<Robots.getInstance().getRobotslist().size(); i++) {
             if (Robots.getInstance().getRobotslist().get(i).getId() != robot.getId()) {
-                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i));
+                gRPC_Client grpcClient = new gRPC_Client(Robots.getInstance().getRobotslist().get(i), this);
                 grpcClient.start();
             }
         }
@@ -123,7 +116,7 @@ public class CleaningRobotController {
 
 
         //Hello message to other robots in the peer to peer network
-        //sendHelloMessage();
+        sendHelloMessage();
 
         //######################################################################################
 
@@ -136,7 +129,7 @@ public class CleaningRobotController {
         mqtt.start();
 
 
-        //Thread mechanicThread = asyncStartMechanic();
+        Thread mechanicThread = asyncStartMechanic();
 
 
         //######################################################################################
@@ -164,8 +157,8 @@ public class CleaningRobotController {
 
                 case "2":
                     //Message to other robots in the peer to peer network to go to mechanic
-                    wantMechanic = true;
-                    //sendMessage("mechanic");
+                    if(!mechanic && !wantMechanic)
+                        mechanicSteps();
                     break;
 
                 case "quit":
@@ -178,7 +171,8 @@ public class CleaningRobotController {
                     }
 
                     //Goodbye message to other robots in the peer to peer network
-                    //sendMessage("quit");
+                    sendQuitMessage();
+
 
                     //DELETE: request to remove a cleaning robot from the Greenfield city
                     deleteRobotFromServer(robot.getId());
@@ -202,7 +196,7 @@ public class CleaningRobotController {
             System.out.println("mqtt join");
             pm10.join();
             System.out.println("pm10 join");
-            //mechanicThread.join();
+            mechanicThread.join();
             System.out.println("mechanic join");
             grpc.join();
             System.out.println("gRPC join");
@@ -220,14 +214,6 @@ public class CleaningRobotController {
 
     //######################################################################################
 
-    /*private void sendHelloMessage(){
-        for(gRPC_Client c: clientRobotConnection.keySet()){
-            c.setHello(robot);
-            synchronized (c){
-                c.notify();
-            }
-        }
-    }*/
 
     protected void deleteRobotFromServer(int robotId){
         postPath = "/robots/" + robotId;
@@ -274,32 +260,9 @@ public class CleaningRobotController {
         Thread t = new Thread(() -> {
             try {
                 while(!input.equals("quit")){
-                    //System.out.print("1s ");
-                    Thread.sleep(1000);
+                    Thread.sleep(10000);  // 10% every 10 seconds
                     if(Math.random() <= 0.1){
-                        System.out.println("starting mechanic steps");
-                        wantMechanic = true;
-                        mechanicOk.clear();
-                        //sendMessage("mechanic");
-                        while (mechanicOk.size() < Robots.getInstance().getRobotslist().size()-1){
-                            Thread.sleep(100);
-                        }
-                        mechanic = true;
-                        wantMechanic = false;
-                        System.out.println("\033[31mI'm at the mechanic\033[0m");
-                        Thread.sleep(10000);  // MECHANIC HEREEEEEE
-                        mechanic = false;
-
-                        /*GRPCService.Mechanic reply = GRPCService.Mechanic.newBuilder()
-                                .setId(robot.getId())
-                                .setTimestamp(System.currentTimeMillis())
-                                .build();
-
-                        for(StreamObserver<GRPCService.Mechanic> s: mechanicQueue)
-                            s.onNext(reply);*/
-                        mechanicQueue.clear();
-                        System.out.println("end mechanic");
-
+                        mechanicSteps();
                     }
                 }
             } catch (InterruptedException e) {
@@ -308,6 +271,50 @@ public class CleaningRobotController {
         });
         t.start();
         return t;
+    }
+
+    private void mechanicSteps() throws InterruptedException {
+        System.out.println("starting mechanic steps");
+        wantMechanic = true;
+        mechanicOk.clear();
+        sendMechanicMessage();
+        while (mechanicOk.size() < Robots.getInstance().getRobotslist().size()-1){
+            Thread.sleep(100);
+        }
+        wantMechanic = false;
+        mechanic = true;
+        System.out.println("\033[31mI'm at the mechanic\033[0m");
+        Thread.sleep(10000);  // MECHANIC HEREEEEEE
+        mechanic = false;
+
+        GRPCService.OkResponse reply = GRPCService.OkResponse.newBuilder()
+                .setId(robot.getId())
+                .build();
+        for(StreamObserver<GRPCService.OkResponse> s: mechanicQueue.values())
+            s.onNext(reply);
+        mechanicQueue.clear();
+        System.out.println("\033[31mEnd mechanic\033[0m");
+    }
+
+    private void sendHelloMessage() throws InterruptedException {
+        for(gRPC_Client c: clientRobotId.values()){
+            c.asynchronousHello(robot);
+        }
+    }
+    private void sendMechanicMessage() throws InterruptedException {
+        for(gRPC_Client c: clientRobotId.values()){
+            c.asynchronousMechanic(robot);
+        }
+    }
+
+    private void sendQuitMessage() throws InterruptedException {
+        for(gRPC_Client c: clientRobotId.values()){
+            c.stopMeGently();
+            c.asynchronousQuit(robot.getId());
+            synchronized (c){
+                c.notifyAll();
+            }
+        }
     }
 
     public boolean isMechanic() {
@@ -326,16 +333,12 @@ public class CleaningRobotController {
         this.myTimestamp = myTimestamp;
     }
 
-    public ArrayList<StreamObserver<GRPCService.HelloRequest>> getMechanicQueue() {
+    public HashMap<Integer, StreamObserver<GRPCService.OkResponse>> getMechanicQueue() {
         return mechanicQueue;
     }
 
-    public ArrayList<Integer> getMechanicOk() {
+    public HashSet<Integer> getMechanicOk() {
         return mechanicOk;
-    }
-
-    public HashMap<gRPC_Client, StreamObserver<GRPCService.HelloRequest>> getClientRobotConnection() {
-        return clientRobotConnection;
     }
 
     public HashMap<Integer, gRPC_Client> getClientRobotId() {
