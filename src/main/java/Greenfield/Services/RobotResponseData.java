@@ -1,6 +1,5 @@
 package Greenfield.Services;
 
-import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
 
 import javax.xml.bind.annotation.XmlAccessType;

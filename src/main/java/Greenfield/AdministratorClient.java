@@ -140,16 +140,6 @@ public class AdministratorClient {
         }
     }
 
-    /*private static ClientResponse deleteRequest(Client client, String url){
-        WebResource webResource = client.resource(url);
-        try {
-            return webResource.type("application/json").delete(ClientResponse.class);
-        } catch (ClientHandlerException e) {
-            System.out.println("Server non disponibile");
-            return null;
-        }
-    }*/
-
     private static boolean isNotNumeric(String str) {
         try {
             Integer.parseInt(str);
@@ -167,4 +157,15 @@ public class AdministratorClient {
             return true;
         }
     }
+
+
+    /*private static ClientResponse deleteRequest(Client client, String url){
+        WebResource webResource = client.resource(url);
+        try {
+            return webResource.type("application/json").delete(ClientResponse.class);
+        } catch (ClientHandlerException e) {
+            System.out.println("Server non disponibile");
+            return null;
+        }
+    }*/
 }

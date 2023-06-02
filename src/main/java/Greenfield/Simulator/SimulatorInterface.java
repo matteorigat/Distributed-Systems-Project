@@ -1,6 +1,6 @@
 package Greenfield.Simulator;
 
-import Greenfield.RobotCLI.AsyncReadFromSimulator;
+import Greenfield.CleaningRobot.AsyncReadFromSimulator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ public class SimulatorInterface implements Buffer{
 
     private List<Measurement> measurementList = new ArrayList<>();
     private List<Measurement> buffer = new ArrayList<>();
-
     private AsyncReadFromSimulator arfs = null;
 
 
@@ -31,7 +30,6 @@ public class SimulatorInterface implements Buffer{
     public synchronized List<Measurement> readAllAndClean() {
         List<Measurement> ml = new ArrayList<>(measurementList);
         measurementList.clear();
-        //System.out.println("read clean: " + ml);
         return ml;
     }
 

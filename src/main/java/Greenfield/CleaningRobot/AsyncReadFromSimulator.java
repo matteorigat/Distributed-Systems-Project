@@ -1,4 +1,4 @@
-package Greenfield.RobotCLI;
+package Greenfield.CleaningRobot;
 
 import Greenfield.Simulator.Measurement;
 import Greenfield.Simulator.SimulatorInterface;

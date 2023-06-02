@@ -1,4 +1,4 @@
-package Greenfield.RobotCLI;
+package Greenfield.CleaningRobot;
 
 import Greenfield.Beans.Robot;
 import Greenfield.Beans.Robots;
@@ -11,7 +11,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
     private final Robot robot;
     private final CleaningRobotController robotController;
 
-    public gRPC_ServiceImpl(Robot robot, CleaningRobotController robotController) {
+    protected gRPC_ServiceImpl(Robot robot, CleaningRobotController robotController) {
         this.robot = robot;
         this.robotController = robotController;
     }
@@ -19,11 +19,12 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
     @Override
     public void hello(HelloRequest request, StreamObserver<MechanicResponse> responseObserver){
 
-        //unwrapping message
         int id = request.getId();
         int port = request.getPort();
         System.out.println("\nHello from " + id);
 
+
+        //adding the new robot to the network view of this.robot
         Robot r = new Robot(id, port);
         r.setX(request.getX());
         r.setY(request.getY());
@@ -32,6 +33,8 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
         grpcClient.start();
         robotController.getClientRobotId().put(id, grpcClient);
 
+        //if this.robot wants the mechanic it sends the request to the new robot
+        //an ok callback is expected
         if(robotController.WantMechanic()){
             MechanicResponse reply = MechanicResponse.newBuilder()
                     .setId(robot.getId())
@@ -45,6 +48,7 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
     @Override
     public void mechanic(MechanicRequest request, StreamObserver<OkResponse> responseObserver){
 
+        //if this.robot doesn't need mechanic it replies with Ok message
         if(!robotController.isMechanic() && !robotController.WantMechanic()){
             OkResponse reply = OkResponse.newBuilder()
                     .setId(robot.getId())
@@ -53,11 +57,13 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
             responseObserver.onNext(reply);
             System.out.println("ok sent to " + request.getId() + ", i dont't want mechanic");
         }
+        //if this.robot is at the mechanic it queues the request
         else if (robotController.isMechanic()){
             robotController.getMechanicQueue().put(request.getId(), responseObserver);
             System.out.println(request.getId() + " added to queue");
         }
         else if(robotController.WantMechanic() && !robotController.isMechanic()){
+            //if the applicant robot sent the request earlier, this.robot replies with ok
             if(request.getTimestamp() < robotController.getMyTimestamp()){
                 OkResponse reply = OkResponse.newBuilder()
                         .setId(robot.getId())
@@ -65,23 +71,24 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
 
                 responseObserver.onNext(reply);
                 System.out.println("ok sent to " + request.getId() + ", i wait to go to mechanic");
-            } else {
+            }
+            //else this.robot queues the request
+            else {
                 robotController.getMechanicQueue().put(request.getId(), responseObserver);
                 System.out.println(request.getId() + " added to queue, i'm first");
             }
-
-        } else {
+        }
+        // it should never happen
+        else {
             System.out.println("mechanic something wrong in gRPC_ServiceImpl");
         }
     }
 
     @Override
     public void ok(OkResponse request, StreamObserver<OkResponse> responseObserver){
-
-        if(!robotController.getMechanicOk().contains(request.getId()))
-            robotController.getMechanicOk().add(request.getId());
+        //if a robot is joining the network, it sends the ok response here
+        robotController.getMechanicOk().add(request.getId());
         System.out.println("Received ok2 from: " + request.getId());
-
 
     }
 
@@ -101,18 +108,17 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
     @Override
     public StreamObserver<Alive> alive(StreamObserver<Alive> responseObserver){
 
-        //it returns the stream that will be used by the clients to send messages. The client will write on this stream
         return new StreamObserver<Alive>() {
             public void onNext(Alive clientRequest) {
-                System.out.println("onNext alive\n");
+                //System.out.println("onNext alive\n");
             }
 
             public void onError(Throwable throwable) {
-                System.out.println("onError alive\n");
+                //System.out.println("onError alive\n");
             }
 
             public void onCompleted() {
-                System.out.println("onCompleted alive\n");
+                //System.out.println("onCompleted alive\n");
             }
         };
     }

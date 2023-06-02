@@ -1,8 +1,8 @@
 package Greenfield;
 
-import Greenfield.RobotCLI.CleaningRobotController;
+import Greenfield.CleaningRobot.CleaningRobotController;
 
-public class CleaningRobot {
+public class CleaningRobotStart {
 
     public static void main(String[] args) throws InterruptedException {
         CleaningRobotController cr = new CleaningRobotController();

@@ -1,4 +1,4 @@
-package Greenfield.RobotCLI;
+package Greenfield.CleaningRobot;
 
 import Greenfield.Beans.Robot;
 import Greenfield.Simulator.SimulatorInterface;
@@ -9,7 +9,7 @@ public class MQTT_Client extends Thread{
 
     private MqttClient MQTTclient;
     private final String broker = "tcp://localhost:1883";
-    private String clientId = MqttClient.generateClientId();
+    private final String clientId = MqttClient.generateClientId();
     private String topic = "greenfield/pollution/district";
     private final int qos = 2;
 
@@ -38,7 +38,6 @@ public class MQTT_Client extends Thread{
             MQTTclient = new MqttClient(broker, clientId);
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setCleanSession(true);
-
 
 
             // Connect the client

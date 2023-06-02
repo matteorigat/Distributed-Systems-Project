@@ -2,6 +2,7 @@ package Greenfield;
 
 import Greenfield.Beans.Measure;
 import Greenfield.Beans.Measures;
+
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import org.eclipse.paho.client.mqttv3.*;
@@ -22,7 +23,6 @@ public class AdministratorServer {
         server.start();
         System.out.println("Server running!");
         System.out.println("Server started on: http://"+HOST+":"+PORT);
-
 
 
         MqttClient client;
@@ -57,16 +57,13 @@ public class AdministratorServer {
                     Measures.getInstance().add(measure);
 
 
-                    System.out.println(//clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
+                    System.out.println(
+                            //clientId +" Received a Message! - Callback - Thread PID: " + Thread.currentThread().getId() +
                             "\n\tTopic:   " + topic +
                             "\n\tRobot id:   " + receivedMessage[0] +
                             "\n\tAverages:   " + numbersString +
                             "\n\tTimestamp:   " + receivedMessage[2]  +
-                            //"\n\tQoS:     " + message.getQos() +
                             "\n");
-
-                    //System.out.println("\n ***  Press a random key to exit *** \n");
-
                 }
 
                 public void connectionLost(Throwable cause) {
@@ -79,7 +76,7 @@ public class AdministratorServer {
                 }
 
             });
-            System.out.println(clientId + " Subscribing ... - Thread PID: " + Thread.currentThread().getId());
+            System.out.println(clientId + " Subscribing... - Thread PID: " + Thread.currentThread().getId());
             client.subscribe(topic,qos);
             System.out.println(clientId + " Subscribed to topics : " + topic);
 

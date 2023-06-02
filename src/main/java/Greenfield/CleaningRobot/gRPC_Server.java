@@ -1,4 +1,4 @@
-package Greenfield.RobotCLI;
+package Greenfield.CleaningRobot;
 
 import Greenfield.Beans.Robot;
 import io.grpc.Server;
@@ -6,7 +6,7 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-public class gRPC_Server extends Thread{
+public class gRPC_Server extends Thread {
 
     private final Robot robot;
 
