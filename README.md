@@ -4,6 +4,9 @@
 **Greenfield** is the final project of **DPS** course held
 at Università degli Studi di Milano (2022/2023).
 
+Click [here](Project%20DPS%202023%20-%20Greenfield.pdf) for the project requirements
+
+
 ![Image of the city](images/greenfield.png)
 
 ![Image of the city](images/districts.png)
