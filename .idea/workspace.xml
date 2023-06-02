@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="code clean up">
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="images added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/districts.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/districts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/greenfield.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/greenfield.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/init.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/init.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/mechanic.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/mechanic.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +63,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2PFEl0wVTsRLNjx5UsWDXjnBZ2S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -72,7 +80,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/src/main/java/Greenfield/RobotCLI&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matteorigat/IdeaProjects/Distributed-Systems-Project/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,11 +95,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/RobotCLI" />
       <recent name="$PROJECT_DIR$/src/main/proto" />
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/Simulator" />
-      <recent name="$PROJECT_DIR$/src/main/java/REST/Beans" />
-      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/Greenfield/aaaaa" />
@@ -273,7 +281,7 @@
       <workItem from="1685606721327" duration="34020000" />
       <workItem from="1685722277262" duration="540000" />
       <workItem from="1685723440977" duration="4000" />
-      <workItem from="1685726134704" duration="4032000" />
+      <workItem from="1685726134704" duration="5930000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -506,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685721508801</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="images added">
+      <created>1685733964086</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1685733964086</updated>
+    </task>
+    <task id="LOCAL-00035" summary="images added">
+      <created>1685734413079</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685734413079</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,7 +547,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Post 2 arguments" />
     <MESSAGE value="POST 2 arguments" />
     <MESSAGE value="MQTT test" />
     <MESSAGE value="Simulator import" />
@@ -550,7 +571,8 @@
     <MESSAGE value="second hello implementation" />
     <MESSAGE value="end of the project" />
     <MESSAGE value="code clean up" />
-    <option name="LAST_COMMIT_MESSAGE" value="code clean up" />
+    <MESSAGE value="images added" />
+    <option name="LAST_COMMIT_MESSAGE" value="images added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
