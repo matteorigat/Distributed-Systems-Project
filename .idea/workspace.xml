@@ -108,7 +108,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Distributed-Systems-Project [build]">
+  <component name="RunManager" selected="Application.CleaningRobotStart">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -273,6 +273,7 @@
       <workItem from="1685606721327" duration="34020000" />
       <workItem from="1685722277262" duration="540000" />
       <workItem from="1685723440977" duration="4000" />
+      <workItem from="1685726134704" duration="4032000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
