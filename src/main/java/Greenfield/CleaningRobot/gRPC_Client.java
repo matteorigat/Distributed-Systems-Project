@@ -41,8 +41,7 @@ public class gRPC_Client extends Thread{
 
         //Starting a continuous heartbeat service to detect when a robot is down
         try {
-            Thread t0 = asynchronousAlive();
-            t0.join();
+            asynchronousAlive();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -188,43 +187,38 @@ public class gRPC_Client extends Thread{
 
 
 
-    private Thread asynchronousAlive() throws InterruptedException {
+    private void asynchronousAlive() throws InterruptedException {
 
-        Thread t = new Thread(() -> {
+        //calling the RPC method. since it is asynchronous, we need to define handlers
+        //remember: all the methods here are CALLBACKS which are handled in an asynchronous manner.
+        stub.alive(new StreamObserver<Alive>() {
 
-            //calling the RPC method. since it is asynchronous, we need to define handlers
-            //remember: all the methods here are CALLBACKS which are handled in an asynchronous manner.
-            stub.alive(new StreamObserver<Alive>() {
+            // not used here
+            public void onNext(Alive alive) {
+                //System.out.println("onNext alive callback");
+            }
 
-                // not used here
-                public void onNext(Alive alive) {
-                    //System.out.println("onNext alive callback");
-                }
+            public void onError(Throwable throwable) {
+                int id = robot.getId();
+                System.out.println("onError alive callback " + id);
+                robotController.deleteRobotFromServer(id);// only one robot is successful
+                robotController.getClientRobotId().remove(id);
+                robotController.getMechanicOk().remove(id);
+                robotController.getMechanicQueue().remove(id);
+                Robots.getInstance().removeById(id);
+            }
 
-                public void onError(Throwable throwable) {
-                    int id = robot.getId();
-                    System.out.println("onError alive callback " + id);
-                    robotController.deleteRobotFromServer(id);// only one robot is successful
-                    robotController.getClientRobotId().remove(id);
-                    robotController.getMechanicOk().remove(id);
-                    robotController.getMechanicQueue().remove(id);
-                    Robots.getInstance().removeById(id);
-                }
+            public void onCompleted() {
+                int id = robot.getId();
+                System.out.println("onCompleted alive callback " + id);
+                robotController.getClientRobotId().remove(id);
+                robotController.getMechanicOk().remove(id);
+                robotController.getMechanicQueue().remove(id);
+                Robots.getInstance().removeById(id);
 
-                public void onCompleted() {
-                    int id = robot.getId();
-                    System.out.println("onCompleted alive callback " + id);
-                    robotController.getClientRobotId().remove(id);
-                    robotController.getMechanicOk().remove(id);
-                    robotController.getMechanicQueue().remove(id);
-                    Robots.getInstance().removeById(id);
-
-                    channel.shutdownNow();
-                }
-            });
+                channel.shutdownNow();
+            }
         });
-        t.start();
-        return t;
     }
 
     public boolean isStubNull() {

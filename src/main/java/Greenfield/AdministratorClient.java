@@ -11,7 +11,7 @@ public class AdministratorClient {
     public static void main(String[] args){
         Client client = Client.create();
         String serverAddress = "http://localhost:1337";
-        ClientResponse clientResponse = null;
+        ClientResponse clientResponse;
         String getPath;
         Robots robots;
 
