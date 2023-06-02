@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="code clean up">
-      <change afterPath="$PROJECT_DIR$/paho38443656889792-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho38464311545875-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho38471033402459-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho38485537802500-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho38493183698959-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho38503125776750-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +108,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobotStart">
+  <component name="RunManager" selected="Gradle.Distributed-Systems-Project [build]">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -224,8 +216,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Distributed-Systems-Project [build]" />
-        <item itemvalue="Application.AdministratorClient" />
         <item itemvalue="Gradle.Distributed-Systems-Project [clean]" />
+        <item itemvalue="Application.AdministratorClient" />
         <item itemvalue="Application.AdministratorServer" />
         <item itemvalue="Application.CleaningRobotStart" />
       </list>
@@ -278,7 +270,9 @@
       <workItem from="1685523190452" duration="6313000" />
       <workItem from="1685529601435" duration="536000" />
       <workItem from="1685554377521" duration="2537000" />
-      <workItem from="1685606721327" duration="33537000" />
+      <workItem from="1685606721327" duration="34020000" />
+      <workItem from="1685722277262" duration="540000" />
+      <workItem from="1685723440977" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -504,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685721062338</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="code clean up">
+      <created>1685721508801</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1685721508801</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
