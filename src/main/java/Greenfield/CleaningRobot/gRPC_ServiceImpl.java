@@ -31,7 +31,9 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
         Robots.getInstance().add(r);
         gRPC_Client grpcClient = new gRPC_Client(r, robotController);
         grpcClient.start();
-        robotController.getClientRobotId().put(id, grpcClient);
+        synchronized (robotController.getClientRobotIdLock()){
+            robotController.getClientRobotId().put(id, grpcClient);
+        }
 
         //if this.robot wants the mechanic it sends the request to the new robot
         //an ok callback is expected
@@ -59,11 +61,13 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
         }
         //if this.robot is at the mechanic it queues the request
         else if (robotController.isMechanic()){
-            robotController.getMechanicQueue().put(request.getId(), responseObserver);
+            synchronized (robotController.getMechanicQueueLock()){
+                robotController.getMechanicQueue().put(request.getId(), responseObserver);
+            }
             System.out.println(request.getId() + " added to queue");
         }
         else if(robotController.WantMechanic() && !robotController.isMechanic()){
-            //if the applicant robot sent the request earlier, this.robot replies with ok
+            //if the requesting robot sent the request earlier, this.robot replies with ok
             if(request.getTimestamp() < robotController.getMyTimestamp()){
                 OkResponse reply = OkResponse.newBuilder()
                         .setId(robot.getId())
@@ -74,20 +78,21 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
             }
             //else this.robot queues the request
             else {
-                robotController.getMechanicQueue().put(request.getId(), responseObserver);
+                synchronized (robotController.getMechanicQueueLock()){
+                    robotController.getMechanicQueue().put(request.getId(), responseObserver);
+                }
                 System.out.println(request.getId() + " added to queue, i'm first");
             }
-        }
-        // it should never happen
-        else {
-            System.out.println("mechanic something wrong in gRPC_ServiceImpl");
         }
     }
 
     @Override
     public void ok(OkResponse request, StreamObserver<OkResponse> responseObserver){
         //if a robot is joining the network, it sends the ok response here
-        robotController.getMechanicOk().add(request.getId());
+        synchronized (robotController.getMechanicOkLock()){
+            robotController.getMechanicOk().add(request.getId());
+            robotController.getMechanicOkLock().notify();
+        }
         System.out.println("Received ok2 from: " + request.getId());
 
     }
@@ -97,10 +102,17 @@ public class gRPC_ServiceImpl extends gRPCServiceImplBase {
 
         int id = request.getId();
         System.out.println("Quit from: " + id);
-        robotController.getClientRobotId().remove(id);
-        robotController.getMechanicOk().remove(id);
-        robotController.getMechanicQueue().remove(id);
         Robots.getInstance().removeById(id);
+        synchronized (robotController.getClientRobotIdLock()){
+            robotController.getClientRobotId().remove(id);
+        }
+        synchronized (robotController.getMechanicQueueLock()){
+            robotController.getMechanicQueue().remove(id);
+        }
+        synchronized (robotController.getMechanicOkLock()){
+            robotController.getMechanicOk().remove(id);
+            robotController.getMechanicOkLock().notify();
+        }
 
     }
 

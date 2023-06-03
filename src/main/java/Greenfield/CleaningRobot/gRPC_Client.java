@@ -66,6 +66,7 @@ public class gRPC_Client extends Thread{
 
             //this hanlder takes care of each item received in the stream
             public void onNext(MechanicResponse response) {
+                //this should always be true since mechanic thread hasn't started yet
                 if(!robotController.isMechanic() && !robotController.WantMechanic()){
                     try {
                         asynchronousOk(r.getId());
@@ -109,7 +110,10 @@ public class gRPC_Client extends Thread{
 
             //this hanlder takes care of each item received in the stream
             public void onNext(OkResponse response) {
-                robotController.getMechanicOk().add(response.getId());
+                synchronized (robotController.getMechanicOkLock()){
+                    robotController.getMechanicOk().add(response.getId());
+                    robotController.getMechanicOkLock().notify();
+                }
                 System.out.println("Received ok from: " + response.getId());
             }
 
@@ -130,8 +134,6 @@ public class gRPC_Client extends Thread{
     private void asynchronousOk(int id) throws InterruptedException {
 
         //creating the Ok response which will be provided as input to the RPC method
-        long time = System.currentTimeMillis();
-        robotController.setMyTimestamp(time);
         OkResponse request = OkResponse.newBuilder()
                 .setId(id)
                 .build();
@@ -201,20 +203,34 @@ public class gRPC_Client extends Thread{
             public void onError(Throwable throwable) {
                 int id = robot.getId();
                 System.out.println("onError alive callback " + id);
-                robotController.deleteRobotFromServer(id);// only one robot is successful
-                robotController.getClientRobotId().remove(id);
-                robotController.getMechanicOk().remove(id);
-                robotController.getMechanicQueue().remove(id);
                 Robots.getInstance().removeById(id);
+                robotController.deleteRobotFromServer(id);// only one robot is successful
+                synchronized (robotController.getClientRobotIdLock()){
+                    robotController.getClientRobotId().remove(id);
+                }
+                synchronized (robotController.getMechanicQueueLock()){
+                    robotController.getMechanicQueue().remove(id);
+                }
+                synchronized (robotController.getMechanicOkLock()){
+                    robotController.getMechanicOk().remove(id);
+                    robotController.getMechanicOkLock().notify();
+                }
             }
 
             public void onCompleted() {
                 int id = robot.getId();
                 System.out.println("onCompleted alive callback " + id);
-                robotController.getClientRobotId().remove(id);
-                robotController.getMechanicOk().remove(id);
-                robotController.getMechanicQueue().remove(id);
                 Robots.getInstance().removeById(id);
+                synchronized (robotController.getClientRobotIdLock()){
+                    robotController.getClientRobotId().remove(id);
+                }
+                synchronized (robotController.getMechanicQueueLock()){
+                    robotController.getMechanicQueue().remove(id);
+                }
+                synchronized (robotController.getMechanicOkLock()){
+                    robotController.getMechanicOk().remove(id);
+                    robotController.getMechanicOkLock().notify();
+                }
 
                 channel.shutdownNow();
             }
