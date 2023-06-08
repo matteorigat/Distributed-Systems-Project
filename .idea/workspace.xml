@@ -4,31 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="README.md">
-      <change afterPath="$PROJECT_DIR$/paho64337181842375-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64347922531250-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64425117011167-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64436506246208-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64822659390500-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64828573905458-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64835361537125-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64842900249333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho64847180005458-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65132903931083-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65141944200875-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65145588205333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65148932567833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65159053017833-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65399684633417-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65412450366250-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65419100979333-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65426372931167-tcplocalhost1883/.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paho65434444864333-tcplocalhost1883/.lck" afterDir="false" />
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="sync fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/CleaningRobotController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_ServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobotStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobotStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +115,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CleaningRobotStart">
+  <component name="RunManager" selected="Application.AdministratorServer">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -300,7 +281,10 @@
       <workItem from="1685722277262" duration="540000" />
       <workItem from="1685723440977" duration="4000" />
       <workItem from="1685726134704" duration="7018000" />
-      <workItem from="1685781364231" duration="9591000" />
+      <workItem from="1685781364231" duration="10135000" />
+      <workItem from="1685886163298" duration="1723000" />
+      <workItem from="1686062923180" duration="3773000" />
+      <workItem from="1686073469846" duration="3064000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -561,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685736600792</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="sync fixed">
+      <created>1685791942277</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1685791942277</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +571,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="MQTT test" />
     <MESSAGE value="Simulator import" />
     <MESSAGE value="MQTT completed" />
     <MESSAGE value="Administrator Client REST" />
@@ -605,7 +595,8 @@
     <MESSAGE value="code clean up" />
     <MESSAGE value="images added" />
     <MESSAGE value="README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
+    <MESSAGE value="sync fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="sync fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

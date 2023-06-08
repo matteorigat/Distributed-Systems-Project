@@ -110,11 +110,11 @@ public class gRPC_Client extends Thread{
 
             //this hanlder takes care of each item received in the stream
             public void onNext(OkResponse response) {
+                System.out.println("Received ok from: " + response.getId());
                 synchronized (robotController.getMechanicOkLock()){
                     robotController.getMechanicOk().add(response.getId());
                     robotController.getMechanicOkLock().notify();
                 }
-                System.out.println("Received ok from: " + response.getId());
             }
 
             // error already handled in alive onError

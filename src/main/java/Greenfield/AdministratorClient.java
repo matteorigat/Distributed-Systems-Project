@@ -54,7 +54,7 @@ public class AdministratorClient {
                     do {
                         System.out.print("\nInsert how many records you want to display\n\033[31m --> \033[0m");
                         input = in.nextLine();
-                    } while(isNotNumeric(input));
+                    } while(isNotNumeric(input) || Integer.parseInt(input) < 1);
                     int n = Integer.parseInt(input); //last n measurements
 
 

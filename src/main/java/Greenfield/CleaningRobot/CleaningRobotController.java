@@ -136,7 +136,7 @@ public class CleaningRobotController {
 
         while (!input.equals("quit")){
             System.out.println("\n\nPress:");
-            System.out.println("1: To display the robotList");
+            System.out.println("1: To display the robotsList");
             System.out.println("2: To go to the mechanic now.");
             System.out.println("'quit': To leave the Greenfield city");
             input = in.nextLine();
@@ -245,8 +245,8 @@ public class CleaningRobotController {
         Thread t = new Thread(() -> {
             try {
                 while(!input.equals("quit")){
-                    Thread.sleep(2000);  // 10% every 10 seconds //2s for testing purposes
-                    if(Math.random() < 0.1){
+                    Thread.sleep(10000);  // 10% every 10 seconds
+                    if(Math.random() < 0.1 && !wantMechanic && !mechanic){
                         mechanicSteps();
                     }
                 }
@@ -261,15 +261,19 @@ public class CleaningRobotController {
     private void mechanicSteps() throws InterruptedException {
         System.out.println("starting mechanic steps");
         wantMechanic = true;
-        getMechanicOk().clear();
+        synchronized (mechanicOkLock) {
+            mechanicOk.clear();
+        }
         sendMechanicMessage();
-
-        while (getMechanicOk().size() < Robots.getInstance().getRobotslist().size() - 1) {
+        while (true){
             synchronized (mechanicOkLock) {
-                mechanicOkLock.wait();
+                if (mechanicOk.size() < Robots.getInstance().getRobotslist().size() - 1)
+                        mechanicOkLock.wait();
+                else break;
+
+                if(input.equals("quit"))
+                    return;
             }
-            if(input.equals("quit"))
-                return;
         }
 
         mechanic = true;

@@ -17,7 +17,11 @@ public class MeasuresService {
     @GET
     @Produces({"application/json", "application/xml"})
     public Response getLastMeasuresById(@PathParam("id") int id, @PathParam("n") int n){
-        double r = Measures.getInstance().getAverageLastNById(id, n);
+        double r;
+        if(n == 0)
+            r = 0;
+        else
+            r = Measures.getInstance().getAverageLastNById(id, n);
         if(!Double.isNaN(r))
             return Response.ok(String.valueOf(r)).build();
         else
