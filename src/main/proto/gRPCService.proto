@@ -32,10 +32,12 @@ message Alive{
 
 // Defining a Service, a Service can have multiple RPC operations
 service gRPCService {
-
+    //Server Streaming RPC
     rpc hello(HelloRequest) returns (stream MechanicResponse);
     rpc mechanic(MechanicRequest) returns (stream OkResponse);
+    //Unary RPC
     rpc ok(OkResponse) returns (OkResponse);
     rpc quit(QuitRequest) returns (QuitRequest);
+    //Bidirectional streaming RPC
     rpc alive(stream Alive) returns (stream Alive);
 }

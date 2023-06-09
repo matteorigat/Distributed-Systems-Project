@@ -216,6 +216,9 @@ public final class gRPCServiceGrpc {
   public static abstract class gRPCServiceImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     *Server Streaming RPC
+     * </pre>
      */
     public void hello(Greenfield.GRPCService.HelloRequest request,
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.MechanicResponse> responseObserver) {
@@ -230,6 +233,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Unary RPC
+     * </pre>
      */
     public void ok(Greenfield.GRPCService.OkResponse request,
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
@@ -244,6 +250,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bidirectional streaming RPC
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> alive(
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> responseObserver) {
@@ -313,6 +322,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Server Streaming RPC
+     * </pre>
      */
     public void hello(Greenfield.GRPCService.HelloRequest request,
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.MechanicResponse> responseObserver) {
@@ -329,6 +341,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Unary RPC
+     * </pre>
      */
     public void ok(Greenfield.GRPCService.OkResponse request,
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.OkResponse> responseObserver) {
@@ -345,6 +360,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Bidirectional streaming RPC
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> alive(
         io.grpc.stub.StreamObserver<Greenfield.GRPCService.Alive> responseObserver) {
@@ -375,6 +393,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Server Streaming RPC
+     * </pre>
      */
     public java.util.Iterator<Greenfield.GRPCService.MechanicResponse> hello(
         Greenfield.GRPCService.HelloRequest request) {
@@ -391,6 +412,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Unary RPC
+     * </pre>
      */
     public Greenfield.GRPCService.OkResponse ok(Greenfield.GRPCService.OkResponse request) {
       return blockingUnaryCall(
@@ -427,6 +451,9 @@ public final class gRPCServiceGrpc {
     }
 
     /**
+     * <pre>
+     *Unary RPC
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<Greenfield.GRPCService.OkResponse> ok(
         Greenfield.GRPCService.OkResponse request) {

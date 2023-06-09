@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="sync fixed">
+    <list default="true" id="91cf2891-b6ca-42db-b3af-fcab5efc12f2" name="Changes" comment="minor update">
+      <change afterPath="$PROJECT_DIR$/paho148580560303500-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho148623216742875-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho148626987345084-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho148631478131750-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho148635587629917-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho148691875172250-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho149587210942500-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho149594585005125-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho149751202507458-tcplocalhost1883/.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paho149756137832541-tcplocalhost1883/.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/AdministratorClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/CleaningRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/CleaningRobotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/CleaningRobot/gRPC_Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Greenfield/Services/MeasuresService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/gRPCService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/main/grpc/Greenfield/gRPCServiceGrpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +123,7 @@
       <recent name="REST.Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AdministratorServer">
+  <component name="RunManager" selected="Application.AdministratorClient">
     <configuration name="AdministratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Greenfield.AdministratorClient" />
       <module name="Distributed-Systems-Project.main" />
@@ -285,6 +293,8 @@
       <workItem from="1685886163298" duration="1723000" />
       <workItem from="1686062923180" duration="3773000" />
       <workItem from="1686073469846" duration="3064000" />
+      <workItem from="1686220235587" duration="483000" />
+      <workItem from="1686234911973" duration="2403000" />
     </task>
     <task id="LOCAL-00001" summary="Post 2 arguments">
       <created>1683056952309</created>
@@ -552,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685791942277</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="minor update">
+      <created>1686220418991</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1686220418991</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Simulator import" />
     <MESSAGE value="MQTT completed" />
     <MESSAGE value="Administrator Client REST" />
     <MESSAGE value="DELETE robot" />
@@ -596,7 +612,8 @@
     <MESSAGE value="images added" />
     <MESSAGE value="README.md" />
     <MESSAGE value="sync fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="sync fixed" />
+    <MESSAGE value="minor update" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
