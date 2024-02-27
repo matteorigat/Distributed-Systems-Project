@@ -42,6 +42,3 @@ Sequence of the communications that occur:
 ## Tools
 * Gradle - Dependency Management
 * Intellij - IDE
-
-## License
-This project is developed in collaboration with [Università degli Studi di Milano](https://www.unimi.it/).
