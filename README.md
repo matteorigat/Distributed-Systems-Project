@@ -27,7 +27,7 @@ Sequence of the communications that occur:
 
 Sequence of the communications that occur:
 
-* when a robot request to use the mechanic (Ricart and Agrawala algorithm).
+* when a robot requests to use the mechanic (Ricart and Agrawala algorithm).
 
 * when a robot wants to leave Greenfield.
 
