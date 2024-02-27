@@ -39,7 +39,7 @@ Sequence of the communications that occur:
 
 **Teacher** Claudio Bettini
 
-# Tools
+## Tools
 * Gradle - Dependency Management
 * Intellij - IDE
 
